@@ -52,3 +52,5 @@ npm run dev
 - This setup is for development/demo with local AI.
 - Supabase Edge Functions in the cloud cannot call your laptop localhost, so we use the local Node proxy during dev.
 ```
+
+# Pet_Pal
