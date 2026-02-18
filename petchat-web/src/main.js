@@ -6,7 +6,8 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY
 )
 
-const FUNCTION_NAME = 'chat' // change to 'chat' if your deployed function is named chat
+// Local AI server (Node -> Ollama)
+const LOCAL_AI_URL = 'http://localhost:3001/chat'
 
 document.querySelector('#app').innerHTML = `
   <div class="container">
@@ -26,11 +27,11 @@ document.querySelector('#app').innerHTML = `
       </div>
 
       <div class="card">
-        <h3>Edge Function</h3>
-        <div class="label">Function: <code>${FUNCTION_NAME}</code></div>
+        <h3>Local AI (Ollama)</h3>
+        <div class="label">Endpoint: <code>${LOCAL_AI_URL}</code></div>
         <input class="input" id="msg" placeholder="Message" />
         <div class="row">
-          <button class="btn primary" id="call">Send to function</button>
+          <button class="btn primary" id="call">Send</button>
         </div>
       </div>
     </div>
@@ -39,7 +40,6 @@ document.querySelector('#app').innerHTML = `
     <pre class="output" id="out"></pre>
   </div>
 `
-
 
 const outEl = document.querySelector('#out')
 const out = (obj) => { outEl.textContent = JSON.stringify(obj, null, 2) }
@@ -73,10 +73,15 @@ document.querySelector('#session').onclick = checkSession
 document.querySelector('#call').onclick = async () => {
   try {
     const message = document.querySelector('#msg').value || 'hi'
-    const { data, error } = await supabase.functions.invoke(FUNCTION_NAME, {
-      body: { message }
+
+    const r = await fetch(LOCAL_AI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message }),
     })
-    out({ data, error })
+
+    const data = await r.json() // expected: { reply: "..." }
+    out({ data })
   } catch (e) {
     out({ thrown: String(e) })
   }
