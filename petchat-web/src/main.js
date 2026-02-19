@@ -49,6 +49,37 @@ async function checkSession() {
   out({ session: data?.session ? { user: data.session.user.email } : null, error })
 }
 
+async function getOrCreateConversationId(userId) {
+  const { data: conv, error: selErr } = await supabase
+    .from('conversations')
+    .select('id')
+    .eq('user_id', userId)
+    .maybeSingle()
+
+  if (selErr) return { conversation_id: null, error: selErr }
+
+  if (conv?.id) return { conversation_id: conv.id, error: null }
+
+  const { data: newConv, error: insErr } = await supabase
+    .from('conversations')
+    .insert({ user_id: userId, title: 'My Chat' })
+    .select('id')
+    .single()
+
+  if (insErr) return { conversation_id: null, error: insErr }
+  return { conversation_id: newConv.id, error: null }
+}
+
+async function loadHistory(conversation_id) {
+  const { data, error } = await supabase
+    .from('messages')
+    .select('id, role, content, created_at')
+    .eq('conversation_id', conversation_id)
+    .order('created_at', { ascending: true })
+
+  return { data, error }
+}
+
 document.querySelector('#signup').onclick = async () => {
   const email = document.querySelector('#email').value
   const password = document.querySelector('#password').value
@@ -74,14 +105,70 @@ document.querySelector('#call').onclick = async () => {
   try {
     const message = document.querySelector('#msg').value || 'hi'
 
+    const { data: { user }, error: userErr } = await supabase.auth.getUser()
+    if (userErr || !user) {
+      out({ ok: false, error: "Please sign in first", userErr })
+      return
+    }
+
+    const { conversation_id, error: convErr } = await getOrCreateConversationId(user.id)
+    if (convErr || !conversation_id) {
+      out({ ok: false, step: "getOrCreateConversationId", convErr })
+      return
+    }
+
+    // Call local AI
     const r = await fetch(LOCAL_AI_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message }),
     })
 
-    const data = await r.json() // expected: { reply: "..." }
-    out({ data })
+    const ai = await r.json().catch(() => ({}))
+    const reply = ai?.reply ?? ""
+
+    // Save user message
+    const { data: userRow, error: userErr2 } = await supabase
+      .from('messages')
+      .insert({
+        conversation_id,
+        user_id: user.id,
+        role: 'user',
+        content: message,
+      })
+      .select('id, role, content')
+      .single()
+
+    if (userErr2) {
+      out({ ok: false, step: "insert user message", userErr2 })
+      return
+    }
+
+    // Save assistant message
+    const { data: asstRow, error: asstErr } = await supabase
+      .from('messages')
+      .insert({
+        conversation_id,
+        user_id: user.id,
+        role: 'assistant',
+        content: reply,
+      })
+      .select('id, role, content')
+      .single()
+
+    if (asstErr) {
+      out({ ok: false, step: "insert assistant message", asstErr })
+      return
+    }
+
+    // Load full history
+    const hist = await loadHistory(conversation_id)
+    if (hist.error) {
+      out({ ok: false, step: "loadHistory", conversation_id, hist_error: hist.error })
+      return
+    }
+
+    out({ ok: true, conversation_id, userRow, asstRow, history: hist.data })
   } catch (e) {
     out({ thrown: String(e) })
   }
