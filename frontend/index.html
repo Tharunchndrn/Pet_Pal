@@ -241,18 +241,23 @@
             typingIndicator.style.display = 'block';
 
             try {
-                const response = await fetch('http://localhost:8000/chat', {
+                const apiUrl = (window.PETPAL_API_URL || '').trim() || 'http://localhost:8000';
+                const response = await fetch(apiUrl + '/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message })
                 });
 
-                if (!response.ok) throw new Error('Failed to connect to backend');
-
-                const data = await response.json();
-                addMessage(data.response, false);
+                const data = await response.json().catch(() => ({}));
+                if (!response.ok) {
+                    const detail = Array.isArray(data.detail) ? data.detail[0]?.msg || data.detail : data.detail;
+                    const msg = detail || (response.status === 500 ? 'Backend error. Check the backend terminal for details.' : 'Request failed.');
+                    addMessage('Error: ' + msg, false);
+                    return;
+                }
+                addMessage(data.response || 'No response.', false);
             } catch (error) {
-                addMessage("Sorry, something went wrong. Please check if the backend is running.", false);
+                addMessage('Cannot reach the backend. Start it with: cd backend && python -m uvicorn main:app --reload --port 8000', false);
                 console.error(error);
             } finally {
                 typingIndicator.style.display = 'none';
