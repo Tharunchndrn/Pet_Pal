@@ -250,8 +250,15 @@
 
                 const data = await response.json().catch(() => ({}));
                 if (!response.ok) {
-                    const detail = Array.isArray(data.detail) ? data.detail[0]?.msg || data.detail : data.detail;
-                    const msg = detail || (response.status === 500 ? 'Backend error. Check the backend terminal for details.' : 'Request failed.');
+                    let detailStr = null;
+                    if (Array.isArray(data.detail) && data.detail.length > 0) {
+                        const first = data.detail[0];
+                        if (first != null && typeof first === 'object' && 'msg' in first) detailStr = first.msg;
+                        else if (typeof first === 'string') detailStr = first;
+                        else detailStr = JSON.stringify(first);
+                    } else if (typeof data.detail === 'string') detailStr = data.detail;
+                    else if (data.detail != null) detailStr = JSON.stringify(data.detail);
+                    const msg = detailStr || (response.status === 500 ? 'Backend error. Check the backend terminal for details.' : 'Request failed.');
                     addMessage('Error: ' + msg, false);
                     return;
                 }
