@@ -1,7 +1,11 @@
 import os
+import logging
 import requests
 import json
 from fastapi import FastAPI, HTTPException
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -10,14 +14,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "google/gemma-3-12b-it:free")
 
 app = FastAPI()
 
-# Enable CORS for frontend interaction
+# Enable CORS for frontend (file:// or any host)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, specify your frontend URL
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -25,10 +30,15 @@ app.add_middleware(
 class ChatMessage(BaseModel):
     message: str
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "PetPal backend running. POST /chat to chat."}
+
 @app.post("/chat")
 async def chat(chat_message: ChatMessage):
     if not OPENROUTER_API_KEY:
-        raise HTTPException(status_code=500, detail="OpenRouter API key not configured")
+        logger.error("OPENROUTER_API_KEY is not set in .env")
+        raise HTTPException(status_code=500, detail="OpenRouter API key not configured. Add OPENROUTER_API_KEY to backend/.env")
 
     try:
         response = requests.post(
@@ -38,7 +48,7 @@ async def chat(chat_message: ChatMessage):
                 "Content-Type": "application/json",
             },
             data=json.dumps({
-                "model": "meta-llama/llama-3.3-70b-instruct:free",
+                "model": OPENROUTER_MODEL,
                 "messages": [
                     {
                         "role": "user",
@@ -49,6 +59,7 @@ async def chat(chat_message: ChatMessage):
         )
         
         if response.status_code != 200:
+            logger.error("OpenRouter API error: %s %s", response.status_code, response.text[:500])
             raise HTTPException(status_code=response.status_code, detail=response.text)
             
         data = response.json()
@@ -56,7 +67,10 @@ async def chat(chat_message: ChatMessage):
         
         return {"response": bot_message}
 
+    except HTTPException:
+        raise
     except Exception as e:
+        logger.exception("Chat request failed")
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
