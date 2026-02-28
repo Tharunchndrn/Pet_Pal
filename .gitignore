@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Environment variables
 .env
 .env.local
@@ -9,3 +10,6 @@ node_modules/
 # Logs
 *.log
 npm-debug.log*
+=======
+".env" 
+>>>>>>> 62f7f0e (Remove .env file from repo and add to gitignore)
