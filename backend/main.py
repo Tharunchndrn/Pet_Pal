@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from emotion_classifier.classifier import get_emotion
 
 # Load environment variables
 load_dotenv()
@@ -41,6 +42,25 @@ async def chat(chat_message: ChatMessage):
         raise HTTPException(status_code=500, detail="OpenRouter API key not configured. Add OPENROUTER_API_KEY to backend/.env")
 
     try:
+        # 1. Detect emotion (fallback if model doesn't exist yet)
+        detected_emotion = get_emotion(chat_message.message)
+        logger.info(f"User Message: {chat_message.message} | Detected Emotion: {detected_emotion}")
+
+        # 2. Construct an empathetic prompt
+        # We tell the LLM about the detected emotion so it can adjust its tone.
+        system_prompt = (
+            "You are PetPal, a friendly and empathetic AI pet companion. "
+            "Your goal is to support the user. "
+        )
+        
+        if detected_emotion != "unknown":
+            system_prompt += f"The user seems to be feeling {detected_emotion}. Adjust your response to be as a conversation to Heal and Support "
+        else:
+            system_prompt += "Respond in a warm and natural way.As a friend dont reply in paragraphs"
+
+        # Merge system prompt into user message for better compatibility with free models
+        full_user_content = f"{system_prompt}\n\nUser Message: {chat_message.message}"
+
         response = requests.post(
             url="https://openrouter.ai/api/v1/chat/completions",
             headers={
@@ -50,10 +70,7 @@ async def chat(chat_message: ChatMessage):
             data=json.dumps({
                 "model": OPENROUTER_MODEL,
                 "messages": [
-                    {
-                        "role": "user",
-                        "content": chat_message.message
-                    }
+                    {"role": "user", "content": full_user_content}
                 ]
             })
         )
@@ -65,7 +82,10 @@ async def chat(chat_message: ChatMessage):
         data = response.json()
         bot_message = data['choices'][0]['message']['content']
         
-        return {"response": bot_message}
+        return {
+            "response": bot_message,
+            "detected_emotion": detected_emotion
+        }
 
     except HTTPException:
         raise
