@@ -2,3 +2,14 @@ fastapi
 uvicorn
 requests
 python-dotenv
+
+#For ML
+torch
+transformers
+datasets
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+accelerate

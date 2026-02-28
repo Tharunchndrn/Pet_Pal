@@ -128,6 +128,19 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
+        .emotion-badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 99px;
+            margin-bottom: 4px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
         .input-area {
             padding: 20px 24px;
             border-top: 1px solid var(--glass-border);
@@ -222,11 +235,23 @@
         const messagesDiv = document.getElementById('messages');
         const typingIndicator = document.getElementById('typing-indicator');
 
-        function addMessage(text, isUser) {
-            const msg = document.createElement('div');
-            msg.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            msg.textContent = text;
-            messagesDiv.appendChild(msg);
+        function addMessage(text, isUser, emotion = null) {
+            const msgContainer = document.createElement('div');
+            msgContainer.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+
+            if (!isUser && emotion && emotion !== 'unknown') {
+                const badge = document.createElement('div');
+                badge.className = 'emotion-badge';
+                badge.textContent = `Feeling: ${emotion}`;
+                msgContainer.appendChild(badge);
+                msgContainer.appendChild(document.createElement('br'));
+            }
+
+            const textSpan = document.createElement('span');
+            textSpan.textContent = text;
+            msgContainer.appendChild(textSpan);
+
+            messagesDiv.appendChild(msgContainer);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
 
@@ -241,30 +266,21 @@
             typingIndicator.style.display = 'block';
 
             try {
-                const apiUrl = (window.PETPAL_API_URL || '').trim() || 'http://localhost:8000';
+                const apiUrl = 'http://localhost:8000';
                 const response = await fetch(apiUrl + '/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message })
                 });
 
-                const data = await response.json().catch(() => ({}));
+                const data = await response.json();
                 if (!response.ok) {
-                    let detailStr = null;
-                    if (Array.isArray(data.detail) && data.detail.length > 0) {
-                        const first = data.detail[0];
-                        if (first != null && typeof first === 'object' && 'msg' in first) detailStr = first.msg;
-                        else if (typeof first === 'string') detailStr = first;
-                        else detailStr = JSON.stringify(first);
-                    } else if (typeof data.detail === 'string') detailStr = data.detail;
-                    else if (data.detail != null) detailStr = JSON.stringify(data.detail);
-                    const msg = detailStr || (response.status === 500 ? 'Backend error. Check the backend terminal for details.' : 'Request failed.');
-                    addMessage('Error: ' + msg, false);
+                    addMessage('Error: ' + (data.detail || 'Request failed.'), false);
                     return;
                 }
-                addMessage(data.response || 'No response.', false);
+                addMessage(data.response, false, data.detected_emotion);
             } catch (error) {
-                addMessage('Cannot reach the backend. Start it with: cd backend && python -m uvicorn main:app --reload --port 8000', false);
+                addMessage('Cannot reach the backend. Make sure it is running on port 8000.', false);
                 console.error(error);
             } finally {
                 typingIndicator.style.display = 'none';
