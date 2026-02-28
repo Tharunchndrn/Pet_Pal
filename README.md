@@ -57,3 +57,76 @@ npm run dev
 # Pet_Pal
 =======
 >>>>>>> backend
+
+---
+
+# PetPal 🐾 — Emotion Intelligent Companion
+PetPal is a supportive, emotionally intelligent AI pet companion designed to listen and provide empathetic support using real-time emotion detection.
+
+## 🌟 Key Features
+- **Emotion Intelligence**: Uses a custom-trained **RoBERTa-based** emotion classifier to detect how you're feeling.
+- **Empathetic AI**: Adjusts its tone and conversation style based on your detected emotion (e.g., offering more support when you're sad).
+- **Multi-Model Support**: Supports both local LLMs (Ollama) and cloud models (OpenRouter).
+
+## 🧠 Emotion Classifier Details
+The heart of PetPal's empathy is our custom emotion classification engine.
+
+### How it Works
+1.  **Detection**: Every user message is analyzed by a fine-tuned **RoBERTa** model (`distilroberta-base`).
+2.  **Context Injection**: The detected emotion is injected into the AI's system prompt to shift its "personality" dynamically.
+3.  **Supportive Advice**: The LLM uses this emotional context to provide tailored coping strategies.
+
+### Detected Emotions
+The classifier detects 7 core emotional states:
+- 😊 **Happy** — Positive vibes and encouragement.
+- 🧘 **Calm** — Relaxing and steady conversation.
+- 😢 **Sad** — Deep empathy and comfort.
+- 😠 **Angry** — De-escalation and listening.
+- 😰 **Anxious** — Grounding techniques and reassurance.
+- 😫 **Stressed** — Stress-relief tips and calm support.
+- 🤔 **Confused** — Clarity and patience.
+
+---
+
+## 🛠️ Updated Tech Stack
+### Backend (Python/FastAPI)
+- **Framework**: FastAPI
+- **LLM API**: OpenRouter (Mistral/Gemini/etc.)
+- **ML Engine**: PyTorch + Hugging Face Transformers
+- **Classifier**: Fine-tuned RoBERTa (`backend/emotion_classifier/emotion_model`)
+
+---
+
+## 🚀 How to Run the Python Backend
+This backend handles the **Emotion Detection** and **OpenRouter** integration.
+
+```bash
+# Navigate to the backend folder
+cd backend
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Setup environment variables in .env
+# OPENROUTER_API_KEY=your_key_here
+
+# Run the server
+python main.py
+```
+The backend runs at `http://localhost:8000`.
+
+---
+
+## 📝 Training the Classifier
+If you wish to re-train or inspect the emotion model:
+- **Pre-processing**: `backend/emotion_classifier/preprocess_data.ipynb`
+- **Training**: `backend/emotion_classifier/train_emotion.ipynb`
+- **Inference Code**: `backend/emotion_classifier/classifier.py`
+
+---
+
+## 🏗️ Development Status
+- [x] RoBERTa Emotion Classifier Integration
+- [x] OpenRouter Empathetic Prompting
+- [x] Supabase Auth & Storage
+- [ ] Mobile App Version (In Progress)
