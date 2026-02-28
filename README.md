@@ -51,7 +51,7 @@ npm run dev
 ## Notes
 - This setup is for development/demo with local AI.
 - Supabase Edge Functions in the cloud cannot call your laptop localhost, so we use the local Node proxy during dev.
-```
+---
 
 # PetPal 🐾 — Emotion Intelligent Companion
 PetPal is a supportive, emotionally intelligent AI pet companion designed to listen and provide empathetic support using real-time emotion detection.
@@ -124,12 +124,4 @@ If you wish to re-train or inspect the emotion model:
 - [x] Supabase Auth & Storage
 - [ ] Mobile App Version (In Progress)
 
-
-<<<<<<< HEAD
-
-# Pet_Pal
-=======
->>>>>>> backend
-
----
 
