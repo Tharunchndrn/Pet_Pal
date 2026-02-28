@@ -1,0 +1,582 @@
+﻿1
+
+A Dialogue Dataset Containing Emotional Support
+for People in Distress
+
+Chun-Hung Yeh
+Supervisor: Kalpani Anuradha Welivita, Dr. Pearl Pu Faltings
+
+Human Computer Interaction Group, IC, EPFL
+
+Abstract—Many people suffer from emotional distress due to reason behind it is the inadequacy of a curated conversational
+many reasons, such as significant life change, financial crisis, datasets consisting empathetic responses.
+or various physical and mental health conditions. Inability to Within the last few years, building emotion-labelled datasets
+regulate emotion can potentially lead to self-destructive behavior
+such as substance abuse, self-harm, or suicide. Even though many for the purpose of developing dialogue systems that generate
+helplines and therapeutic consultations are available to assist such emotion-aware and empathetic responses has gained much
+people in distress, most people do not reach for help due to the research interest. For instance, Chen et al., (2018) introduced
+public and personal stigma associated with mental health. Even EmotionLines [7], a dataset containing 2K dialogues, in which
+therapeutic consultations are limited and are not available 24/7 each utterance is manually annotated with an emotion label.
+to support people going through a traumatic episode. Therefore,
+it is important to assess the ability of AI-driven chatbots to One of seven emotions, six Ekman’s basic emotions [8]
+help people deal with emotional distress. One of the significant plus the neutral emotion, is used to annotate each utterance.
+limitations in developing such a chatbot is the lack of a large, Another realization comes from EmoContext [9], published by
+curated dialogue dataset containing emotional support. This work A. Chatterjee et al.. This dataset consists of 30K conversations
+curates a dataset containing two million emotional dialogues from annotated with one of four emotion labels: Happy; Sad;
+Reddit and analyzes it at the lexical, sentiment, and emotional
+level. In this paper, we outline the data selection and curation Angry; and Others. Though these datasets are well designed
+process and the important observations made related to sentiment using the interaction between human users and chatbots, their
+and emotion in speaker and listener turns of the resulting dataset. shortcomings still pose several problems to build a useful
+This dataset is expected to help build future chatbots that could chatbot with empathy. First, none of these can be used for
+offer emotional support for people in distress. emotional reasoning as they lack the necessary annotation
+
+Index Terms—Emotional support, Web crawling, Natural lan- details required for the reasoning task. Specifically, in the
+guage processing EmoContext dataset, an emotion label is assigned to only
+
+the last utterance of each conversation. Second, the datasets
+I. I are annotated with coarse-grained emotions and often contain
+
+NTRODUCTION
+a label ‘Neutral’ or ‘Others’, which introduces vagueness.
+
+According to World Health Organization research, it is Third, the datasets are often limited in size, which makes them
+estimated that mental distress affect 29% of people in their difficult to be used in training neural chatbots.
+lifetime [1]. Globally, mental health issues have been consid- Rashkin et al., (2019) proposed EmpatheticDialogues [10],
+ered one of the most common causes of disability [2]. Despite a novel dataset containing 25K dialogues grounded in emo-
+the availability of mental health services, people hesitate to tional situations. Expressly, each conversation is comprised of
+reach them because of the public stigma associated with communication between a speaker and a listener, where the
+mental health. Even worse, there is a severe shortage of speaker initiates the dialogue by giving a setting according
+mental health workers [3]. Due to the lack of resources, it is to a given emotion label and the listener responds based on
+challenging to offer interventions using one-to-one traditional the underlying situation. The authors consider 32 emotion
+therapeutic methods. Accordingly, insufficient services have labels, with a single label given in each dialogue for mak-
+facilitated the utilization of technology to meet the needs of ing a situation strongly related to one particular emotional
+people suffering from mental distress. One of the technological experience. Welivita and Pu (2020) extend the above dataset
+solutions is the chatbot, a system capable of conversing and by annotating each utterance with 32 emotions and additional
+interacting with human users using spoken languages. 9 empathetic response intents [11]. Nevertheless, the limited
+
+Through recent years, chatbots have become popular in size of the EmpatheticDialogues dataset is not enough to
+the natural language processing community. Recent advances train a robust chatbot that can deal with different emotional
+show that deep neural networks can be effectively applied to situations. Thus to fill the above gap, in this project, we
+the development of task-oriented and open-domain conversa- build a larger curated dialogue dataset, named RED (Reddit
+tional systems [4], [5], [6]. Nowadays, most existing systems Emotional Distress) containing emotional support for people
+can generate appropriate responses from the syntactic and in acute distress. In addition, we present our detailed analysis
+contextual points of view. However, one of the challenges on our proposed dataset to evaluate the empathetic dialogue
+is identifying emotions from the conversational human coun- characteristics between speakers and listeners. The ultimate
+terpart and making a suitable response correspondingly. One goal of this dataset is to be utilized for training a robust
+
+
+
+2
+
+conversational agent that can recognize human feelings and II. LITERATURE REVIEW
+offer emotional support consistently.
+
+Our data curation pipeline contains 4 main stages (see A number of dialogue datasets were previously constructed
+Figure 1): to make chatbots understand users’ emotions and responses
+
+suitably. For example, Bertero et al. (2016) [12] built a dataset
+1) Web Scraping: To develop a conversational dataset for from TED-LIUM corpus [13] for real-time speech emotion
+
+training a chatbot, first and foremost we need to collect the and sentiment recognition in interactive dialogue systems.
+relevant data. In this stage, we select and scrape the text data The data are in the form of audio and text, annotated with
+from several empathy-related subreddits in Reddit. six emotion categories: criticism, anxiety, anger, loneliness,
+
+2) Extract Conversations: The conversations among dif- happiness, and sadness. Overall, the dataset contains 32,464
+ferent Reddit users can be either dyadic or multiparty. If a dialogue segments. Busso et al. (2008) [14], McKeown et al.
+conversation is dyadic, it is communication between a speaker (2011) [15], and Poria et al. (2018) [16] proposed IEMOCAP,
+and a listener. On the other hand, a multiparty dialogue is SEMAINE, and MELD datasets, respectively. These datasets
+inclusive of a speaker and multiple listeners. In this stage, contain visual, acoustic, and textual signals. In general, they
+we build both dyadic and multiparty conversations out of the consist of various back-channel communication via facial
+scraped Reddit conversational threads. expressions and speech tones, but the text may not fully
+
+3) Preprocessing: In this stage, we clean the extracted represent contextual intents.
+conversations by removing HTML tags, URLs and numbers. More recent works such as EmotionLines (Chen et al., 2018)
+Since our goal is to develop a dialogue dataset containing [7] and OpenSubtitles (Lison et al., 2019) [17] are conversation
+empathetic responses, we also detect and remove the listener datasets equipped with TV or movie transcripts translated from
+utterances containing profane words from the dataset. voice to text. Specifically, each dialogue turn in the Emotion-
+
+4) Exploratory Data Analysis (EDA): After distilling the Lines corpus is labeled with an emotion based on its textual
+raw data, in this state, we conduct an analysis to find out content. The dialogues are collected from Friends TV scripts
+the descriptive statistics about the curated data. In addition, and Facebook Messenger dialogues. One of seven emotions
+sentiment analysis and emotion prediction are utilized to (six Ekman’s basic emotions plus the neutral emotion) is
+observe sentiment and emotion distribution among speakers labeled on each utterance by Amazon MTurkers. Overall, a
+and listeners. total of 29,245 utterances from 2,000 dialogues are labeled in
+
+EmotionLines. Besides, OpenSubtitles is composed of 3.7 mil-
+lion subtitles in over 60 languages. The authors have made use
+of a quality score determined using a neural network trained
+on a sample of aligned sentence pairs, to filter out low-quality
+utterances. Though these works intend to build the dialogue
+datasets by improving the sentence quality and adding emotion
+labels, they are still unable to fully model the interactions
+occurring only via text. Meanwhile, A. Chatterjee et al. (2019)
+introduced a purely text-based dataset, EmoContext [9]. Given
+a textual dialogue along with two previous turns of context,
+the goal is to infer the underlying emotion in the utterance
+by choosing from four emotion classes: Happy; Sad; Angry;
+and Others. To facilitate the participation in this task, textual
+dialogues from user interaction with a chatbot are taken and
+annotated with emotion classes.
+
+To guarantee empathetic responses, Rashkin et al. (2019)
+presented EmpatheticDialogues dataset [10], inclusive of
+
+Fig. 1: Data Curation Pipeline 24,856 human-human conversations to train and evaluate di-
+alogue systems to enable them to converse in an empathetic
+manner. Each conversation is based on a scenario related to
+
+In the following sections, we describe the above steps in one of 32 given emotions. In the stage of data collection,
+detail and present our observations related to exploratory data the conversations were generated by 810 Amazon MTurkers
+analysis. The main contributions of this paper are two-fold: 1) using the ParlAI platform [18]. Since a conversation model
+we curate a dialogue dataset containing two million dialogues trained for empathetic responding needs to deal with the
+out of Reddit conversational threads. These dialogues express less frequently chosen labels, the workers were forced to
+emotional distress and how listeners offer emotional support select an emotion label of the three least-chosen labels to
+for those in distress; 2) we thoroughly analyze the sentiment ensure balanced emotion coverage. Overall, almost all the
+and emotional characteristics of the speaker and listener turns conversations are empathetic, purely textual, and without any
+in this dataset and present our observations so that they can be toxic response. Extending the above, Welivita et al. (2020) [11]
+useful in the design and development of empathetic chatbots developed a taxonomy of empathetic listener intents by ana-
+that can offer emotional support to people in distress. lyzing the EmpatheticDialogues dataset. They automatically
+
+
+
+3
+
+labeled all speaker and listener utterances of the Empathet-
+icDialogues dataset. In total, 32 types of emotion categories
+and 9 response intents were used to annotate the conversation
+messages. Lastly, the results validate that the taxonomy can
+be utilized to develop empathetic chatbots to achieve more
+interpretability in the generated responses. However, due to
+the limited size of this dataset, it is difficult to use it to
+train neural chatbots that could generate robust empathetic
+responses. Also, to the best of our knowledge, a dataset
+that specifically portrays conversations between speakers who
+are emotionally distressed and listeners who actively offer
+emotional support to them is lacking in the literature. This
+type of conversations could be available as recorded therapy Fig. 2: Example of a data frame after transforming the raw
+sessions between mentally distressed patients and therapists. data extracted from Reddit.
+However, they are not available to the public due to privacy
+reasons. Our aim here is to curate such a dataset, which is remarks. Besides, the comments integrate real, personal un-
+both large-scale and contains emotional support that could derstanding of a speaker’s feeling as encouragements.
+potentially be used to train a therapeutic neural chatbot. Of many open APIs, we utilized Pushshift’s APIs [22] to
+
+collect and process the text data from various subreddits con-
+III. METHODOLOGY taining conversations related to emotional distress. Practically,
+
+As shown in Figure 1, our data curation pipeline consists Pushshift is easier to query and retrieve a large quantity of his-
+of four main stages: 1) web scraping; 2) conversation forma- torical data without strict limitations. For instance, it has a size
+tion; 3) preprocessing; and 4) exploratory data analysis. The limit five times greater than the Reddit official APIs, limiting
+sections below describe these steps in detail. only 100 objects per usage. Additionally, Pushshift makes all
+
+the submissions and comments from 2005 to 2019 available.
+A. Web Scraping If we parsed all its data, the dataset would be composed of
+
+651,778,198 submissions and 5,601,331,385 comments posted
+Nowadays, social media platforms incorporate countless on 2,888,885 subreddits.
+
+textual dialogues. For example, in 2020 Facebook has approxi-
+mately 1.73 billion daily active users who visit the networking
+site for communication [19]. At the same time, Twitter has B. Extracting Conversations
+roughly 180 million active users interacting daily [20]. These The data scraped using the Pushshift APIs comes in the form
+social media platforms contain a massive number of conversa- of JSON data. To facilitate further analysis, we transformed the
+tions generated by users. Still, they have changed permissive data into data frames. An example of a data frame is depicted
+data access provisions due to major scandals around data in Figure 2.
+privacy ethics that occurred in recent years [21]. Consequently, Following the transformation, the conversations could be
+the ability to collect timely data and reproduce findings has classified into dyadic and multiparty conversations separately.
+been curtailed. Dyadic conversations were built by extracting a post and its
+
+Although the popular social media restrict people from first comment thread, and the conversations were restricted
+accessing their data completely, some online communities such to the post authors and the authors of the first comment.
+as Wikipedia, GitHub, and Reddit still continue to offer open Multiparty dialogues were built by extracting a post and its
+application programming interfaces (APIs) and data dumps, longest comment thread, including all the authors involved in
+which are valuable for researchers. Specially, Reddit consists the conversation. Figures 3 and 4 show an example of how
+of millions of subreddits, hundreds of millions of users, and dyadic and multiparty conversations were extracted. Note that
+hundreds of billions of comments, which are all accessible to in these figures the speaker turns are highlighted in red while
+people. Because of its abundance and variety, we chose Reddit the listeners turns are highlighted in blue.
+to specifically gather conversations that provide support for
+people in emotional distress.
+
+To curate dialogues containing emotional support for people C. Preprocessing
+in distress, we need conversations between speakers showing We transformed the raw text data into a more cleaned
+mental distress and listeners showing empathy and emotional format by detecting and removing the HTML tags, and URLs,
+support towards the speakers. In this regard, we choose 8 and replacing the numerals with a special tag <NUM>.
+subreddits where such conversations were present: depression; However, various punctuation marks, emoticons, and emojis
+depressed; Off My Chest; SuicideWatch; Depression Help; sad; were preserved since they can be used as indicators to identify
+Anxiety Help; and Mental Health Support. All of the subreddits users’ feelings.
+provide abundant text data unveiling the conversations between Profane words also have a direct impact on human emotions.
+authors of Reddit posts (speakers) undergoing personal distress They are a spontaneous reflection of intense emotional states
+and authors of comments (listeners) providing supportive such as anger, fear, or passion. They are unequaled in their
+
+
+
+4
+
+dialogue turn is classified as cussing, and the entire dialogue
+turn, along with the turns that follow, were removed from the
+conversation to maintain consistency.
+
+D. Exploratory Data Analysis
+Exploratory data analysis helps to discover patterns from
+
+data via summary statistics and graphical representations.
+Here, we focus on analysing the RED conversations. In par-
+ticular, we mainly analysed the distribution of dialogues and
+their turns with respect to each subreddit. Then, we constructed
+tables to showcase the descriptive statistics.
+
+Next, we conducted sentiment analysis separately on
+speaker and listener turns in our dialogue dataset and visu-
+
+Fig. 3: Example of a Reddit dyadic dialogue containing alized their distribution. We hypothesized that the listeners
+three dialogue turns. Only two users are enagaged in the should express more positiveness than the speakers since they
+conversation. are offering support to the speakers to uplift the mood. To
+
+confirm our hypothesis, we applied Vader [25], a lexicon
+and rule-based sentiment analysis tool specifically attuned
+to sentiments expressed in social media. Given a textual
+message, Vader is capable of classifying it to one of three
+classes: positiveness; negativeness; or neutrality. Particularly,
+Vader provides the compound score computed by summing the
+valence scores of each word in the lexicon, adjusted according
+to the rules, and then normalized to be between -1 (most
+extreme negative) and +1 (most extreme positive). Then, by
+tuning the threshold, this useful metric can be exploited to
+obtain a single uni-dimensional measure of sentiment for a
+given sentence.
+
+On top of that, we conducted emotion and intent analysis
+on speaker and listener turns in the RED dataset, separately.
+We used the EmoBERT classifier [11] trained on the Empa-
+
+Fig. 4: Example of a Reddit multiparty dialogues containing theticDialogues dataset for this purpose. EmoBERT is a BERT
+four dialogue turns. Multiple users are engaged in the conver- [26] based emotion classifier, which predicts the emotion or
+sation. intent of a particular dialogue turn. Its structure is composed of
+
+a representation network based on BERT and a classification
+network. During training, the weights inside the representation
+
+capacity to inflict emotional pain and incite violent disagree- network are initialized from the pre-trained language model,
+ment. In short, bad words are negatively powerful, specially RoBERTA [27]. Then, the model is fine-tuned on the situation
+imposing a risk of severely harming those who are mentally descriptions from Empathetic Dialogues Dataset [10] labeled
+fragile. with 32 emotions and listener utterances tagged with 9 em-
+
+To mitigate the aggressiveness, it is important to remove pathetic response intents. The model is trained on a total of
+profanity from the comment threads. Moreover, since our 25,023 sentences, validated using a validation set containing
+goal is to curate a dataset to build an empathy-oriented 3,544 sentences, and tested using a testing set containing 3,225
+chatbot, getting rid of profanity becomes apparent. To fulfill sentences. It has a significant accuracy of 65.88% on the
+this need, we applied profanity-check [23], a fast and testing dataset.
+robust library to detect offensive language. Instead of using
+hard-coded lists of profane words, it makes use of linear IV. RESULTS
+
+Support Vector Machine [24] trained on 200k human-labeled A. RED dataset
+samples of clean and profane text. It is simple but surpris- In general, the resultant RED dataset contains approximately
+ingly effective to generalize profanity checking. Also, when 1.9 million conversations, with 1.3 million dyadic dialogues
+exploiting profanity-check on a text message, it returns and 0.6 million multiparty dialogues. On average, there are
+the probability of predicting profanity. Thus, we could set up roughly 4 turns inside a conversation. The speakers tend to
+a threshold to classify the message as profane or not. In our convey negative attitudes while the listeners are inclined to
+case, we manually set the threshold to be as high as 0.95 express more positiveness. Nonetheless, as we could observe
+because the users sometimes express their feeling aggressively during emotion prediction, the speakers and listeners could
+but with no mean intention. This threshold was determined possibly communicate in both pessimistic and optimistic tone.
+after a thorough inspection of the profane text returned at Figure 5 and 6 showcase examples of dyadic and multiparty
+different thresholds. Above this threshold, the message in a conversations present in the RED dataset.
+
+
+
+5
+
+Fig. 5: Example of a dyadic dialogue in the RED dataset
+annotated with sentiment and emotion labels.
+
+(a) Dyadic (b) Multiparty
+
+Fig. 7: Distribution of profane speaker and listener turns across
+subreddits.
+
+multiparty ones.
+
+Fig. 6: Example of a multi-party dialogue in the RED dataset
+annotated with sentiment and emotion labels.
+
+Fig. 8: Distribution of the number of dyadic and multiparty
+B. Profanity Detection dialogs across subreddits.
+
+Figure 7 shows the distribution of speaker and listener
+turns that are detected as profane in each subreddit. We 2) Total number of dialogue turns per subreddit:
+could see that profane words are mostly contained inside Similar to the comparison of the number of dialogs,
+popular subreddits such as depression, Off My Chest, and Figure 9 shows the distribution of dialog turns in dyadic
+SuicideWatch. In particular, the speaker turns contain far more and multiparty conversations in each subreddit. The three
+profane words than the listeners turns. In the final dataset, subreddits depression, Off My Chest, and SuicideWatch have
+we retained the profane speaker turns and only removed the considerably more turns than the rest. Despite the majority
+profane listener turns since the chatbot could potentially use of dyadic conversations present in the dataset, the multiparty
+the profanity present in the speaker turns to understand the conversations contribute more turns than the dyadic ones.
+intensity of speaker’s emotion.
+
+3) Turn Distribution: The distribution of dialogue turns in
+the dataset reveals the level of engagement between speakers
+
+C. Descriptive Statistics and listeners. Figure 10 shows the distribution of dialogue
+Succeeding removing offensive language from the conver- turns in the entire dataset. It implies that most conversations
+
+sations, further analysis on the RED dataset revealed more are dyadic and end up in two turns. However, taking the sad
+characteristics of dialogues belonging to each subreddit. Sta- subreddit as an example, in Figure 11 we show that there
+tistical analysis on the dataset releaved the following. are few lengthy conversations taking place in all subreddits.
+
+1) Total number of dyadic and multiparty conversations In some cases the dialogues span over 100 turns. We have
+per subreddit: Figure 8 shows the distribution of the number included visualizations of the turn distributions in other sub-
+of dyadic and multiparty dialogs across subreddits. The reddits as Appendix.
+subreddits depression, Off My Chest, and SuicideWatch 4) Summary: Tables I and Table II display the summary
+contribute conversations mostly to the RED dataset. All the of descriptive statistics of both dyadic and multiparty conver-
+three subreddits consist of much more dyadic dialogues than sations present in the entire dataset as well as in individual
+
+
+
+6
+
+(a) Dyadic (b) Multiparty
+
+Fig. 12: Sentiment Distribution between Speakers and Listen-
+ers
+
+E. Emotion Detection
+Fig. 9: Distribution of dialogues turns in dyadic and multiparty Figures 13 and 14 present the predicted emotion distribu-
+conversations in each subreddit. tions of dyadic and multiparty dialogues. As per the results
+
+obtained, in dyadic conversations, the speakers are likely to
+express positive emotion, such as impressed, hopeful, and
+encouraging as well as negative emotion, such as furious and
+ashamed. Correspondingly, the listeners tend to convey both
+positive and negative emotions the same way as the speakers.
+In multiparty conversations, we could observe more afraid
+and sad emotions being expressed compared to the dyadic
+ones. Turn-wise analysis is further needed to derive at specific
+conclusions.
+
+V. DISCUSSION
+
+We followed web scraping, conversation extraction, prepro-
+cessing, and EDA steps to curate the RED dialogue dataset
+consisting of two million dyadic and multi-party conversations.
+
+Fig. 10: Distribution of dialog turns in the RED dataset We outlined the details of the above stages and the results
+obtained through EDA. The EDA gives us a basic overview of
+the entire dataset. We observed that most conversations come
+from depression, Off My Chest and SuicideWatch subreddits.
+Most conversations are dyadic with their length limited to two
+turns. The sentiment analysis results clearly indicates that the
+speakers mostly express negativity while the listeners mostly
+
+(a) Dyadic (b) Multiparty respond back positively indicating support and encouragement.
+Fig. 11: Distribution of dialog turns in the sad Subreddit The emotion prediction results showed that both speakers and
+
+listeners tend to express positive as well as negative emotions
+and also intents. However, turn-wise analysis is further needed
+to derive specific conclusions on how the emotions and intents
+
+subreddits. Note that when computing the number of tokens, evolve as the dialogues proceed.
+punctuation marks and emojis are also included, since they are There are some limitations in this work. The classifier used
+important indicators of predicting emotion. to perform emotion analysis on the dataset is trained on short
+
+text conversations from EmpatheticDialogues and has a limited
+accuracy of 66%, which results in quite noisy emotion and
+
+D. Sentiment Analysis intent analysis on the resultant dataset. Since, dialogue turns in
+Reddit are quite lengthy (on average 84.89 tokens per dyadic
+
+In Figure 12, we summarize the results of sentiment analysis dialogue turn and on average 50.52 tokens per multi-party
+conducted separately on speaker and listener turns in the dialogue turn), different sections of the same turn may carry
+RED dataset. As a whole, the plots reasonably reflect that the different emotions or intents, and this requires an advanced
+speaker sentiments are more negative while the listener senti- emotion and intent classifier to separately identify these parts
+ments are more positive. Thus, the dataset indeed corresponds and separately predict an emotion or intent label for these
+to the fact that the positivity and encouragement offered by parts. Fine-tuning the emotion classfier on part of Reddit
+listeners can truly assist in uplifting the mood of people going data with manual annotations could also help in improving
+through negativity and distress. performance.
+
+
+
+7
+
+Subreddit No. of Dialogs No. of Turns No. of Tokens Avg No. of Turns per Avg No. of Tokens Avg No. of Tokens
+Dialog per Dialog per Turn
+
+Entire 1,275,486 3,396,476 288,336,762 2.66 226.06 84.89
+r/depression 510,035 1,396,044 106,967,833 2.74 209.73 76.62
+r/depressed 10,892 23,804 1,940,000 2.19 178.11 81.50
+r/offmychest 437,737 1,064,467 109,459,738 2.43 250.06 102.83
+r/sad 18,827 42,293 3,088,562 2.25 164.05 73.03
+r/SuicideWatch 262,469 791,737 59,267,000 3.02 225.81 74.86
+r/depression help 23,678 51,849 5,412,390 2.19 228.58 104.39
+r/Anxietyhelp 8,297 18,351 1,428,287 2.21 172.14 77.83
+r/MentalHealthSupport 3,551 7,931 772,952 2.23 217.67 97.46
+
+TABLE I: Descriptive statistics of dyadic conversations in the entire dataset as well as in each subreddit.
+
+Subreddit No. of Dialogs No. of Turns No. of Tokens Avg No. of Turns per Avg No. of Tokens Avg No. of Tokens
+Dialog per Dialog per Turn
+
+Entire 584,427 3,863,841 195,187,799 6.61 333.98 50.52
+r/depression 246,268 1,609,795 76,789,493 6.54 311.81 47.70
+r/depressed 3,434 18,658 923,429 5.43 268.91 49.49
+r/offmychest 196,566 1,232,645 69,483,975 6.27 353.49 56.37
+r/sad 6,756 35,085 1,577,803 5.19 233.54 44.97
+r/SuicideWatch 119,577 899,460 42,468,629 7.52 355.16 47.22
+r/depression help 7,758 45,446 2,791,784 5.86 359.86 61.43
+r/Anxietyhelp 2,990 16,959 825,710 5.67 276.16 48.69
+r/MentalHealthSupport 1,078 5,793 326,976 5.37 303.32 56.44
+
+TABLE II: Descriptive statistics of multi-party conversations in the entire dataset as well as in each subreddit.
+
+(a) Speakers (b) Listeners
+
+Fig. 13: Emotion Prediction in Dyadic Dialogues
+
+(a) Speakers (b) Listeners
+
+Fig. 14: Emotion Prediction in Multiparty Dialogues
+
+As future work, we can further extend the dataset by utilized to train neural chatbots that could offer empathetic
+extracting more dialogues from the scraped Reddit data. Due support to people in distress.
+to resource limitations, in each post submission, we merely
+picked the first comment thread to extract dyadic conversations VI. CONCLUSION
+and the longest comment thread to extract multiparty dia- In the paper, we proposed the RED (Reddit Emotional
+logues. Therefore, it has more room for extension. In addition, Distress) dataset containing two million conversations related
+dialogues from other forms of social media such as Quora to mental distress and emotional support extracted from
+and Tumblr, which also provide open APIs for parsing their several carefully chosen subreddits from the Reddit social
+content, can be incorporated into the dataset. Thus, the dataset media platform. We outlined in detail the steps in curating
+can be more diversified to enable the trained chatbot to handle and analyzing the proposed dialogue dataset. The results of
+a variety of scenarios. Finally, this dataset containing two exploratory data analysis unveiled the characteristics of the
+million dyadic and multi-party dialogues could be readily RED dataset. The sentiment analysis results confirmed our
+
+
+
+8
+
+hypothesis that the speakers tend of express more negativity [14] Carlos Busso, Murtaza Bulut, Chi-Chun Lee, Abe Kazemzadeh, Emily
+and the listeners tend to reply back with positivity offering Mower, Samuel Kim, Jeannette N. Chang, Sungbok Lee, and Shrikanth
+
+support and encouragement to the speakers. S. Narayanan. 2008. IEMOCAP: Interactive emotional dyadic motion
+capture database. Language resources and evaluation, 42(4):335.
+
+Considering the future work, we put forth several sug- [15] Gary McKeown, Michel Valstar, Roddy Cowie, Maja Pantic, and Marc
+gestions to improve our dataset. We plan to diversify our Schroder. 2011. The semaine database: Annotated multimodal records of
+dataset by accommodating more conversations from different emotionally colored conversations between a person and a limited agent.
+
+IEEE transactions on affective computing, 3(1):5–17.
+social media platforms. Furthermore, we discussed plans to [16] Soujanya Poria, Devamanyu Hazarika, Navonil Majumder, Gautam
+better predict and analyse the emotion-intent distribution in Naik, Erik Cambria, and Rada Mihalcea. 2018. MELD: A multimodal
+the dataset. Altogether, our proposed dataset has the potential multi-party dataset for emotion recognition in conversations. In Proceed-
+
+ings of the 57th Annual Meeting of the Association for Computational
+to be used for training a robust chatbot, which is capable of Linguistics, pages 527–536, Florence, Italy.
+providing emotional support for people in distress. [17] Pierre Lison, J. Tiedemann, and Milen Kouylekov. 2019. Open subtitles
+
+2018: Statistical rescoring of sentence alignments in large, noisy parallel
+corpora. In Eleventh International Conference on Language Resources and
+
+VII. ACKNOWLEDGEMENT Evaluation (LREC), European Language Resources Association (ELRA).
+[18] Alexander Miller, Will Feng, Dhruv Batra, Antoine Bordes, Adam Fisch,
+
+I would like to warmly thank everyone helping me towards Jiasen Lu, Devi Parikh, and Jason Weston. 2017. Parlai: A dialog research
+my goal. The biggest nod of appreciation goes to my mentor, soft-ware platform. In Proceedings of the 2017 Conference on Empirical
+
+Methods in Natural Language Processing: System Demonstrations, pages
+Kalpani Anuradha, who faithfully monitored my progress 79–84.
+every week. In addition, I express my gratitude to Dr. Pearl [19] Maryam Mohsin, 10 Facebooks Statistics Every Marketer Should Know.
+Pu for arranging the project, enabling me to deepen my Available at https://www.oberlo.com/blog/facebook-statistics, 2020.
+knowledge in data science. [20] J. Clement, Twitter: number of monetizable daily
+
+active users worldwide 2017-2020, Available at
+https://www.statista.com/statistics/970920/monetizable-daily-active-
+
+R twitter-users-worldwide, 2020.
+EFERENCES
+
+[21] S. Walker, D. Mercea, and M. Bastos. The disinformation landscape
+[1] Zachary Steel, Claire Marnane, Changiz Iranpour, Tien Chey, John W and the lockdown of social platforms. Information, Communication &
+
+Jackson, Vikram Patel, Derrick Silove, The global prevalence of common Society, 2019.
+mental disorders: a systematic review and meta-analysis 1980–2013, [22] Jason Baumgartner and Savvas Zannettou and Brian Keegan and Megan
+International Journal of Epidemiology, Volume 43, Issue 2, April 2014, Squire and Jeremy Blackburn. The Pushshift Reddit Dataset. International
+Pages 476–493, https://doi.org/10.1093/ije/dyu038 AAAI Conference on Web and Social Media, 2020.
+
+[2] The Global Burden of Disease: 2004 Update, World Health Organization, [23] Victor Zhou, Domitrios Mistriotis and Vadim Shestopalov. Profanity-
+WorldHealth Organization, Geneva, 2008. check, 2018, Github repository, https://github.com/vzhou842/profanity-
+
+[3] A.N. Vaidyam, H. Wisniewski, J.D. Halamka, M.S. Kashavan and J.B. check.git
+Torous, Chatbots and conversational agents in mental health: a re- [24] Cortes, C., & Vapnik, V. (1995). Support-vector networks. Machine
+view of the psychiatric landscape, Can. J. Psychiatry (2019), Article Learning, 20(3), 273–297.
+0706743719828977 [25] Hutto, C.J. & Gilbert, E.E. (2014). VADER: A Parsimonious Rule-based
+
+[4] Ilya Sutskever, Oriol Vinyals, and Quoc V. Le. 2014, Sequence to se- Model for Sentiment Analysis of Social Media Text. Eighth International
+quence learning with neural networks. In Advances in neural information Conference on Weblogs and Social Media (ICWSM-14). Ann Arbor, MI,
+processing systems, pages 2104-3112. June 2014.
+
+[5] Oriol Vinyals, and Quoc Le. 2015. A neural conversational model. In [26] Devlin, J., Chang, M.W., Lee, K. and Toutanova, K., 2018. Bert: Pre-
+Proceedings of the 31st International Conference and Machine Learning, training of deep bidirectional transformers for language understanding.
+Deep Learning Workshop. arXiv preprint arXiv:1810.04805.
+
+[6] Tsung-Hsien Wen, Milica Gasic, Nikola Mrksic, Pei-Hao Su, David [27] Liu, Y., Ott, M., Goyal, N., Du, J., Joshi, M., Chen, D., Levy, O.,
+Vandyke, and Steve Young. 2015. Semantically conditioned lstm-based Lewis, M., Zettlemoyer, L. and Stoyanov, V., 2019. Roberta: A robustly
+natural language generation for spoken dialogue systems. In Proceedings optimized bert pretraining approach. arXiv preprint arXiv:1907.11692.
+of the 2015 Conference on Empirical Methods in Natural Language
+Processing, pages 1711-1721, Lisbon, Portugal.
+
+[7] S.-Y. Chen, C.-C. Hsu, C.-C. Kuo, L.-W. Ku et al., “Emotion-
+Lines: An emotion corpus of multi-party conversations,” arXiv preprint
+arXiv:1802.08379, 2018.
+
+[8] Ekman, Paul (1999). Basic emotions. In Tim Dalgleish & M. J. Powers VIII. APPENDIX
+(eds.), Handbook of Cognition and Emotion. Wiley. pp. 4–5.
+
+[9] A. Chatterjee, U. Gupta, M. K. Chinnakotla, R. Srikanth, M. Galley, and
+P. Agrawal, “Understanding emotions intext using deep learning and big In Turn Distribution subsection, the distribution in the Sad
+data, ”Computers in Human Behavior, vol. 93, pp. 309–317, 2019.
+
+[10] Hannah Rashkin and Eric Michael Smith and Margaret Li and Y-Lan subreddit is shown. Here, to get the whole picture from all
+Boureau, Towards Empathetic Open-domain Conversation Models: a New the subreddits, their turn distributions are presented (Figure
+Benchmark and Dataset, ACL, 2019. 11, 18, 19, 15, 16, 17, 20, 21).
+
+[11] Anuradha Welivita and Pearl Pu. 2020. A taxonomy of empathetic
+response intents in human social conversations. In Proceedings of
+the 28th International Conference on Computational Linguistics, pages
+4886–4899.
+
+[12] Bertero, Dario and Siddique, Farhad Bin and Wu, Chien-Sheng and
+Wan, Yan and Chan, Ricky Ho Yin and Fung, Pascale. Real-Time Speech
+Emotion and Sentiment Recognition for Interactive Dialogue Systems.
+Proceedings of the 2016 Conference on Empirical Methods in Natural
+Language Processing, 2016. (a) Dyadic
+
+[13] A. Rousseau, P. Deléglise, and Y. Estève, “Enhancing the TED-LIUM
+Corpus with Selected Data for Language Modeling and More TED (b) Multiparty
+Talks”, in Proceedings of the Ninth International Conference on Language
+Resources and Evaluation (LREC’14), May 2014. Fig. 15: Turn Distribution in Depression Subreddit
+
+
+
+9
+
+(a) Dyadic
+(b) Multiparty
+
+Fig. 16: Turn Distribution in OffMyChest Subreddit
+
+(a) Dyadic
+(b) Multiparty
+
+Fig. 17: Turn Distribution in SuicideWatch Subreddit
+
+(a) Dyadic (b) Multiparty
+
+Fig. 18: Turn Distribution in Depression Help Subreddit
+
+(a) Dyadic (b) Multiparty
+
+Fig. 19: Turn Distribution in Depressed Subreddit
+
+(a) Dyadic (b) Multiparty
+
+Fig. 20: Turn Distribution in AnxietyHelp Subreddit
+
+(a) Dyadic (b) Multiparty
+
+Fig. 21: Turn Distribution in MentalHealthSupport Subreddit
