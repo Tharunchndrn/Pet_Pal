@@ -1,0 +1,1149 @@
+﻿ConversationMoC: A Conversational Dataset for identifying Moment
+of Change in Mood and Mental Health Discourse Classification
+
+Anonymous submission
+Abstract
+
+Understanding mental health conversation dynamics is crucial, yet prior studies often overlooked the intricate
+interplay of social interactions. This paper introduces a unique conversation-level dataset and investigates the
+impact of conversational context in detecting Moments of Change (MoC) in individual emotions and classifying
+Mental Health (MH) topics in discourse. In this study, we differentiate between analyzing individual posts and
+studying entire conversations, using sequential and graph-based models to encode the complex conversation
+dynamics. Further, we incorporate emotion and sentiment dynamics with social interactions using a graph multiplex
+model driven by Graph Convolution Networks (GCN). Comparative evaluations consistently highlight the enhanced
+performance of the multiplex network, especially when combining reply, emotion, and sentiment network layers.
+This underscores the importance of understanding the intricate interplay between social interactions, emotional
+expressions, and sentiment patterns in conversations, especially within online mental health discussions. We are shar-
+ing our new dataset (ConversationMoC) and models with the broader research community to facilitate further research.
+
+Keywords: Conversational Dynamics, Mental Health Classification, Multiplex Network Encoding
+
+1. Introduction
+In recent years, there has been growing inter-
+est in leveraging social media platforms, such as
+Twitter1 and Reddit2, for Mental Health (MH) re-
+search (Zhang et al., 2022). These platforms offer
+valuable resources for exploring and understand-
+ing the dynamics of MH-related discussions among
+individuals. Previous studies have primarily fo-
+cused on analyzing an individual’s self-reported
+sequence of posts for tasks such as emotion clas-
+sification (Naskar et al., 2020b,a), identifying MH
+disorders (Jiang et al., 2020; Cohan et al., 2018)
+and detecting Moment of Change (MoC) in an indi- Figure 1: Illustration of emotional dynamics in a conver-
+vidual’s mood or emotion (Tsakalidis et al., 2022b; sation. The target user initiates, and non-target users
+Azim et al., 2022). However, it is important to ac- engage in the conversation.
+knowledge that these posts exist within an inter-
+active environment, where interactions with other
+users and shared opinions can significantly influ- structure in information retrieval and recommen-
+ence the emotional states of individuals (Ghosal dation systems has yielded superior outcomes in
+et al., 2019; Sawhney et al., 2022). For example, tasks such as question answering (Huang et al.,
+in Figure 1, emotional dynamics are depicted for 2019; Zhang et al., 2018b) and personalized recom-
+the target user, who initiates the conversation. The mendation (Gao et al., 2021; Fu et al., 2021). Addi-
+illustration shows a transition from Sad to Joy after tionally, graph-based representations have proven
+interacting with non-target users. This highlights beneficial in other conversation tasks such as dia-
+the significant potential of considering the conver- logue act recognition (Qin et al., 2021; Wang et al.,
+sation context in enhancing MoC detection and MH 2020), intent detection (Xu et al., 2022), and topic
+classification tasks. modeling (Yang et al., 2020), contributing to im-
+
+In recent times, various studies have showcased proved performance across these domains. These
+the effectiveness of representing conversations as findings highlight the potential of utilizing network
+graph structures in various conversation-related structures to improve the understanding and per-
+tasks. For instance, representing conversations formance of diverse conversation-related tasks.
+as graphs has shown improvements in sentiment Inspired by prior research, this study explores the
+analysis study (Qin et al., 2021; Sheng et al., 2020). potential of leveraging social and meta-interaction
+Likewise, incorporating conversation as a graph information for mental health tasks, including iden-
+
+tifying MoC in an individual’s mood and classify-
+1www.twitter.com ing MH discourse. Notably, no existing datasets
+2www.reddit.com specifically address MoC detection with a full con-
+
+1
+
+
+
+versation context, underscoring the novelty and • A comprehensive exploration of the multiplex
+importance of this study. To facilitate our investi- layers, determining the significance of each
+gation, we have curated a new dataset comprising layer for conversational MoC and MH classifi-
+967 conversations covering 15 MH topics sourced cation tasks.
+from the Reddit social media platform (explained
+in Section 3.2). This dataset offers insights into The rest of the paper is organized as follows:
+the intricate interplay between language use and Section 2 provides an overview of related work.
+social interactions. Further, to encode the com- Section 3 discusses in detail the dataset curation.
+plex conversation dynamics, we utilize a multiplex Section 4 discusses the experiment designs. Sec-
+network representation of conversations, wherein tion 5 presents the experimental results and dis-
+each layer captures different aspects of the con- cussion, and finally, Section 6 concludes the study
+versation, such as emotion, sentiment, and reply with contributions, limitations, and future directions.
+interactions (refer Section 3 for detailed discussion).
+By introducing a novel dataset and highlighting the
+significance of representing conversation context 2. Related studies
+via multiplex networks, this study aims to uncover
+hidden emotional dynamics and understand the im- 2.1. Moment of change detection
+pact of social interactions on individual mood shifts.
+Throughout the paper, the individual who starts the Various studies have investigated the connection
+conversation is referred to as the target user, and between changes in user language on social me-
+other participants as non-target users. dia platforms and their mental health, specifically
+
+A comprehensive evaluation is performed to as- identifying significant transitions or shifts in sen-
+sess the effectiveness of the proposed study in timent and/or emotion states. Work includes ex-
+detecting MoC and identifying types of MH top- ploring language changes to establish a founda-
+ics in discourse. Using suitable sequential and tion for detecting the MoC by analyzing sequential
+graph-based baseline models, the significance of textual content (De Choudhury et al., 2016; Pruk-
+incorporating conversation is evaluated by com- sachatkun et al., 2019). The CLPsych Shared Task
+paring the model’s performance with and without 2022 (Tsakalidis et al., 2022a,b; Hills et al., 2023)
+the conversation’s contextual information. Further, further emphasized detecting MoC and User Men-
+the significance of incorporating multiplex networks tal Health Risk identification tasks, where incor-
+is thoroughly explored by comparing the model’s porating pre-trained BERT-based models with BiL-
+performance for each multiplex layer. The exper- STM frameworks (Azim et al., 2022; Bayram and
+imental results reveal the substantial benefits of Benhiba, 2022) showed promising performance
+leveraging conversation contextual information for on a TalkLife dataset without full conversation con-
+MoC detection, offering a more accurate under- text (i.e. target users only). The above studies
+standing of the target user’s mood shift and MH have examined changes in language patterns of tar-
+classification tasks. Additionally, the inclusion of get users to infer shifts in psychological well-being,
+conversation multiplex network information, partic- stress levels, and emotional states, providing in-
+ularly the reply and sentiment graphs, significantly sights into the dynamics of mood change over time.
+enhances the performance of the proposed model, However, the conversation of other users with the
+as demonstrated by the results in Table 2. In sum- target users is overlooked in the above studies.
+mary, this study has the following contributions:
+
+2.2. Mental health disorder classification
+• A new Reddit dataset, augmented with con-
+
+versational context and carefully annotated for Numerous studies have explored the utilization of
+use in Moments of Change (MoC) and Mental self-reporting posts on social media platforms like
+Health (MH) discourse classification, is now Reddit and Twitter as valuable resources for de-
+publicly available for the first time. This dataset tecting mental health (MH) disorders (Zhang et al.,
+introduces an important development in identi- 2022; Cohan et al., 2018; Coppersmith et al., 2015).
+fying MoC using a valence and arousal space. Distant supervision has emerged as a popular ap-
+
+proach, thanks to its cost-effectiveness and abil-
+• This study extensively compares suitable base- ity to capture the rich expressive dynamics of MH
+
+line models over the new MoC dataset. Further, disorders. Commonly studied disorders include
+to encode the complex conversation dynam- schizophrenia, bipolar disorder, depression, anxi-
+ics, a multiplex network structure is introduced, ety, suicide, eating disorders, and Post-Traumatic
+capturing the intricate interplay between so- Stress Disorder (PTSD). Previous studies have em-
+cial interactions, emotional expressions, and ployed n-gram feature engineering methods within
+sentiment patterns within conversations, em- a multitask learning framework (Benton et al., 2017)
+phasizing the uniqueness of this research. to classify each MH disorder as a separate task,
+
+2
+
+
+
+while others treat all disorders as a single clas- reddits4, each delving into a wide spectrum of MH
+sification task (Cohan et al., 2018). Recent ap- topics. The selection of these MH topics was metic-
+proaches have leveraged fine-tuning of pre-trained ulously guided by prior research, particularly a
+BERT models (Ji et al., 2022; Jiang et al., 2020) study conducted by Low et al. (Low et al., 2020).
+and prompt-based masked language models (Ji, This seminal research offered valuable insights into
+2022; Lin et al., 2022) for MH classification task. the prevalence and importance of diverse themes
+However, these studies have primarily focused on in online mental health (MH) discussions. However,
+classifying MH disorders based solely on the tar- it did not address the specific task of detecting Mo-
+get user’s posts. In contrast to the previous works ments of Change (MoC), laying the groundwork for
+that focused solely on a target user’s sequence our dataset curation. The MH subreddits within our
+of posts, this study underscores the significance dataset revolve around the impact of COVID-19 on
+of considering contextual conversation information. a range of 15 MH topics. It is important to note that
+By incorporating the contextual information, we aim our dataset differs in terms of its time frame, span-
+to gain a more comprehensive understanding of ning from November 1, 2018, to November 1, 2019,
+the conversation to accurately identify Moments thus offering a distinct temporal context. By encom-
+of Change (MoC) and classify Mental Health (MH) passing these diverse MH topics, we aimed to cap-
+disorder topics in a target user’s discourse. ture a comprehensive and representative snapshot
+
+In a similar direction concerning mental health- of MH discussions within various online communi-
+related tasks, (Sawhney et al., 2022) highlights the ties. Full details about the 15 MH subreddits can
+significance of comprehending conversational dy- be found in Appendix Section A.1.
+namics when identifying posts indicating suicidal
+ideation. Their work primarily centers on determin- 3.2. Data Collection
+ing whether a post contains suicide ideation infor-
+mation. In contrast, our approach revolves around We collected data focusing on the posts that initi-
+tracking the temporal evolution of a target user’s ated conversations to compile our dataset5. Each
+posts to identify the MoC of the target user’s moods. user’s timeline constitutes a chronological record
+Furthermore, this study exploits multiplex graphs of their conversations, encompassing their posts
+capturing various conversation aspects, such as and replies from other users. In this study, we
+social interactions, emotional expressions, and sen- use the term post to refer to both user comments
+timent patterns, to provide a more nuanced under- and the initiating posts. To ensure meaningful and
+standing of the conversation dynamics. This insight comprehensive data, we specifically selected con-
+highlights the distinction and depth of our contribu- versations in which the target user contributed at
+tions in the context of conversational analysis and least two posts, allowing us to examine the conver-
+MH detection tasks. sation dynamics effectively. Table 1 presents the
+
+dataset distribution, which consists of 963 target
+users participating in 967 conversations – 11,841
+
+3. Dataset overview users contributed 28,659 posts, with 9,221 posts
+from the 963 target users.
+
+This section presents a detailed overview of the
+dataset utilized in our study, which has been col-
+lected from the Reddit social media platform using 3.3. Data Annotation
+the Pushshift API3. This dataset has been curated Three annotators with educational backgrounds in
+to facilitate research in the field of classifying mental Psychology and Computer Science were recruited
+health discourse and temporal moment of change to annotate the MoC in the new dataset. They
+(MoC) detection. For ease of reference, we named were given a detailed briefing on the task, which in-
+this dataset as ConversationMoC. In the following volved determining the mood or emotion expressed
+subsections, we will delve into the dataset’s compo- in each sentence of the target user’s posts. The
+sition, the data collection process, and the unique annotators identified a dominant mood for each
+attributes that make it a valuable resource for in- user’s posts (anger, sad, joy, optimism, and neu-
+vestigating conversational dynamics and mental tral), which was the basis for determining MoC be-
+health-related discussions. tween consecutive posts. The task is defined as
+
+a three-class classification problem: Switch (IS),
+3.1. Mental Health Subreddits Selection Escalation (IE), and No MoC (O) following the an-
+
+notation scheme of (Tsakalidis et al., 2022a,b). IS
+In this study, our data collection efforts were di-
+rected towards 15 distinct mental health (MH) sub- 4A subreddit is a thematic community on Reddit that focuses on
+
+specific topics.
+5
+
+3 We hypothesize that the target user is either suffering or interested
+https://github.com/pushshift/api to know about the subject.
+
+3
+
+
+
+Escalation (IE) Mental Target Users All Users
+Switch Switch Health Convs #Posts Avg IS IE O #Users#Posts Avg
+
+(IS) AROUSAL (active) (IS) Topics (#Users) post- post-
+s/- s/-
+Convs Convs
+
+Addiction 59 385 6.53 15 70 300 591 1381 23.41
+ADHD 67 504 7.52 16 84 404 1303 2256 33.67
+
+Anger Joy Alcoholism 65 567 8.72 35 84 448 690 1788 27.51
+Anxiety 56 539 9.46 25 84 430 545 1337 23.46
+
+Escalation VALENCE Escalation Autism 56 476 8.50 28 49 399 760 1993 35.59
+(IE) (negative) (positive) (IE) Bipolar 69 649 9.41 40 92 517 742 2082 30.17
+
+BPD 62 843 13.60 43 107 693 895 2117 34.15
+Sad Optimism Depression 68 697 10.25 41 254 402 898 1982 29.15
+
+Eating 68 680 10.00 49 89 542 1081 2335 34.34
+Disorder
+Health 69 635 9.20 49 61 525 674 1759 25.49
+Anxiety
+
+(passive) Loneliness 69 726 10.52 64 74 588 896 2020 29.28
+Switch (IS) Switch (IS) PTSD 68 565 8.31 38 92 435 771 1804 26.53
+
+Escalation (IE) Schizo- 56 755 13.48 42 94 619 729 2382 42.54
+phrenia
+Social 67 562 8.15 28 70 464 768 1689 25.21
+
+Figure 2: 2D Valency Arousal Space depicting the mo- Anxiety
+ment of change in mood reflected through user posts. Suicide 68 638 9.38 22 100 516 763 1734 25.50
+
+The diagonal shift represents Switch (IS), while the hori- Total 967 9221 535 1404 7282 14927 28659
+
+zontal or vertical shift represents Escalation (IE). Unique #Target users: 963 #Users: 11841
+
+Table 1: Dataset statistics of 15 subreddits showing the
+number of conversations (Convs), distribution of posts
+
+represents abrupt changes in an individual’s emo- (including IE, IS, O), and users per subreddits.
+tional state, while IE signifies the evolving nature
+of mood changes. O indicate relative stability, i.e.,
+no noticeable shifts in the user’s mood. sistent with the observation that stable moods are
+
+The Valence and Arousal (VA) chart (shown in more prevalent in user posts.
+Figure 2) is considered to annotate IS and IE, rep-
+resenting affective states in a continuous numerical 4. Experiment setup
+VA space. According to the Circumplex model (Rus-
+sell, 1980), transitions in the VA space, such as This study delves into the performance evaluation
+moving from Anger to Sad or Anger to Joy and of the state-of-the-art sequential and graph-based
+vice versa, either horizontally or vertically, corre- models on the novel ConversationMoC dataset.
+spond to Emotional Escalation (IE). Conversely, Additionally, it explores the potential of leveraging
+diagonal transitions, like going from Sad to Joy or social and meta-interaction information through a
+Anger to Optimism and vice versa, indicate Emo- multiplex network structure, where each layer cap-
+tional Switch (IS). In simpler terms, for escalation, tures distinct aspects of the conversation, including
+either the level of valence or arousal remains the emotion, sentiment, and reply relations. Figure 3
+same even if the emotion changes. In contrast, shows an overview of this experimental framework,
+for a switch, both the valence and arousal levels demonstrating how conversation dynamics are en-
+change. When the emotion remains unchanged coded. This can be achieved using a standalone
+or neutral throughout a conversation, it is labeled sequential model, a graph-based model, or a com-
+O. The use of VA space allows a more structured bination of both. The following subsections provide
+assessment of IS and IE and is less subjective an in-depth exploration of the evaluation frame-
+than relying on simple annotator label judgments work.
+of mood change as in (Tsakalidis et al., 2022a,b).
+
+The annotators achieved a near-perfect agree- 4.1. Post embedding
+ment, with a mean Cohen’s Kappa score6 of 0.808
+across all 15 subreddits. Conflicts in annotations This study considers the concatenation of the pre-
+were resolved through a majority voting criterion, trained embeddings using averaged fastText word
+with the final manual label determined by one an- embedding (Bojanowski et al., 2017), Sentence-
+notator, who acted as the chairperson, having a BERT (SBERT) (Reimers and Gurevych, 2019),
+deeper understanding of the context and similar- and task-specific pre-trained RoBERTa-base mod-
+ities to other shared tasks. From Table 1, it can els (Barbieri et al., 2020)7 for semantic represen-
+be seen that the distribution of annotations for IE, tation of individual posts. These pre-trained em-
+IS, and O are highly imbalanced, reflecting the real bedding models have been utilized in various stud-
+scenario where emotional switches (IS) are infre- ies (Tsakalidis et al., 2022b; Azim et al., 2022;
+quent, and escalations (IE) occur less frequently Bayram and Benhiba, 2022) and demonstrated su-
+than relative stability (O). This distribution is con- perior performance in the CLPsych2022 shared
+
+7
+6 https://huggingface.co/cardiffnlp/
+https://en.wikipedia.org/wiki/Cohen’s_kappa twitter-roberta-base-sentiment
+
+4
+
+
+
+Conversation multiplex network
+Moment of Change (MoC) classification Mental health classification Multiplex GCN model {Maxpooling
+
+TP1 OP2 OP3 OP4 OPn-1 TPn
+
+Conversation
+i Reply 
+
+OP OP OP OP Two-layer GCN TP1Mental health topics
+
+Softmax(Target user posts) Softmax(Concatenated )
+EMB
+
+OP2
+
+Concatenate Shared 
+weights
+
+OP3
+
+Sentiment
+
+Two-layer GCN OP4
+Masked non-target user Multi-head attention layer
+
+post embedding
+
+   Shared OPn-1
+
+Conversation encoded weights
+Post Embedding Emotion
+
+TPn
+
+Two-layer GCN
+Multiplex representation model
+
+Sequence representation model
+Skip Conversation posts in time sequence
+
+connection TP1 OP2 OP3 OP4 OPn-1 TPn (Enhanced)
+Post embedding
+
+            Post Embedding
+
+TP1 OP2 OP3 OPn-1 TPn
+
+        Conversation
+i 0 Figure 4: Multiplex representation of the posts in a
+
+conversation via Graph Convolution Network (GCN). TP
+Figure 3: represents target user posts, while OP represents posts
+
+High-level architecture of the evaluation frame- from other users participating in the target user’s conver-
+work. OP indicates the masking of posts from classifying sation.
+the MoC.
+
+task (Tsakalidis et al., 2022a). Several preprocess- lows the model to capture the sequential informa-
+ing steps were performed before applying the post- tion in the conversation, capturing the temporal
+embedding, which included normalizing keywords, dependencies between posts and enabling a better
+anonymizing users8, converting to lowercase, and understanding of the user’s mood dynamics over
+removing URL links. time.
+
+4.2. Sequential Representation 4.3. Multiplex Graph Representation
+To model the sequential progression of posts within Social media conversations are inherently non-
+a conversation and capture temporal dependencies linear, marked by users responding to earlier and
+in the target user’s moods, we utilize a Bidirectional future posts, potentially influencing the mood or
+Long Short-Term Memory (BiLSTM) model (Zhang emotion of previous posts. Figure 4 shows a con-
+et al., 2015; Kawakami, 2008) as the fundamental versation’s multiplex network structure represen-
+component of the sequential representation model. tation using a two-layer Graph Convolutional Net-
+The BiLSTM layer processes the input sequence work (GCN). This approach addresses this non-
+of posts encoded using off-the-shelf pre-trained linearity by introducing a multiplex network consist-
+models (discussed in Section 4.1), denoted as ing of reply, sentiment, and emotion network lay-
+P = {p ers. Specifically, the reply layer focuses on linking
+
+1, p2, ..., pn}, where each pi represents an
+individual post. Mathematically, the BiLSTM net- posts involved in social interactions between users.
+work is defined as follows: The emotion and sentiment layers are constructed
+
+by linking posts with similar emotions and senti-
+h→t = LSTM→(xt, h
+
+→
+t−1, c
+
+→
+t−1) ments, classified using the pretrained RoBERTa-
+
+h← based emotion and sentiment models (Barbieri
+t = LSTM←(xt, h
+
+←
+t+1, c
+
+←
+t+1) (1)
+
+et al., 2020). The GCN model effectively encodes
+ht = [h→t , h←t ] the dependencies between each layer and the so-
+
+where xt is the semantic embedding of the post pt, cial and meta-interaction across various aspects of
+h→ the conversation. Let AR, AE , and AS represent
+t and h←t represent the hidden states of the for-
+
+ward and backward LSTMs, c→ the adjacency matrices of the reply, emotion, and
+t−1 and c←t+1 are the
+
+previous cell states of the forward and backward sentiment layers, including self-loops. Mathemat-
+LSTMs, and ht represents the temporal enhanced ically, the two-layer GCN propagation over the k
+
+post-embedding, which is a concatenation of the layers multiple
+hidden states from both the forward and backward (x{netwo(rk can be defined as fol)lo}ws:)
+
+H(l+1) − k
+1/2 −1/2
+
+= max ReLu Di A )
+iD
+
+(
+LSTMs. The BiLSTM layer processes the input se- i H l W (l)
+
+i=1
+quence P sequentially, updating the hidden states (2)
+ht and cell states ct at each time step t. This al- where each row of H l matrix is the temporal en-
+
+hanced post-embedding (or input post-embedding)
+8Converting original user name to @username at GCN layer l, ReLu denotes the Rectified Lin-
+
+5
+
+{
+
+
+
+ear Unit activation function, while Di represents where P represents the enhanced post-
+the degree of nodes in the ith multiplex layer. W (l) embeddings, b is the Boolean vector to mask
+is the weight matrix at layer l, which is learned the non-target users’ posts from P. For the MoC
+during the training process. The weights W (l) are classification task, the T(1) in LMoC represents
+shared across each layer. By updating the shared the true MoC label of the target user posts in the
+weight matrix W (l) during the training process, the conversation. N represents the number of posts in
+GCN model assigns different importance to differ- the conversation, αj represents the weight factor
+ent layers of the multiplex network. Further, by for the class j ∈ C, and γ represents the focusing
+applying max pooling, the GCN allows the net- parameter to control the rate at which the loss
+work to capture the most prominent information decreases for well-classified examples. For the
+from each layer, potentially emphasizing important MH classification task, the T(2) in LMH represents
+features contributing to the overall task. The re- the true label of the conversation MH topic.
+sulting node feature matrix H(l+1) represents the
+enhanced post-embedding of the GCN model. 4.6. Comparision of model variants
+4.4. Multitask classification The MoC and MH classification tasks can be eval-
+
+uated as single or multitask setups. The conver-
+The evaluation framework tackles two tasks simul- sation dynamics can be encoded in both setups
+taneously: Moment of Change (MoC) detection using a standalone BiLSTM model, GCN model, or
+and Mental Health (MH) classification. MoC de- a combination of both (BiLSTM+GCN). To assess
+tection focuses on identifying mood shifts of the the impact of conversation context, we compare
+target user at the post level, while MH classifica- two input scenarios: (i) TU, which encompasses
+tion operates at the conversation level to determine solely the target user’s sequence of posts, and (ii)
+the specific MH topics in discourse. To improve All, which encompasses the sequence of posts
+the MH classification task, we add a multi-head interacting with the target user’s posts in the con-
+self-attention layer (Vaswani et al., 2017) over the versation. Based on the input type, we evaluate
+encoded representations (denoted as H), resulting the considered baseline models (BiLSTM, GCN,
+in an attention-weighted encoded representation BiLSTM+GCN) over the MoC dataset using the pre-
+(Hattn). Mathematically, the multitask operations trained post-embedding (discussed in Section 4.1).
+can be expressed as follows: Detailed information on the hyperparameters used
+
+in this study is in the Appendix Section A.2.
+CMoC = softmax(H)
+
+(3)
+CMH = softmax(flatten(Hattn))
+
+4.6.1. Heuristic model for MoC detection
+whereH represents the enhanced post-embedding,
+capturing both temporal and posts social and meta- Inspired by the Circumplex model (Russell, 1980),
+interaction of the conversation dynamics. we design a heuristic method for detecting Mo-
+
+ments of Change (MoC) in the target user’s posts.
+4.5. Loss functions We employ a pre-trained RoBERTa emotion classi-
+
+fier (Barbieri et al., 2020) to classify the target user’s
+The evaluation framework considers the entire posts. This model predicts four primary emotion
+conversations to classify the Moments of Change classes – anger, sad, joy, and optimism. It as-
+(MoC) of the target user’s mood, it is essential to signs each class confidence score (t). If a post
+mask the posts of non-target users. To train the doesn’t meet the minimum confidence threshold (t
+model for the MoC detection task, we apply the >= 0.7) for any of the four emotions considered, it
+Focal Loss Function (Lin et al., 2017), originally is labeled as neutral. Further, using the Valence-
+designed for object detection tasks to address the Arousal (VA) space, we heuristically assign the Mo-
+imbalanced class distribution. We use the tradi- ments of Change (MoC) in the target user’s posts.
+tional categorical cross-entropy loss function (CE) This method serves as the baseline model for evalu-
+for the MH classification task. The loss functions ating the performance of the evaluation framework.
+for each task can be mathematically defined as:
+
+M = softmax(Dense(b ∗P)) 5. Results and discussion
+
+LMoC = − 1 ∑N ∑C ( )
+αj · (1−M γ (1)
+
+ij) ·Tij · log(Mij) 5.1. Detection of Moment of change
+N
+
+∑i=1 j=1
+
+C This section evaluates the performance of the con-
+L sidered baseline models on the ConversationMoC
+
+MH = − (2)
+Tj · log(flatten(Pj))
+
+j=1 dataset. Initially, we evaluate these models us-
+(4) ing two input scenarios: (i) using only the target
+
+6
+
+
+
+Singletask (F1-Score) Multitask (F1-Score)
+Models O IE IS Macro-F1 O IE IS Macro-F1
+
+Target user posts only
+Heuristic 0.654 (± 0.02) 0.261 (± 0.03) 0.164 (± 0.05) 0.360 (± 0.02)
+∗BiLSTM (TU) 0.906 (± 0.01) 0.182 (± 0.04) 0.037 (± 0.01) 0.375 (± 0.02) 0.902 (± 0.01) 0.198 (± 0.05) 0.113 (± 0.04) 0.404 (± 0.02)
+
+Entire conversation
+BiLSTM (All) 0.897 (± 0.01) 0.115 (± 0.04) 0.129 (± 0.05) 0.380 (± 0.02) 0.895 (± 0.01) 0.264 (± 0.08) 0.056 (± 0.02) 0.405 (± 0.02)
+$+GCN (ESR) 0.897 (± 0.01) 0.097 (± 0.02) 0.121 (± 0.04) 0.372 (± 0.01) 0.897 (± 0.01) 0.287 (± 0.01) 0.066 (± 0.02) 0.417 (± 0.02)
+BiLSTM+GCN (ESR) 0.897 (± 0.01) 0.245 (± 0.09) 0.125 (± 0.04) 0.422 (± 0.02) 0.896 (± 0.01) 0.250 (± 0.09) 0.169 (± 0.06) 0.438 (± 0.02)
+
+Graph Multiplex Layer analysis
+BiLSTM+GCN (E) 0.897 (± 0.01) 0.178 (± 0.06) 0.094 (± 0.04) 0.390 (± 0.01) 0.891 (± 0.01) 0.257 (± 0.09) 0.110 (± 0.03) 0.419 (± 0.03)
+BiLSTM+GCN (S) 0.895 (± 0.01) 0.167 (± 0.05) 0.090 (± 0.03) 0.384 (± 0.01) 0.885 (± 0.02) 0.219 (± 0.06) 0.164 (± 0.05) 0.423 (± 0.02)
+BiLSTM+GCN (R) 0.897 (± 0.01) 0.218 (± 0.07) 0.072 (± 0.02) 0.396 (± 0.02) 0.895 (± 0.01) 0.396 (± 0.11) 0.085 (± 0.03) 0.459 (± 0.03)
+BiLSTM+GCN (ES) 0.897 (± 0.01) 0.262 (± 0.09) 0.129 (± 0.05) 0.429 (± 0.01) 0.889 (± 0.02) 0.257 (± 0.10) 0.127 (± 0.05) 0.424 (± 0.03)
+BiLSTM+GCN (ER) 0.897 (± 0.01) 0.166 (± 0.05) 0.149 (± 0.05) 0.404 (± 0.02) 0.891 (± 0.02) 0.299 (± 0.10) 0.123 (± 0.05) 0.438 (± 0.02)
+BiLSTM+GCN (SR) 0.891 (± 0.02) 0.287 (± 0.10) 0.118 (± 0.05) 0.432 (± 0.02) 0.891 (± 0.01) 0.372 (± 0.10) 0.146 (± 0.05) 0.470 (± 0.03)
+* The input posts P to the MODEL is represented as MODEL (P) – (TU) represents all posts from a target user in a conversation
+$ The input graph G to the MODEL is represented as MODEL(G) – E, S, and R represent Emotion, Sentiment, and Reply graphs.
++ The multiplex layers are represented with the combination of E, S, and R. For example, ES represents a multiplex graph having Emotion and Sentiment layers.
+
+Table 2: MoC Detection Task Performance (F1-score). Bold indicates top-performing models across individual
+classes and Macro-F1 scores. Mean results for 10-fold cross-validation were reported with standard deviations.
+
+user’s posts (TU) and (ii) utilizing the entire conver- model, achieving an F1-score of 0.264 for the esca-
+sation (All). Notably, as the TU input lacks social lation (IE) class. On the other hand, for the switch
+interactions, models like GCN and BiLSTM+GCN (IS) class, the BiLSTM+GCN model achieves the
+are not evaluated in this context. Subsequently, best performance, with an F1-score of 0.169. The
+we conduct an extensive analysis to understand single-task BiLSTM model, which exclusively relies
+the impact of different layers within the multiplex on the posts of the target user, achieves the high-
+network on the downstream tasks. The experimen- est F1-score of 0.906 for the No MoC (O) class. It
+tal results for the MoC detection task, achieved suggests that the posts from the target user alone
+through 10-fold cross-validation, are presented in contain more informative signals for the O class
+Table 2. This table includes the mean F1-scores than the context provided by the conversation. The
+for each class (IE, IS, O) as well as the macro heuristic MoC classification model also achieves an
+F1-score, providing a comprehensive view of the F1-score of 0.164 in classifying the IS class, higher
+overall performance. From the table, it is observed than any single-task models. This underscores the
+that the BiLSTM+GCN model consistently outper- effectiveness of the pre-trained RoBERTa-based
+forms its standalone counterparts. In particular, the emotion classifier.
+BiLSTM+GCN models, when incorporating the mul-
+tiplex graph input with the Emotion, Sentiment, and
+Reply (ESR) layers, exhibit the highest macro F1- 5.1.1. Graph multiplex layers analysis
+scores, achieving 0.422 in the single-task setup and To delve deeper into the impact of different lay-
+0.438 in the multitask setup. An intriguing observa- ers within the multiplex network, we conducted a
+tion is that the performance of specific models sig- comprehensive performance analysis of the BiL-
+nificantly deviates from the average in a few folds, STM+GCN model, as detailed in Table 2. The re-
+leading to a standard deviation of approximately sults reveal that the model performs better when
+±0.02. For a detailed view of these results, please leveraging the multiplex networks than relying on in-
+refer to the boxplot presented in Appendix Figure 6, dividual networks. Significantly, when we examine
+which visualizes the F1-score performances of the the performance of the BiLSTM+GCN model across
+multitask models across all folds. These findings the respective graphs, the Reply graph consistently
+underscore the effectiveness and consistency of outperforms the Emotion and Sentiment graphs.
+the proposed framework, validating its superior per- This suggests that social interactions provide more
+formance in detecting MoC across mental health- useful information for the tasks we are interested in.
+related tasks. In particular, the Reply graph contains authentic,
+
+The results are evident; incorporating a complete ground-truth data of social interactions. In contrast,
+conversation context notably improves the perfor- the Emotion and Sentiment graphs are constructed
+mance of MoC detection compared to using only based on the emotion and sentiment classification
+the posts of the target user. Furthermore, the multi- of each post using the pretrained RoBERTa clas-
+task setup consistently outperforms the single-task sifier, which is susceptible to potential misclassifi-
+setup9. Delving into the performance across differ- cations, as evidenced by the performance of the
+ent classes reveals intriguing insights. The BiLSTM heuristic MoC classification model in handling IE
+model, in the multitask setup, emerges as the best and O classes. Moreover, when incorporating Re-
+
+9 ply and Sentiment networks, the model’s perfor-
+A boxplot comparison of the models F1-score performances using
+
+categorical cross-entropy loss function and Focal loss function is shown mance improved even further, achieving the high-
+in Appendix Figure 6. est 0.470 F1-score. This indicates that the Reply
+
+7
+
+
+
+(a) Single-task (b) Multitask
+
+Figure 5: Macro F1-score performance comparison for Mental Health classification task. Mean result for 10-fold
+cross-validation reported with standard deviation error bars. M1 and M2 represent the BiLSTM and BiLSTM+GCN
+models, respectively. Refer to Appendix Table 4 for the models’ input acronym.
+
+network is practical in capturing changes in the tar- BiLSTM model, incorporating All posts, excels in 8
+get user’s mood. The interplay between users and MH classes, while the BiLSTM+GCN (Reply) model
+the presence of emotionally charged (sentimental) leads in 7 MH classes (results detailed in Appendix
+conversations significantly impacts MoC detection. Table 5). These results underscore the importance
+By incorporating these additional layers, the model of conversation context information, with both mod-
+attains a more comprehensive understanding of the els demonstrating robust performance across var-
+conversation dynamics, ultimately culminating in ious MH topics. In summary, these findings em-
+enhanced performance. In summary, the results in phasize the advantages of multitask models and
+Table 2 highlight the importance of using multiplex highlight that integrating conversation context along
+networks and emphasize the pivotal role played with the Reply network significantly enhances the
+by the Reply network in MoC detection. Combin- accuracy of MH classification within conversations.
+ing social interactions, emotional expressions, and The BiLSTM+GCN (R) model emerges as a stand-
+sentiment patterns provides a complete conversa- out performer, achieving high performance in seven
+tion view, allowing the model to handle the tasks MH categories within this study.
+effectively.
+
+5.2. Mental health classification 6. Conclusion
+Figure 5 presents a bar chart illustrating the per-
+formance of various models in classifying mental This study introduces a novel publicly accessible
+health (MH) discourse. Rather than relying on tra- dataset (ConversationMoC) tailored to identify the
+ditional topic modeling techniques, we directly cat- Moments of Change (MoC) and classify Mental
+egorize the MH topics discussed within the conver- Health (MH) discourse within conversational set-
+sations using the models considered in this study. tings. The importance of incorporating conversa-
+The evaluation includes single-task and multitask tion information to identify MoC and classify MH
+setups, using the categorical cross-entropy loss discourse is investigated using a combination of
+function to train the MH classification task. As seen BiLSTM and GCN models in single-task and mul-
+in Figure 5, the performance is notably superior titask setups. The experimental results evidently
+for the multitask models compared to their single- show the significance of incorporating conversa-
+task counterparts. In this study, the most notable tion information to identify MoC and classify MH
+performers among multitask models are the BiL- discourse. Further, encoding the intricate social in-
+STM+GCN (R) and BiLSTM (All), both achieving teractions, emotional dynamics, and sentiment pat-
+remarkable macro F1-scores of 0.79 and 0.78, re- terns through multiplex network structure enhances
+spectively. These results substantiate that incorpo- classification performances. More specifically, the
+rating conversation contextual information signifi- Reply network emphasizes the significance of so-
+cantly enhances the accuracy of MH classification, cial interactions and user engagement. Additionally,
+particularly when considering only the target user’s when combined with the Sentiment and Emotion
+posts as the input data. This observation highlights networks, the classification performance further im-
+the substantial contribution of conversation con- proves, underscoring the influence of emotional
+text information for enhancing the classification of conversations and overall sentiment. The multiplex
+mental health discourse. networks represent an exciting new direction for
+
+Delving deeper into the performance across in- future conversational analysis and mental health
+dividual MH topics, it becomes apparent that the detection research.
+
+8
+
+
+
+7. Ethical Statement • Semantic Consistency in Dynamic Conversa-
+tions: Dynamic conversations with rapid emo-
+
+Ethical approval for this study was obtained from tional shifts due to longer conversations (e.g.,
+the ANONYMIZED-ORG ethics board (submission 5 posts + 50 replies) present hurdles in main-
+reference ANONYMIZED-REF). The research in- taining semantic consistency. In this scenario,
+volves the analysis of personal data sourced from incorporating an additional attention layer into
+the social media platform Reddit. To ensure com- the framework could serve to weight the influ-
+pliance with ethical guidelines and regulations, ence of different posts dynamically and replies
+we have adhered to the Reddit platform API’s within a conversation. Moreover, exploring
+terms and conditions, and our annotated dataset is the integration of guiding loss functions is
+shared with Reddit IDs only so other researchers suggested. These functions would guide the
+can download the original Reddit posts and meta- model to focus on the primary conversation top-
+data directly from Reddit. During the annotation ics and emotions, even amidst swift emotional
+process, the annotators, who are ANONYMIZED- changes. This combined approach could en-
+PEOPLE, were informed about the potential risks of hance the model’s understanding of key con-
+encountering disturbing content. They were encour- versation topics, particularly if the conversation
+aged to take regular breaks and time-outs from their is full of changing emotions and dynamics.
+annotation work to mitigate emotional overload. Ad-
+ditionally, a clinically trained psychologist has been
+actively advising the team to provide expertise and 9. Future work
+guidance throughout the project. A comprehensive
+risk assessment has been conducted to identify Acknowledging the potential for the conversation
+and address any potential risks associated with this multiplex network encoding framework to apply to
+task. Our commitment to ethical considerations various domains and recognizing the importance
+and the well-being of the annotators underscores of testing it on diverse datasets, our current in-
+our commitment to conducting responsible and sen- vestigation faced limitations due to the scarcity
+sitive research in the field of mental health analysis. of datasets with similar characteristics. In the fu-
+
+ture, we aim to expand our analysis to encom-
+pass a more comprehensive range of conversation
+
+8. Limitations datasets, thereby demonstrating the broader appli-
+cability of our framework beyond the scope of this
+
+In this study, there are few limitations that warrant specific domain.
+consideration. Firstly, our findings are derived from
+a single Reddit dataset. While we envision the
+potential for our models to generalize well to analo- 10. Bibliographical References
+gous conversational datasets with a similar social
+context graph, we have yet to conduct experiments
+on problem datasets beyond Reddit. This limita-
+tion arises due to the unavailability of publicly an- Falwah AlHamed, Julia Ive, and Lucia Specia. 2022.
+notated datasets for MoC in this specific domain, Predicting moments of mood changes overtime
+underscoring the significance of our contribution in from imbalanced social media data. In Proceed-
+providing a new publicly accessible MoC dataset, ings of the Eighth Workshop on Computational
+ConversationMoC, for prospective research. Addi- Linguistics and Clinical Psychology, pages 239–
+tionally, our study does not explore the performance 244.
+of more recent and larger language models (LLMs) Tayyaba Azim, Loitongbam Singh, and Stuart Mid-
+like OpenAI’s GPT-3/4, Meta’s LLaMa, Stanford’s dleton. 2022. Detecting moments of change and
+Alpaca, and Berkeley’s Gorilla models. While we suicidal risks in longitudinal user texts using multi-
+anticipate potential improvements in performance task learning. In Proceedings of the Eighth Work-
+by leveraging these advanced models, experimen- shop on Computational Linguistics and Clinical
+tal validation of this hypothesis remains pending. Psychology, pages 213–218.
+Furthermore, from the perspective of the evaluation
+framework, several limitations and potential solu- Francesco Barbieri, Jose Camacho-Collados,
+tions to mitigate these challenges are highlighted: Luis Espinosa Anke, and Leonardo Neves. 2020.
+
+Tweeteval: Unified benchmark and comparative
+• Contextual Understanding in Short Conversa- evaluation for tweet classification. In Findings
+
+tions: Acknowledging that short conversations of the Association for Computational Linguistics:
+with limited posts may pose challenges in con- EMNLP 2020, pages 1644–1650.
+textual understanding, integrating LLMs can
+alleviate this issue by capturing a broader con- Ulya Bayram and Lamia Benhiba. 2022.
+text. Emotionally-informed models for detecting
+
+9
+
+
+
+moments of change and suicide risk levels in conditions. In Proceedings of the 27th Interna-
+longitudinal social media data. In Proceedings tional Conference on Computational Linguistics,
+of the Eighth Workshop on Computational pages 1485–1497.
+Linguistics and Clinical Psychology, pages
+219–225. Glen Coppersmith, Mark Dredze, Craig Harman,
+
+and Kristy Hollingshead. 2015. From adhd to
+Adrian Benton, Margaret Mitchell, and Dirk Hovy. sad: Analyzing the language of mental health on
+
+2017. Multitask learning for mental health con- twitter through self-reported diagnoses. In Pro-
+ditions with limited social media data. In Pro- ceedings of the 2nd workshop on computational
+ceedings of the 15th Conference of the Euro- linguistics and clinical psychology: from linguistic
+pean Chapter of the Association for Computa- signal to clinical reality, pages 1–10.
+tional Linguistics: Volume 1, Long Papers, pages
+152–162. Diogo Cortiz. 2021. Exploring transformers in emo-
+
+tion recognition: a comparison of bert, distill-
+Sravani Boinepelli, Shivansh Subramanian, Abhi- bert, roberta, xlnet and electra. arXiv preprint
+
+jeeth Singam, Tathagata Raha, and Vasudeva arXiv:2104.02041.
+Varma. 2022. Towards capturing changes in
+mood and identifying suicidality risk. In Proceed- John Culnan, DY Romero Diaz, and Steven
+ings of the Eighth Workshop on Computational Bethard. 2022. Exploring transformers and time
+Linguistics and Clinical Psychology, pages 245– lag features for predicting changes in mood over
+250. time. Association for Computational Linguistics
+
+(ACL).
+Piotr Bojanowski, Edouard Grave, Armand Joulin,
+
+and Tomas Mikolov. 2017. Enriching word vec- Munmun De Choudhury, Emre Kiciman, Mark
+tors with subword information. Transactions Dredze, Glen Coppersmith, and Mrinal Kumar.
+of the association for computational linguistics, 2016. Discovering shifts to suicidal ideation from
+5:135–146. mental health content in social media. In Pro-
+
+ceedings of the 2016 CHI conference on human
+BSI. 1973a. Natural Fibre Twines, 3rd edition. factors in computing systems, pages 2098–2110.
+
+British Standards Institution, London. BS 2570. Umberto Eco. 1990. The Limits of Interpretation.
+BSI. 1973b. Natural fibre twines. BS 2570, British Indian University Press.
+
+Standards Institution, London. 3rd. edn. Zuohui Fu, Yikun Xian, Yaxin Zhu, Shuyuan Xu, Ze-
+Ana-Maria Bucur, Hyewon Jang, and Farhana Fer- long Li, Gerard De Melo, and Yongfeng Zhang.
+
+dousi Liza. 2022. Capturing changes in mood 2021. Hoops: Human-in-the-loop graph reason-
+over time in longitudinal data using ensemble ing for conversational recommendation. In Pro-
+methodologies. ceedings of the 44th International ACM SIGIR
+
+Conference on Research and Development in
+A. Castor and L. E. Pollux. 1992. The use of user Information Retrieval, pages 2415–2421.
+
+modelling to guide inference and learning. Ap-
+plied Intelligence, 2(1):37–53. Adithya V Ganesan, Vasudha Varadarajan, Juhi Mit-
+
+tal, Shashanka Subrahmanya, Matthew Matero,
+Lushi Chen, Abeer Aldayel, Nikolay Bogoychev, Nikita Soni, Sharath Chandra Guntuku, Jo-
+
+and Tao Gong. 2019. Similar minds post alike: hannes Eichstaedt, and H Andrew Schwartz.
+Assessment of suicide risk using a hybrid model. 2022. Wwbp-sqt-lite: Multi-level models and
+In Proceedings of the sixth workshop on compu- difference embeddings for moments of change
+tational linguistics and clinical psychology, pages identification in mental health forums. In Pro-
+152–157. ceedings of the Eighth Workshop on Computa-
+
+tional Linguistics and Clinical Psychology, pages
+J.L. Chercheur. 1994. Case-Based Reasoning, 2nd 251–258.
+
+edition. Morgan Kaufman Publishers, San Mateo,
+CA. Chongming Gao, Wenqiang Lei, Xiangnan He,
+
+Maarten de Rijke, and Tat-Seng Chua. 2021. Ad-
+N. Chomsky. 1973. Conditions on transformations. vances and challenges in conversational recom-
+
+In A festschrift for Morris Halle, New York. Holt, mender systems: A survey. AI Open, 2:100–126.
+Rinehart & Winston.
+
+Deepanway Ghosal, Navonil Majumder, Soujanya
+Arman Cohan, Bart Desmet, Andrew Yates, Luca Poria, Niyati Chhaya, and Alexander Gelbukh.
+
+Soldaini, Sean MacAvaney, and Nazli Goharian. 2019. Dialoguegcn: A graph convolutional neu-
+2018. Smhd: a large-scale resource for exploring ral network for emotion recognition in conversa-
+online language usage for multiple mental health tion. In Proceedings of the 2019 Conference on
+
+10
+
+
+
+Empirical Methods in Natural Language Process- Kazuya Kawakami. 2008. Supervised sequence
+ing and the 9th International Joint Conference on labelling with recurrent neural networks. Ph. D.
+Natural Language Processing (EMNLP-IJCNLP), thesis.
+pages 154–164.
+
+Diederik P. Kingma and Jimmy Ba. 2015. Adam: A
+Qingyu Guo, Fuzhen Zhuang, Chuan Qin, Hengshu method for stochastic optimization. In 3rd Interna-
+
+Zhu, Xing Xie, Hui Xiong, and Qing He. 2020. A tional Conference on Learning Representations,
+survey on knowledge graph-based recommender ICLR 2015, San Diego, CA, USA, May 7-9, 2015,
+systems. IEEE Transactions on Knowledge and Conference Track Proceedings.
+Data Engineering, 34(8):3549–3568.
+
+Inna Lin, Lucille Njoo, Anjalie Field, Ashish Sharma,
+Anthony Hills, Adam Tsakalidis, Federico Nanni, Katharina Reinecke, Tim Althoff, and Yulia
+
+Ioannis Zachos, and Maria Liakata. 2023. Cre- Tsvetkov. 2022. Gendered mental health stigma
+ation and evaluation of timelines for longitudinal in masked language models. In Proceedings
+user posts. In Proceedings of the 17th Confer- of the 2022 Conference on Empirical Methods
+ence of the European Chapter of the Association in Natural Language Processing, pages 2152–
+for Computational Linguistics, pages 3773–3786. 2170. Association for Computational Linguistics.
+
+Paul Gerhard Hoel. 1971a. Elementary Statistics, Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming
+3rd edition. Wiley series in probability and math- He, and Piotr Dollár. 2017. Focal loss for dense
+ematical statistics. Wiley, New York, Chichester. object detection. In Proceedings of the IEEE inter-
+ISBN 0 471 40300. national conference on computer vision, pages
+
+2980–2988.
+Paul Gerhard Hoel. 1971b. Elementary Statistics,
+
+3rd edition, Wiley series in probability and mathe- Daniel M Low, Laurie Rumker, Tanya Talkar, John
+matical statistics, pages 19–33. Wiley, New York, Torous, Guillermo Cecchi, and Satrajit S Ghosh.
+Chichester. ISBN 0 471 40300. 2020. Natural language processing reveals vul-
+
+nerable mental health support groups and height-
+Enamul Hoque and Giuseppe Carenini. 2015. Con- ened health anxiety on reddit during covid-19:
+
+visit: Interactive topic modeling for exploring Observational study. Journal of medical Internet
+asynchronous online conversations. In Proceed- research, 22(10):e22635.
+ings of the 20th International Conference on In-
+telligent User Interfaces, pages 169–180. Herbert L Meiselman. 2016. Emotion measurement.
+
+Woodhead publishing.
+Xiao Huang, Jingyuan Zhang, Dingcheng Li, and
+
+Ping Li. 2019. Knowledge graph embedding Debashis Naskar, Eva Onaindia, Miguel Rebollo,
+based question answering. In Proceedings of and Sanasam Ranbir Singh. 2020a. Predicting
+the twelfth ACM international conference on web emotion dynamics sequence on twitter via deep
+search and data mining, pages 105–113. learning approach. In Proceedings of the 18th
+
+International Conference on Advances in Mobile
+Otto Jespersen. 1922. Language: Its Nature, De- Computing & Multimedia, pages 20–24.
+
+velopment, and Origin. Allen and Unwin.
+Debashis Naskar, Sanasam Ranbir Singh, Durgesh
+
+Shaoxiong Ji. 2022. Towards intention understand- Kumar, Sukumar Nandi, and Eva Onaindia de la
+ing in suicidal risk assessment with natural lan- Rivaherrera. 2020b. Emotion dynamics of public
+guage processing. In Findings of the Associa- opinions on twitter. ACM Transactions on Infor-
+tion for Computational Linguistics: EMNLP 2022, mation Systems (TOIS), 38(2):1–24.
+pages 4028–4038.
+
+Nianwen Ning, Qiuyue Li, Kai Zhao, and Bin
+Shaoxiong Ji, Tianlin Zhang, Luna Ansari, Jie Fu, Wu. 2021. Multiplex network embedding model
+
+Prayag Tiwari, and Erik Cambria. 2022. Men- with high-order node dependence. Complexity,
+talbert: Publicly available pretrained language 2021:1–18.
+models for mental healthcare. In Proceedings of
+the Thirteenth Language Resources and Evalua- Yada Pruksachatkun, Sachin R Pendse, and Amit
+tion Conference, pages 7184–7190. Sharma. 2019. Moments of change: Analyzing
+
+peer-based cognitive support in online mental
+Zheng Ping Jiang, Sarah Ita Levitan, Jonathan health forums. In Proceedings of the 2019 CHI
+
+Zomick, and Julia Hirschberg. 2020. Detection conference on human factors in computing sys-
+of mental health from reddit via deep contextual- tems, pages 1–13.
+ized representations. In Proceedings of the 11th
+International Workshop on Health Text Mining Libo Qin, Zhouyang Li, Wanxiang Che, Minheng
+and Information Analysis, pages 147–156. Ni, and Ting Liu. 2021. Co-gat: A co-interactive
+
+11
+
+
+
+graph attention network for joint dialog act recog- Philip Resnik, Manas Gaur, Kaushik Roy, Becky
+nition and sentiment classification. In Proceed- Inkster, et al. 2022a. Overview of the clpsych
+ings of the AAAI Conference on Artificial Intelli- 2022 shared task: Capturing moments of change
+gence, pages 13709–13717. in longitudinal user posts. In Proceedings of the
+
+Eighth Workshop on Computational Linguistics
+Nils Reimers and Iryna Gurevych. 2019. Sentence- and Clinical Psychology, pages 184–198.
+
+bert: Sentence embeddings using siamese bert-
+networks. In Proceedings of the 2019 Confer- Adam Tsakalidis, Federico Nanni, Anthony Hills,
+ence on Empirical Methods in Natural Language Jenny Chim, Jiayu Song, and Maria Liakata.
+Processing and the 9th International Joint Confer- 2022b. Identifying moments of change from lon-
+ence on Natural Language Processing (EMNLP- gitudinal user text. In Annual Meeting of the
+IJCNLP), pages 3982–3992. Association for Computational Linguistics.
+
+James A Russell. 1980. A circumplex model of Ashish Vaswani, Noam Shazeer, Niki Parmar,
+affect. Journal of personality and social psychol- Jakob Uszkoreit, Llion Jones, Aidan N Gomez,
+ogy, 39(6):1161. Łukasz Kaiser, and Illia Polosukhin. 2017. Atten-
+
+tion is all you need. Advances in neural informa-
+Ramit Sawhney, Shivam Agarwal, Atula Tejaswi tion processing systems, 30.
+
+Neerkaje, Nikolaos Aletras, Preslav Nakov, and
+Lucie Flek. 2022. Towards suicide ideation de- Dong Wang, Ziran Li, Haitao Zheng, and Ying
+tection through online conversational context. In Shen. 2020. Integrating user history into hetero-
+Proceedings of the 45th international ACM SI- geneous graph for dialogue act recognition. In
+GIR conference on research and development Proceedings of the 28th International Conference
+in information retrieval, pages 1716–1727. on Computational Linguistics, pages 4211–4221.
+
+Dongming Sheng, Dong Wang, Ying Shen, Haitao Hua Xu, Ziqi Yuan, Kang Zhao, Yunfeng Xu,
+Zheng, and Haozhuang Liu. 2020. Summa- Jiyun Zou, and Kai Gao. 2022. Gar-net: A
+rize before aggregate: A global-to-local hetero- graph attention reasoning network for conversa-
+geneous graph inference network for conversa- tion understanding. Knowledge-Based Systems,
+tional emotion recognition. In Proceedings of the 240:108055.
+28th International Conference on Computational Liang Yang, Fan Wu, Junhua Gu, Chuan Wang,
+Linguistics, pages 4153–4163. Xiaochun Cao, Di Jin, and Yuanfang Guo. 2020.
+
+Charles Joseph Singer, E. J. Holmyard, and A. R. Graph attention topic modeling network. In Pro-
+Hall, editors. 1954–58. A history of technology. ceedings of The Web Conference 2020, pages
+Oxford University Press, London. 5 vol. 144–154.
+
+Victoria Zayats and Mari Ostendorf. 2018. Con-
+Nikita Soni, Matthew Matero, Niranjan Bala- versation modeling on reddit using a graph-
+
+subramanian, and H Andrew Schwartz. 2022. structured lstm. Transactions of the Association
+Human language modeling. arXiv preprint for Computational Linguistics, 6:121–132.
+arXiv:2205.05128.
+
+Muhan Zhang, Zhicheng Cui, Marion Neumann,
+Jannik Strötgen and Michael Gertz. 2012. Temporal and Yixin Chen. 2018a. An end-to-end deep
+
+tagging on different domains: Challenges, strate- learning architecture for graph classification. In
+gies, and gold standards. In Proceedings of the Proceedings of the AAAI Conference on Artificial
+Eight International Conference on Language Re- Intelligence.
+sources and Evaluation (LREC’12), pages 3746–
+3753, Istanbul, Turkey. European Language Re- Shu Zhang, Dequan Zheng, Xinchen Hu, and Ming
+source Association (ELRA). Yang. 2015. Bidirectional long short-term mem-
+
+ory networks for relation classification. In Pro-
+S. Superman, B. Batman, C. Catwoman, and S. Spi- ceedings of the 29th Pacific Asia conference on
+
+derman. 2000. Superheroes experiences with language, information and computation, pages
+books, 20th edition. The Phantom Editors Asso- 73–78.
+ciates, Gotham City.
+
+Tianlin Zhang, Annika M Schoene, Shaoxiong Ji,
+Tom Tabak and Matthew Purver. 2020. Tempo- and Sophia Ananiadou. 2022. Natural language
+
+ral mental health dynamics on social media. In processing applied to mental illness detection: a
+Proceedings of the 1st Workshop on NLP for narrative review. NPJ digital medicine, 5(1):46.
+COVID-19 (Part 2) at EMNLP 2020.
+
+Yuyu Zhang, Hanjun Dai, Zornitsa Kozareva,
+Adam Tsakalidis, Jenny Chim, Iman Munire Bilal, Alexander Smola, and Le Song. 2018b. Vari-
+
+Ayah Zirikly, Dana Atzil-Slonim, Federico Nanni, ational reasoning for question answering with
+
+12
+
+
+
+Hyperparameters Value Acronym Model Input type
+Optimizer Adam (Kingma and Ba, 2015) H Heuristic classifier Target user’s posts only
+
+TU BiLSTM (TU) Target user’s posts only
+Learning rate 0.0001 All BiLSTM (All) Entire posts in a conversation
+Training Epochs 40 E BiLSTM+GCN (E) Entire posts + Emotion graph
+Batch size 64 S BiLSTM+GCN (S) Entire posts + Sentiment
+BiLSTM #Units 200 graph
+Multihead attention 8 R BiLSTM+GCN (R) Entire posts + Reply graph
+
+ES BiLSTM+GCN (ES) Entire posts + Emotion and
+layers Sentiment multiplex graph
+
+ER BiLSTM+GCN (ER) Entire posts + Emotion and Re-
+Pretrained model Embedding ply multiplex graph
+
+Dimension SR BiLSTM+GCN (SR) Entire posts + Sentiment and
+Reply multiplex graph
+
+FastText (Bojanowski et al., 300 ESR BiLSTM+GCN (ESR) Entire posts + Emotion, Sen-
+2017) timent, and Reply multiplex
+
+graph
+Sentence-BERT (Reimers and 1024
+Gurevych, 2019)
+∗RoBERTa-base (emoji) 20 Table 4: Model acronym
+∗RoBERTa-base (emotion) 4
+(Barbieri et al., 2020)
+∗RoBERTa-base (hate) 2 A.3. Moment of change classification
+∗RoBERTa-base (irony) 2
+∗RoBERTa-base (offensive) 2 Figure 6 presents boxplots representing the dis-
+∗RoBERTa-base (sentiment) 3 tribution of F1-scores for the moment of change
+∗ https://huggingface.co/cardiffnlp/twitter-roberta-base-<task> (MoC) classification across three classes: IE (es-
+
+Replace <task> with specific task to classify. Eg. <task> as emotion. calation), IS (switch), and O (No MoC), including
+the macro F1-score. Each boxplot represents a
+
+Table 3: Hyperparameters different model considered in this study, with the
+x-axis representing the models and the y-axis rep-
+resenting the F1-scores. The boxplots show the
+
+knowledge graph. In Proceedings of the AAAI median (middle line), interquartile range (box), and
+conference on artificial intelligence. range of the scores (whiskers), providing a visual
+
+representation of the performance distribution for
+MoC classification.
+
+A. Appendix
+A.4. Mental Health classification
+
+A.1. 15 subreddit topics Table 5 presents the macro F1-scores of the top-
+In this study, we collected data from 15 mental performing multitask models for each of the 15 in-
+health subreddits encompassing a wide range dividual mental health categories. The table show-
+of topics. The 15 subreddits are Eating Dis- cases the effectiveness of these models in accu-
+order (r/EDAnonymous), Addiction (r/addiction), rately classifying mental health categories, as in-
+Alcoholism (r/alcoholism), Attention Deficit Hy- dicated by their high F1-scores achieved through
+peractivity Disorder (ADHD) (r/adhd), Anxiety 10-fold cross-validation.
+(r/anxiety), Autism (r/autism), Bipolar Disorder
+(r/BipolarReddit), Borderline Personality Disorder
+(BPD) (r/bpd), Depression (r/depression), Health
+Anxiety (r/healthanxiety), Loneliness (r/lonely),
+Post-Traumatic Stress Disorder (PTSD) (r/ptsd),
+Schizophrenia (r/schizophrenia), Social Anxiety (r/-
+socialanxiety), and Suicide (r/SuicideWatch). Con-
+sidering these diverse mental health topics, we
+aimed to capture a comprehensive picture of men-
+tal health discussions in online communities.
+
+A.2. Hyperparemeters
+This study considers several hyperparameters to
+optimize the performance of the proposed model
+for detecting moments of change and identifying
+mental health topics in conversations. The detailed
+hyperparameter settings, including the dimensions
+of the output representations from pretrained mod-
+els, are presented in Table 3.
+
+13
+
+
+
+O O
+1.0 1.0
+
+0.8 0.8
+
+0.6 0.6
+
+0.4 0.4
+
+0.2 0.2
+
+0.0 0.0
+H TU All E S R ES ER SR ESR H TU All E S R ES ER SR ESR
+
+Models Models
+IE IE
+
+1.0 1.0
+
+0.8 0.8
+
+0.6 0.6
+
+0.4 0.4
+
+0.2 0.2
+
+0.0 0.0
+H TU All E S R ES ER SR ESR H TU All E S R ES ER SR ESR
+
+Models Models
+IS IS
+
+1.0 1.0
+
+0.8 0.8
+
+0.6 0.6
+
+0.4 0.4
+
+0.2 0.2
+
+0.0 0.0
+H TU All E S R ES ER SR ESR H TU All E S R ES ER SR ESR
+
+Models Models
+Macro avg Macro avg
+
+1.0 1.0
+
+0.8 0.8
+
+0.6 0.6
+
+0.4 0.4
+
+0.2 0.2
+
+0.0 0.0
+H TU All E S R ES ER SR ESR H TU All E S R ES ER SR ESR
+
+Models Models
+
+(a) Multitask models trained with categorical cross-entropy (b) Multitask models trained with focal loss function
+
+Figure 6: Boxplot presenting the distribution of F1-scores for MoC classification performance on three classes (IE,
+IS, O) and the macro F1-score using 10-fold cross-validation. Refer to Appendix Table 4 for the models’ acronym.
+
+Multitask Models Schizophrenia Eating Disorder Depression Autism Loneliness Suicide BPD Social Anxiety
+∗ BiLSTM (TU) 0.459 (± 0.18) 0.618 (± 0.16) 0.282 (± 0.13) 0.499 (± 0.08) 0.467 (± 0.10) 0.600 (± 0.12) 0.372 (± 0.11) 0.403 (± 0.13)
+BiLSTM (All) 0.445 (± 0.27) 0.748 (± 0.16) 0.452 (± 0.09) 0.842 (± 0.08) 0.582 (± 0.19) 0.613 (± 0.26) 0.475 (± 0.21) 0.625 (± 0.17)
+$ BiLSTM+GCN (E) 0.244 (± 0.19) 0.271 (± 0.18) 0.245 (± 0.15) 0.294 (± 0.23) 0.331 (± 0.14) 0.155 (± 0.29) 0.248 (± 0.16) 0.280 (± 0.04)
+BiLSTM+GCN (S) 0.215 (± 0.17) 0.306 (± 0.17) 0.300 (± 0.09) 0.223 (± 0.19) 0.288 (± 0.17) 0.169 (± 0.17) 0.172 (± 0.12) 0.285 (± 0.17)
+BiLSTM+GCN (R) 0.470 (± 0.28) 0.783 (± 0.11) 0.447 (± 0.17) 0.934 (± 0.10) 0.577 (± 0.14) 0.598 (± 0.16) 0.451 (± 0.13) 0.584 (± 0.17)
++ BiLSTM+GCN (ES) 0.255 (± 0.18) 0.387 (± 0.11) 0.303 (± 0.14) 0.194 (± 0.15) 0.307 (± 0.17) 0.186 (± 0.16) 0.127 (± 0.11) 0.166 (± 0.13)
+BiLSTM+GCN (ER) 0.266 (± 0.18) 0.488 (± 0.18) 0.331 (± 0.16) 0.470 (± 0.17) 0.380 (± 0.16) 0.243 (± 0.15) 0.225 (± 0.17) 0.301 (± 0.06)
+BiLSTM+GCN (SR) 0.230 (± 0.24) 0.392 (± 0.16) 0.337 (± 0.13) 0.312 (± 0.17) 0.390 (± 0.14) 0.165 (± 0.28) 0.193 (± 0.17) 0.269 (± 0.11)
+BiLSTM+GCN (ESR) 0.288 (± 0.21) 0.386 (± 0.14) 0.333 (± 0.14) 0.273 (± 0.21) 0.340 (± 0.13) 0.101 (± 0.17) 0.196 (± 0.17) 0.249 (± 0.14)
+Multitask Models Bipolar PTSD Alcoholism Health Anxiety Anxiety ADHD Addiction Macro F1
+BiLSTM (TU) 0.212 (± 0.27) 0.324 (± 0.19) 0.473 (± 0.14) 0.573 (± 0.19) 0.156 (± 0.17) 0.080 (± 0.17) 0.000 (± 0.00) 0.538 (± 0.03)
+BiLSTM (All) 0.486 (± 0.26) 0.570 (± 0.20) 0.769 (± 0.19) 0.814 (± 0.20) 0.370 (± 0.19) 0.440 (± 0.26) 0.733 (± 0.15) 0.779 (± 0.10)
+BiLSTM+GCN (E) 0.237 (± 0.29) 0.291 (± 0.17) 0.378 (± 0.20) 0.520 (± 0.18) 0.000 (± 0.00) 0.000 (± 0.21) 0.615 (± 0.20) 0.500 (± 0.10)
+BiLSTM+GCN (S) 0.300 (± 0.20) 0.303 (± 0.15) 0.365 (± 0.23) 0.429 (± 0.19) 0.107 (± 0.00) 0.083 (± 0.26) 0.545 (± 0.14) 0.416 (± 0.08)
+BiLSTM+GCN (R) 0.552 (± 0.32) 0.608 (± 0.13) 0.765 (± 0.14) 0.794 (± 0.12) 0.517 (± 0.20) 0.390 (± 0.16) 0.709 (± 0.25) 0.786 (± 0.06)
+BiLSTM+GCN (ES) 0.183 (± 0.20) 0.224 (± 0.09) 0.302 (± 0.15) 0.480 (± 0.13) 0.040 (± 0.13) 0.029 (± 0.13) 0.400 (± 0.14) 0.381 (± 0.04)
+BiLSTM+GCN (ER) 0.392 (± 0.24) 0.365 (± 0.13) 0.487 (± 0.15) 0.585 (± 0.21) 0.145 (± 0.00) 0.040 (± 0.11) 0.400 (± 0.13) 0.430 (± 0.07)
+BiLSTM+GCN (SR) 0.250 (± 0.27) 0.326 (± 0.10) 0.383 (± 0.18) 0.496 (± 0.31) 0.083 (± 0.00) 0.000 (± 0.14) 0.471 (± 0.16) 0.449 (± 0.07)
+BiLSTM+GCN (ESR) 0.300 (± 0.21) 0.270 (± 0.07) 0.346 (± 0.22) 0.474 (± 0.16) 0.000 (± 0.13) 0.000 (± 0.21) 0.500 (± 0.12) 0.452 (± 0.07)
+
+* The input posts P to the MODEL is represented as MODEL (P) – (TU) represents all posts from a target user in a conversation
+and (All) represents all the posts in a conversation.
+
+$ The input graph G to the BiLSTM+GCN is represented as BiLSTM+GCN (G) – E, S, and R represent Emotion, Sentiment, and Reply graphs.
++ The multiplex layers are represented with the combination of E, S, and R. For example, ES represents a 2-layer multiplex graph having Emotion and Sentiment layers.
+
+Table 5: Mental Health (MH) classification task Performance (F1-score). Bold indicates top-performing models
+across individual MH categories and Macro-F1 scores. Mean results for 10-fold cross-validation were reported with
+standard deviations.
+
+14
+
+F-score F-score F-score F-score
+
+F-score F-score F-score F-score
