@@ -1,17 +1,18 @@
-console.log("SERVER VERSION: RAG_ENABLED_V2");
+console.log("SERVER VERSION: RAG_EMOTION_ENABLED_V1");
 
 const express = require("express");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
+
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 
 app.set("trust proxy", 1);
 
-// Return JSON on bad JSON bodies (instead of HTML error page)
+// Return JSON on bad JSON bodies
 app.use((err, req, res, next) => {
   if (err && err.type === "entity.parse.failed") {
     return res.status(400).json({ ok: false, error: "Invalid JSON body" });
@@ -34,9 +35,10 @@ app.use(
 );
 
 // ---- CONFIG ----
-const OLLAMA_BASE = "http://localhost:11434";
+const OLLAMA_BASE = process.env.OLLAMA_BASE || "http://localhost:11434";
 const CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "llama3.2:3b";
 const EMBED_MODEL = process.env.OLLAMA_EMBED_MODEL || "nomic-embed-text";
+const EMOTION_API_URL = process.env.EMOTION_API_URL || "http://localhost:8001";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -45,7 +47,6 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
   console.warn("ENV MISSING: SUPABASE_URL and/or SUPABASE_SERVICE_ROLE_KEY");
 }
 
-// Server-side Supabase client
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 // ---- SAFETY GATE ----
@@ -76,10 +77,11 @@ function safetyGate(req, res, next) {
     return res.status(200).json({
       ok: true,
       blocked: true,
+      emotion: "unknown",
       reply:
-        "I’m really sorry you’re feeling this way. I can’t help with self-harm instructions. " +
-        "If you’re in immediate danger, contact local emergency services or someone you trust right now. " +
-        "If you want, tell me what’s going on and I can offer supportive coping steps.",
+        "I'm really sorry you're feeling this way. I can't help with self-harm instructions. " +
+        "If you're in immediate danger, contact local emergency services or someone you trust right now. " +
+        "If you want, tell me what's going on and I can offer supportive coping steps.",
       rag: { used: 0, sources: [] },
     });
   }
@@ -89,6 +91,25 @@ function safetyGate(req, res, next) {
 app.use(safetyGate);
 
 // ---- HELPERS ----
+
+// Detect emotion by calling the local Python FastAPI service
+async function detectEmotion(message) {
+  try {
+    const r = await fetch(`${EMOTION_API_URL}/predict-emotion`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: message }),
+    });
+    if (!r.ok) return "unknown";
+    const data = await r.json();
+    return data.emotion || "unknown";
+  } catch (err) {
+    console.warn("[EMOTION] service unavailable, defaulting to unknown:", err.message);
+    return "unknown";
+  }
+}
+
+// Generate Ollama embeddings for RAG
 async function ollamaEmbeddings(text) {
   const r = await fetch(`${OLLAMA_BASE}/api/embeddings`, {
     method: "POST",
@@ -103,8 +124,8 @@ async function ollamaEmbeddings(text) {
   return j.embedding;
 }
 
+// Retrieve top-k relevant RAG chunks from Supabase
 async function retrieveTopChunks(queryVec, k = 3) {
-  // Supabase RPC named parameters must match your SQL function args
   const { data, error } = await supabase.rpc("match_chunks", {
     query_embedding: queryVec,
     match_count: k,
@@ -114,15 +135,30 @@ async function retrieveTopChunks(queryVec, k = 3) {
   return data || [];
 }
 
-function buildPrompt(userMessage, chunks) {
+// Build the LLM prompt using emotion + RAG context
+function buildPrompt(userMessage, chunks, emotion) {
   const context = chunks
     .map((c, i) => `Source ${i + 1} (sim ${Number(c.similarity).toFixed(3)}):\n${c.chunk_text}`)
     .join("\n\n");
 
+  const emotionLine =
+    emotion && emotion !== "unknown"
+      ? `The user's current detected emotional state is: ${emotion}.`
+      : "";
+
   return `
 You are PetChat, a supportive emotional-support assistant.
 You are not a therapist. Encourage professional help when appropriate.
-Use the CONTEXT when relevant. If context is not relevant, answer normally.
+${emotionLine}
+Use the CONTEXT below when relevant. If the context is not relevant, answer from your general knowledge.
+
+GUIDELINES:
+- Be warm, empathetic, and non-judgmental.
+- Keep responses concise and supportive.
+- If the user seems anxious or stressed, offer calming or grounding suggestions.
+- If the user seems sad, be gentle and validating.
+- If the user seems confused, clarify gently and patiently.
+- Never diagnose or prescribe. Always suggest professional help for serious concerns.
 
 CONTEXT:
 ${context || "(no relevant context found)"}
@@ -132,8 +168,8 @@ ${userMessage}
 `.trim();
 }
 
+// Call Ollama LLM to generate a reply
 async function ollamaGenerate(prompt) {
-  // Ollama /api/generate supports stream=false to return one JSON response. [web:111]
   const r = await fetch(`${OLLAMA_BASE}/api/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -150,19 +186,20 @@ async function ollamaGenerate(prompt) {
   return j.response || "";
 }
 
-// ---- HEALTH (debug) ----
+// ---- HEALTH ----
 app.get("/health", (req, res) => {
   res.json({
     ok: true,
-    version: "RAG_ENABLED_V2",
+    version: "RAG_EMOTION_ENABLED_V1",
     chat_model: CHAT_MODEL,
     embed_model: EMBED_MODEL,
+    emotion_api: EMOTION_API_URL,
     supabase_url_set: Boolean(SUPABASE_URL),
     supabase_key_set: Boolean(SUPABASE_SERVICE_ROLE_KEY),
   });
 });
 
-// ---- ROUTE ----
+// ---- MAIN CHAT ROUTE ----
 app.post("/chat", async (req, res) => {
   try {
     const { message } = req.body || {};
@@ -172,22 +209,29 @@ app.post("/chat", async (req, res) => {
 
     console.log(`[CHAT] ${new Date().toISOString()} ip=${req.ip} len=${message.length}`);
 
-    // 1) Embed user message
+    // 1) Detect emotion (non-blocking — falls back to "unknown" if service is down)
+    const emotion = await detectEmotion(message);
+    console.log(`[EMOTION] detected=${emotion}`);
+
+    // 2) Embed user message for RAG
     const qVec = await ollamaEmbeddings(message);
     console.log(`[RAG] embed_dim=${qVec.length}`);
 
-    // 2) Retrieve chunks
+    // 3) Retrieve relevant chunks from Supabase
     const chunks = await retrieveTopChunks(qVec, 3);
     console.log(`[RAG] chunks_found=${chunks.length}`);
 
-    // 3) Generate reply using RAG context
-    const prompt = buildPrompt(message, chunks);
+    // 4) Build prompt with emotion + RAG context
+    const prompt = buildPrompt(message, chunks, emotion);
+
+    // 5) Generate reply from Ollama
     const reply = await ollamaGenerate(prompt);
 
-    // 4) Return reply + RAG info
+    // 6) Return full response
     return res.json({
       ok: true,
       blocked: false,
+      emotion,
       reply,
       rag: {
         used: chunks.length,
