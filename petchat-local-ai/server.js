@@ -1,4 +1,4 @@
-console.log("SERVER VERSION: RAG_EMOTION_ENABLED_V1");
+console.log("SERVER VERSION: RAG_EMOTION_ENABLED_V2");
 
 const express = require("express");
 const cors = require("cors");
@@ -12,7 +12,6 @@ app.use(express.json({ limit: "1mb" }));
 
 app.set("trust proxy", 1);
 
-// Return JSON on bad JSON bodies
 app.use((err, req, res, next) => {
   if (err && err.type === "entity.parse.failed") {
     return res.status(400).json({ ok: false, error: "Invalid JSON body" });
@@ -20,7 +19,6 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-// ---- RATE LIMIT ----
 app.use(
   rateLimit({
     windowMs: 60 * 1000,
@@ -34,7 +32,6 @@ app.use(
   })
 );
 
-// ---- CONFIG ----
 const OLLAMA_BASE = process.env.OLLAMA_BASE || "http://localhost:11434";
 const CHAT_MODEL = process.env.OLLAMA_CHAT_MODEL || "llama3.2:3b";
 const EMBED_MODEL = process.env.OLLAMA_EMBED_MODEL || "nomic-embed-text";
@@ -49,7 +46,6 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-// ---- SAFETY GATE ----
 const blockedPhrases = [
   "how to kill myself",
   "kill myself",
@@ -90,9 +86,45 @@ function safetyGate(req, res, next) {
 }
 app.use(safetyGate);
 
-// ---- HELPERS ----
+function buildEmotionGuideline(emotion) {
+  const guidelines = {
+    happy:
+      "The user is feeling happy and positive. Reinforce their good mood warmly. " +
+      "Celebrate with them and encourage them to build on what is going well. " +
+      "You can suggest ways to maintain this positive state.",
+    calm:
+      "The user is feeling calm and grounded. Match their balanced tone. " +
+      "Provide thoughtful, measured support. This is a good time to discuss " +
+      "coping strategies or reflection exercises if relevant.",
+    sad:
+      "The user is feeling sad. Be very warm, gentle, and validating. " +
+      "Do not rush to fix or minimize their feelings. Acknowledge their pain first. " +
+      "Offer comfort before suggestions. Gently encourage connection with others or professional help if needed.",
+    angry:
+      "The user is feeling angry or frustrated. Acknowledge their frustration first " +
+      "before offering any suggestions. Do not dismiss or argue with their feelings. " +
+      "Use de-escalating language. Help them feel heard before moving to problem-solving.",
+    anxious:
+      "The user is feeling anxious. Use calm, reassuring language. " +
+      "Offer grounding techniques such as deep breathing, the 5-4-3-2-1 senses exercise, " +
+      "or gentle reassurance that anxiety is manageable. Avoid overwhelming them with too much information.",
+    stressed:
+      "The user is feeling stressed and overwhelmed. Acknowledge how much they are carrying. " +
+      "Offer practical, small coping steps rather than big solutions. " +
+      "Encourage them to break tasks into smaller parts and remind them that rest is important. " +
+      "Suggest professional support if stress seems severe.",
+    confused:
+      "The user is feeling confused or lost. Be very clear, patient, and structured. " +
+      "Break information into simple steps. Avoid jargon. " +
+      "Gently help them identify what is unclear and guide them one step at a time.",
+  };
 
-// Detect emotion by calling the local Python FastAPI service
+  return (
+    guidelines[emotion] ||
+    "Be empathetic, warm, and non-judgmental. Support the user with care and suggest professional help if needed."
+  );
+}
+
 async function detectEmotion(message) {
   try {
     const r = await fetch(`${EMOTION_API_URL}/predict-emotion`, {
@@ -109,7 +141,6 @@ async function detectEmotion(message) {
   }
 }
 
-// Generate Ollama embeddings for RAG
 async function ollamaEmbeddings(text) {
   const r = await fetch(`${OLLAMA_BASE}/api/embeddings`, {
     method: "POST",
@@ -124,8 +155,12 @@ async function ollamaEmbeddings(text) {
   return j.embedding;
 }
 
-// Retrieve top-k relevant RAG chunks from Supabase
 async function retrieveTopChunks(queryVec, k = 3) {
+  const chunks = await retrieveTopChunks(qVec, 3);
+  console.log(`[RAG] chunks_found=${chunks.length}`);
+  // ADD THIS LINE:
+  chunks.forEach((c, i) => console.log(`[CHUNK ${i+1}] sim=${c.similarity} text=${c.chunk_text?.slice(0,150)}`));
+
   const { data, error } = await supabase.rpc("match_chunks", {
     query_embedding: queryVec,
     match_count: k,
@@ -135,40 +170,61 @@ async function retrieveTopChunks(queryVec, k = 3) {
   return data || [];
 }
 
-// Build the LLM prompt using emotion + RAG context
+// ---- FIXED: strict RAG prompt ----
 function buildPrompt(userMessage, chunks, emotion) {
-  const context = chunks
-    .map((c, i) => `Source ${i + 1} (sim ${Number(c.similarity).toFixed(3)}):\n${c.chunk_text}`)
-    .join("\n\n");
+  const emotionGuideline = buildEmotionGuideline(emotion);
 
-  const emotionLine =
-    emotion && emotion !== "unknown"
-      ? `The user's current detected emotional state is: ${emotion}.`
-      : "";
+  if (chunks.length > 0) {
+    const context = chunks
+      .map((c, i) => `[Source ${i + 1}]:\n${c.chunk_text}`)
+      .join("\n\n");
 
+    return `
+You are PetChat, a supportive emotional-support assistant for mental health and wellbeing.
+You are not a therapist or doctor. Always encourage professional help for serious concerns.
+
+DETECTED EMOTION: ${emotion || "unknown"}
+
+HOW TO RESPOND BASED ON THIS EMOTION:
+${emotionGuideline}
+
+IMPORTANT INSTRUCTION:
+You have been provided with CONTEXT from the knowledge base below.
+You MUST use this context to answer the user's question.
+Quote or reference the context directly where applicable.
+Do NOT say you cannot find information if it is present in the context.
+Do NOT use outside knowledge if the context answers the question.
+
+CONTEXT FROM KNOWLEDGE BASE:
+${context}
+
+USER MESSAGE:
+${userMessage}
+
+Answer using the context above:
+`.trim();
+  }
+
+  // No chunks found — fall back to general support
   return `
-You are PetChat, a supportive emotional-support assistant.
-You are not a therapist. Encourage professional help when appropriate.
-${emotionLine}
-Use the CONTEXT below when relevant. If the context is not relevant, answer from your general knowledge.
+You are PetChat, a supportive emotional-support assistant for mental health and wellbeing.
+You are not a therapist or doctor. Always encourage professional help for serious concerns.
 
-GUIDELINES:
-- Be warm, empathetic, and non-judgmental.
-- Keep responses concise and supportive.
-- If the user seems anxious or stressed, offer calming or grounding suggestions.
-- If the user seems sad, be gentle and validating.
-- If the user seems confused, clarify gently and patiently.
-- Never diagnose or prescribe. Always suggest professional help for serious concerns.
+DETECTED EMOTION: ${emotion || "unknown"}
 
-CONTEXT:
-${context || "(no relevant context found)"}
+HOW TO RESPOND BASED ON THIS EMOTION:
+${emotionGuideline}
 
-USER:
+GENERAL GUIDELINES:
+- Be warm, empathetic, and non-judgmental at all times.
+- Keep responses concise, clear, and supportive.
+- Never diagnose, prescribe, or make clinical judgments.
+
+USER MESSAGE:
 ${userMessage}
 `.trim();
 }
 
-// Call Ollama LLM to generate a reply
 async function ollamaGenerate(prompt) {
   const r = await fetch(`${OLLAMA_BASE}/api/generate`, {
     method: "POST",
@@ -177,7 +233,7 @@ async function ollamaGenerate(prompt) {
       model: CHAT_MODEL,
       prompt,
       stream: false,
-      options: { temperature: 0.6 },
+      options: { temperature: 0.3 },
     }),
   });
 
@@ -186,11 +242,10 @@ async function ollamaGenerate(prompt) {
   return j.response || "";
 }
 
-// ---- HEALTH ----
 app.get("/health", (req, res) => {
   res.json({
     ok: true,
-    version: "RAG_EMOTION_ENABLED_V1",
+    version: "RAG_EMOTION_ENABLED_V2",
     chat_model: CHAT_MODEL,
     embed_model: EMBED_MODEL,
     emotion_api: EMOTION_API_URL,
@@ -199,7 +254,6 @@ app.get("/health", (req, res) => {
   });
 });
 
-// ---- MAIN CHAT ROUTE ----
 app.post("/chat", async (req, res) => {
   try {
     const { message } = req.body || {};
@@ -209,25 +263,19 @@ app.post("/chat", async (req, res) => {
 
     console.log(`[CHAT] ${new Date().toISOString()} ip=${req.ip} len=${message.length}`);
 
-    // 1) Detect emotion (non-blocking — falls back to "unknown" if service is down)
     const emotion = await detectEmotion(message);
     console.log(`[EMOTION] detected=${emotion}`);
 
-    // 2) Embed user message for RAG
     const qVec = await ollamaEmbeddings(message);
     console.log(`[RAG] embed_dim=${qVec.length}`);
 
-    // 3) Retrieve relevant chunks from Supabase
     const chunks = await retrieveTopChunks(qVec, 3);
     console.log(`[RAG] chunks_found=${chunks.length}`);
 
-    // 4) Build prompt with emotion + RAG context
     const prompt = buildPrompt(message, chunks, emotion);
 
-    // 5) Generate reply from Ollama
     const reply = await ollamaGenerate(prompt);
 
-    // 6) Return full response
     return res.json({
       ok: true,
       blocked: false,
@@ -252,5 +300,4 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// ---- START ----
 app.listen(3001, () => console.log("Local AI server: http://localhost:3001"));

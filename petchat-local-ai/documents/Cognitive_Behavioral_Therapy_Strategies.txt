@@ -1,0 +1,3876 @@
+﻿COGNITIVE BEHAVIORAL  
+THERAPY STRATEGIES
+ 
+
+KRISTI L. CRANE, PSY.D.
+ 
+KRISTY M. WATTERS, PSY.D.
+ 
+
+
+
+INSTRUCTIONS
+ 
+This book is intended as a practical guide for clinicians who wish to use Cognitive Behavioral 
+Therapy for Depression (CBT-D) with Veterans.  It can be used as an additional resource 
+to  Cognitive Behavioral Therapy for Depression in Veterans and Military Servicemembers: 
+Therapy Manual (Wenzel, A., Brown, G. K., & Karlin, B. E., 2011).  This resource was created to use 
+in order of typical therapy.  The first section (pages 6-31) correlates to the Initial Phase of CBT, 
+the second section (pages 32-99) correlates to the Middle Phase of CBT, and the last section 
+(94-107) correlates to the Later Phase of CBT. 
+
+The Initial Phase includes a preliminary assessment and case conceptualization tool to assist the 
+clinician with targeting problem areas and identifying evidence-based interventions aimed at 
+reducing depression symptoms.  The Initial Phase helps Veterans gain an understanding of the 
+structure and process of CBT and is used to generate treatment goals.  During the Middle Phase 
+of therapy, the provider and Veteran work together to address treatment goals.  The provider 
+should select the most appropriate behavioral and cognitive techniques according to the case 
+conceptualization.  The central focus of this resource is on the actual course of therapy.  As 
+you review the interventions, we recommend that you consider how each intervention may be 
+individually applied. The Later Phase of treatment focuses on the Veteran’s progress toward 
+reaching their treatment goals.  Specifically, evaluating whether they can apply techniques 
+appropriately to help alleviate depressive symptoms.  The Later Phase also focuses on creating 
+a relapse prevention plan.   
+
+Suggestions for using the guide: 
+
+• Select handouts you are most likely to use and provide the Veteran with their own 
+copies.  
+
+• Keep quantities of selected handouts in folders so they will be easy to offer the Veteran. 
+
+• Handouts can reinforce and validate ideas you have presented in session.  They can 
+serve as transitional objects for the Veteran as they prepare for discharge and relapse 
+prevention planning.   
+
+The contents of this manual do not represent the views of the Department 
+of Veterans Affairs (VA) or the U.S. government. 
+This manual was supported by a clinical educator grant from the VA South 
+Central Mental Illness Research, Education and Clinical Center (MIRECC). 
+
+
+
+Table of Contents 
+
+What is Cognitive Behavioral Therapy? ................................................................................................................... 6
+ 
+
+What to Expect? ........................................................................................................................................................7
+ 
+
+What is Cognitive Behavioral Therapy? ............................................................................................................8
+ 
+
+Behavioral Model ...................................................................................................................................................... 9
+ 
+
+Cognitive Behavioral Model .................................................................................................................................10
+ 
+
+Phases of CBT ............................................................................................................................................................ 11
+ 
+
+Steps of CBT .............................................................................................................................................................. 12
+ 
+
+Session Format ......................................................................................................................................................... 13
+ 
+
+Assessment, Case Conceputalization, and Treatment Planning .................................................................... 15
+ 
+
+Patient Health Questionnaire (PHQ-9) ............................................................................................................ 16
+ 
+
+Assessment/Case Conceptualization/Treatment Planning ..................................................................... 17
+ 
+
+Case Conceptualization Worksheet Example ..............................................................................................24
+ 
+
+Case Conceptualization Worksheet ................................................................................................................26
+ 
+
+GOAL SETTING ................................................................................................................................................................ 27
+ 
+
+SMART Goals ............................................................................................................................................................ 28
+ 
+
+Cost-Benefit Analysis of Change ....................................................................................................................... 31
+ 
+
+Behavioral Strategies ..................................................................................................................................................... 32
+ 
+
+Activity Monitoring ................................................................................................................................................ 33
+ 
+
+Values Identification ..............................................................................................................................................34
+ 
+
+Activity Monitoring Log .......................................................................................................................................36
+ 
+
+Activity and Mood Log ......................................................................................................................................... 37
+ 
+
+Examples of Pleasant Activities ........................................................................................................................39
+ 
+
+Activity Scheduling ................................................................................................................................................43
+ 
+
+Increase Pleasure and Achievement ...............................................................................................................44
+ 
+
+Behavioral Activation ............................................................................................................................................45
+ 
+
+
+
+Graded Task Assignments ...................................................................................................................................46
+ 
+
+Relaxation: Benefits & Tips .................................................................................................................................48
+ 
+
+Deep Breathing ................................................................................................................................................ 51
+ 
+
+Progressive Muscle Relaxation .................................................................................................................. 53
+ 
+
+Guided Imagery ..............................................................................................................................................56
+ 
+
+Relaxation Practice Record ........................................................................................................................58
+ 
+
+Relaxation Training Apps ............................................................................................................................59
+
+
+  Schedule Worry Time .........................................................................................................................................60
+
+
+  Worry Journal ......................................................................................................................................................... 61
+
+
+  Problem Solving (ITCH) Example ..................................................................................................................62
+
+
+  Problem Solving (ITCH)  ....................................................................................................................................64
+ 
+
+Cognitive Strategies .......................................................................................................................................................66
+ 
+
+Anatomy of an Emotion Example .................................................................................................................... 67
+ 
+
+Anatomy of an Emotion .......................................................................................................................................68
+ 
+
+Automatic Thoughts ..............................................................................................................................................69
+ 
+
+Emotions ..................................................................................................................................................................... 71
+ 
+
+Combining Thoughts and Behaviors ............................................................................................................... 72
+ 
+
+Thought-Stopping Techniques .......................................................................................................................... 74
+ 
+
+Downward Arrow Technique .............................................................................................................................. 75
+ 
+
+Thought Record Example .................................................................................................................................... 77
+ 
+
+Thought Record ...................................................................................................................................................... 78
+ 
+
+Thinking Traps .......................................................................................................................................................... 79
+ 
+
+Socratic Questioning Example .......................................................................................................................... 82
+ 
+
+Socratic Questioning .............................................................................................................................................83
+ 
+
+Challenging Questions Worksheet Example ................................................................................................84
+ 
+
+Challenging Questions Worksheet ...................................................................................................................85
+ 
+
+Thought Record ......................................................................................................................................................86
+ 
+
+
+
+What is the difference between thoughts and core beliefs ................................................................... 87
+ 
+
+Life History Review ................................................................................................................................................88
+ 
+
+Healthy Core Beliefs ..............................................................................................................................................90
+ 
+
+Unhealthy Core Beliefs ..........................................................................................................................................91
+ 
+
+Modifying Core Beliefs..........................................................................................................................................92
+ 
+
+Guilt and Blame .......................................................................................................................................................93
+ 
+
+Relapse Prevention .........................................................................................................................................................94
+ 
+
+Life Events that May Influence Mood ..............................................................................................................95
+ 
+
+Monitoring Progress ..............................................................................................................................................96
+ 
+
+Relapse Prevention Plan ...................................................................................................................................... 97
+ 
+
+Coping Cards ..........................................................................................................................................................100
+ 
+
+Notes ................................................................................................................................................................................... 101
+ 
+
+Resources ......................................................................................................................................................................... 103
+ 
+
+
+
+WHAT IS COGNITIVE
+  
+BEHAVIORAL THERAPY?
+ 
+(PSYCHOEDUCATION)
+ 
+
+6 
+
+
+
+WHAT TO EXPECT?
+ 
+
+• 	 CBT is evidence based. CBT has been well tested in research studies and has been proven to 
+be effective in treating depression. 
+
+• 	 CBT is structured. You should expect to have a good idea of where you’re going and how 
+to get there.  So, we will set clear goals to create a roadmap that will help us find the best 
+way to improve your symptoms. During each session we will set an agenda for what we want 
+to discuss, we will discuss last week’s practice assignment, discuss agenda items, and then 
+assign new homework. 
+
+•	  CBT is psychoeducational. The entire program is skill based and involves you enhancing 
+your skill set.  You will learn different “tools” to help cope with your current problems that 
+you will be able to take with you when treatment is over.   
+
+•	  CBT is goal oriented. We will work together to identify and achieve specific treatment goals. 
+We will track your progress on your goals and problem solve ways to reach them. 
+
+•	  CBT is time limited. Treatment is usually 16-20 weeks. 
+
+•	  CBT requires you to attend weekly sessions. Regular attendance is essential to recovery.  
+Sessions are approximately 50 minutes long. 
+
+•	  CBT requires active participation. What you get out of treatment is a direct result of the 
+effort you put into it.  Just showing up is not enough.  We need you to be an active partner in 
+your treatment process. 
+
+•	  CBT has a home practice requirement. Treatment is challenging and takes daily 
+commitment from you to be successful.  CBT is not a one time therapy.  It is not an instant 
+change that you will immediately notice after one session.  Practice assignments help put 
+your new skills to use.  
+
+•	  CBT focuses on the here and now. Treatment emphasizes how depression is maintained in 
+your present life.  
+
+• 	 CBT is collaborative. Although the therapist is the expert on CBT, you are the expert on 
+yourself.  We will work together to tailor your treatment to your needs. 
+
+7
+ 
+
+
+
+WHAT IS COGNITIVE BEHAVIORAL THERAPY?
+ 
+Cognitive Therapy + Behavioral Therapy = Cognitive Behavioral Therapy 
+
+Cognitive Model: 
+
+• Cognitive refers to the act of knowing or recognizing our experiences.  
+
+• The cognitive model focuses on thinking and how our thoughts are connected to our 
+mood, physiological responses, and behaviors 
+
+• Cognitive therapy will teach you to change your thoughts, beliefs, and attitudes that 
+contribute to your depression.   
+
+Two people can be faced with similar situations, but because they think about those situations 
+in different ways, they have different reactions to them. 
+
+8
+ 
+
+
+
+BEHAVIORAL MODEL
+ 
+
+“Depressed individuals do not get enough positive reinforcement from interactions with their 
+environment to maintain happy, adaptive behavior” (Wenzel, Brown, & Karlin, 2011).  
+
+Two behavioral patterns associated with depression: 
+
+Low level of positive feelings from engaging in life activities 
+No longer participating in enjoyable activities 
+Not getting as much enjoyment in activities as in the past 
+No longer enjoying socializing with others 
+
+High rate of negative consequences 
+Frequently noticing things are not working out 
+Feeling a lack of support and understanding from others 
+
+Wenzel, A., Brown, G. K., & Karlin, B. E. (2011). Cognitive Behavioral Therapy for Depression in Veterans and Military Servicemembers: Therapy 
+Manual. Washington, DC: U.S. Department of Veteran Affairs. 
+
+9
+ 
+
+
+
+COGNITIVE BEHAVIORAL MODEL
+ 
+
+Wenzel, A., Brown, G. K., & Karlin, B. E. (2011). Cognitive Behavioral Therapy for Depression in Veterans and Military Servicemembers: Therapy 
+Manual. Washington, DC: U.S. Department of Veteran Affairs. 
+
+10
+ 
+
+
+
+PHASES OF CBT
+ 
+
+Wenzel, A., Brown, G. K., & Karlin, B. E. (2011). Cognitive Behavioral Therapy for Depression in Veterans and Military Servicemembers: Therapy 
+Manual. Washington, DC: U.S. Department of Veteran Affairs. 
+
+11
+ 
+
+
+
+STEPS OF CBT
+  
+Cognitive Behavioral Therapy helps people become more aware of the relationship between 
+their thoughts, feelings, and emotions. 
+
+    Become aware of: 
+  Step 1   Automatic thoughts 
+    Feelings 
+    Core beliefs 
+    Behaviors 
+    Physical reactions 
+    Environment 
+
+     Examination: 
+  Step 2   Thoughts are not facts 
+    Examine the evidence, look for proof 
+    Question and challenge irrational beliefs 
+    Don’t believe everything you think 
+
+     Create alternative thoughts: 
+  Step  3  Increase positive self talk 
+    Reduce negative automatic thoughts 
+    Replace irrational beliefs with more rational ones 
+ 
+ 
+
+12
+ 
+
+
+
+SESSION FORMAT 
+
+£ Complete PHQ-9 in waiting room 
+
+£ Check in: 
+
+£ Review scores 
+
+£ Review chart since last session 
+
+£ Mood check 
+
+• What was your week like?  
+
+• What has your mood been like, compared to other weeks? 
+
+£ Medication 
+
+• Are medications being taken?  
+
+• Changes in medications? 
+
+£ Drug/Alcohol 
+
+• Has there been a change in your alcohol or drug use since last session? 
+
+£ Bridge from last session 
+
+• What did we talk about last session that was important?  
+
+• What did you learn? 
+
+• Was there anything that bothered you about our last session?  
+
+• Anything you were reluctant to or did not say? 
+
+13
+ 
+
+
+
+£ Agenda setting 
+
+• Did anything happen this week that is important to discuss? 
+
+• What topics do you want to put on the agenda? 
+
+• Therapist agenda items presented. 
+
+£ Review of homework 
+
+• Which homework did you do? 
+
+• Which homework did you not do?  
+
+• What did you learn? 
+
+£ Discussion of Agenda items 
+
+• Addressed in agreed upon order 
+
+£ Identify key thoughts/behaviors 
+
+£ Implement a CBT strategy 
+
+• Encourage the application of strategies 
+
+• Assists in generalizing strategies 
+
+£ Periodic summaries/feedback 
+
+• What are you going to take away from our discussion? 
+
+• What are you going to do differently as a result of our discussion? 
+
+£ Homework assignment for next week 
+
+• On a scale from 0 to 100, how likely are you that you will do your homework? 
+
+£ Final summary 
+
+£ Session feedback 
+
+14
+ 
+
+
+
+ASSESSMENT, CASE
+  
+CONCEPTUALIZATION, AND
+  
+
+TREATMENT PLANNING
+ 
+
+15 
+
+
+
+PATIENT HEALTH QUESTIONNAIRE (PHQ-9) 
+Over the last week, how often have you been bothered by any of the following problems? 
+(circle to indicate your answer) 
+
+Not at Several More than Nearly every 
+all Days half the days day 
+
+Little interest or pleasure in doing things 0 1 2 3 
+
+Feeling down, depressed, or hopeless 0 1 2 3 
+
+Trouble falling or staying asleep, or sleeping too 
+much 0 1 2 3 
+
+Feeling tired or having little energy 0 1 2 3 
+
+Poor appetite or overeating 0 1 2 3 
+
+Feeling bad about yourself—or that you are a 
+failure or have let yourself or your family down 0 1 2 3 
+
+Trouble concentrating on things, such as 
+reading the newspaper or watching television 0 1 2 3 
+
+Moving or speaking so slowly that other people 
+could have noticed.  Or the opposite—being so 
+fidgety or restless that you have been moving 0 1 2 3 
+around a lot more than usual 
+
+Thoughts that you would be better off dead, or 
+of hurting yourself in some way 0 1 2 3 
+
+Add columns: 
+
+TOTAL: 
+
+If you checked off any problems, how difficult Not difficult at all 
+have these problems made it for you to do your Somewhat difficult 
+work, take care of things at home, or get along 
+with other people? Very difficult 
+
+Extremely difficult 
+Scores:  
+1-9 No Depression 
+10-14 Mild Depressive Symptoms 
+15-19 Moderate Depressive Symptoms 
+20-27 Severe Depressive Symptoms 
+
+Developed by Drs. Robert L. Spitzer, Janet B.W. Williams, Kurt Kroenke and colleagues, with an educational grant from Pfizer Inc. No permission 
+required to reproduce, translate, display or distribute.  Kroenke, K., Spitzer, R. L., & Williams, J. B. W. (2001). The PHQ-9 - Validity of a brief 
+depression severity measure. Journal of General Internal Medicine, 16, 606-613. 
+
+16
+ 
+
+
+
+ASSESSMENT/CASE CONCEPTUALIZATION/
+ 
+TREATMENT PLANNING
+ 
+
+By gathering specific information, you can better determine the factors that are contributing to 
+your depression.  Having a better understanding of your symptoms and how they developed will 
+allow us to create a treatment plan specific to your needs.  Work with your therapist to gather 
+the information below: 
+
+• Symptoms 
+
+• Formative influences 
+
+• Biological, genetic, and medical factors 
+
+• Situational/interpersonal issues 
+
+• Strengths and barriers 
+
+• Typical automatic thoughts, emotions, and behaviors 
+
+• Core beliefs  
+
+• Hypothesis 
+
+• Goals 
+
+• Treatment plan and selecting strategies 
+
+17
+ 
+
+
+
+Symptoms 
+
+1. Describe the problem: _______________________________________________________ 
+
+__________________________________________________________________________ 
+
+__________________________________________________________________________ 
+
+__________________________________________________________________________ 
+
+__________________________________________________________________________ 
+
+2. How long have you had this problem? ________________________________________ 
+
+3. What is the frequency of your symptoms and how long do they last? _______________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+4. What has worked and what has not worked in favor of change? ___________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+Formative influences (Longitudinal analysis) 
+
+1. What may have triggered this problem? _______________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+18
+ 
+
+
+
+2. What other developmental events and formative influences may have shaped your be­
+
+liefs (family history)? ______________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+Biological, genetic, and medical factors (Longitudinal analysis) 
+
+1. Are there any medical issues that contribute to your depression? ___________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+Situational/interpersonal issues (Cross-sectional analysis) 
+
+1. What are the circumstances under which the depression commonly and reliably occurs? 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+2. What maintains the problem? _______________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+3. What is escaped or avoided as a result of depressive symptoms? ___________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+19
+ 
+
+
+
+4. How have you attempted to resolve the problem? _______________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+5. How would your life be different without this problem? ___________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+Strengths and barriers 
+
+1.	  What strengths do you possess that will help you be successful in treatment (e.g., family 
+
+support, motivated in treatment, compliant with medication)? _____________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+2. What obstacles interfere with your ability to attend weekly sessions (e.g., transporta­
+
+tion, work schedule, child-care, family obligations, etc.)?_________________________ 
+
+_______________________________________________________________________ 
+
+______________________________________________________________________ 
+
+______________________________________________________________________ 
+
+3. Have you talked to your family members about coming to therapy? 	Are they supportive 
+
+of your efforts? ___________________________________________________________ 
+
+4. On a scale from 1-10, how ready are you to make this change? _____________________ 
+
+5. On a scale from 1-10, how willing are you to make this change? _____________________ 
+
+20
+ 
+
+
+
+6. On a scale from 1-10, how confident are you that you can change? __________________ 
+
+Typical automatic thoughts, emotions, and behaviors 
+
+1. 	 Think of the last time you were experiencing sadness.  What was happening? _________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+2. What were you thinking? ___________________________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+3. What images were going through your mind? ___________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+4. What other emotions were your feeling? _______________________________________ 
+
+________________________________________________________________________ 
+
+________________________________________________________________________ 
+
+Core beliefs 
+
+1. 	 What negative beliefs have you had since childhood that may be contributing to your 
+
+symptoms? ______________________________________________________________ 
+
+________________________________________________________________________ 
+
+21
+ 
+
+
+
+Hypothesis 
+
+__________________________________________________________________________ 
+
+__________________________________________________________________________ 
+
+___________________________________________________________________________ 
+
+Goals 
+
+Short Term Goals: ___________________________________________________________ 
+
+___________________________________________________________________________ 
+
+___________________________________________________________________________ 
+
+Long Term Goals: ___________________________________________________________ 
+
+___________________________________________________________________________ 
+
+___________________________________________________________________________ 
+
+22
+ 
+
+
+
+TREATMENT PLAN/STRATEGIES:
+  
+
+Behavioral Strategies: Cognitive Strategies: 
+
+£ Activity Monitoring £ Recognizing Mood Shifts 
+
+£ Values Identification £ Combining Thoughts and Emotions 
+
+£ Activity Monitoring Log £ Thought Stopping 
+
+£ Mood Log £ Downward Arrow Technique 
+
+£ Pleasant Activities £ Use of Thought Change Records 
+
+£ Activity Scheduling £ Identifying Cognitive Errors 
+
+£ Increasing Pleasure and Achievement £ Socratic Questioning 
+
+£ Behavioral Activation £ Challenging Questions 
+
+£ Graded Task Assignments £ Generating Rational Alternatives 
+
+£ Relaxation Training £ Life History 
+
+£ Scheduled Worry Time £ Modifying Core Beliefs 
+
+£ Problem Solving £ Guilt vs. Shame 
+
+23
+ 
+
+
+
+CASE CONCEPTUALIZATION WORKSHEET EXAMPLE
+ 
+
+Veteran Name: Robert Jones Date:  August 30, 2018 
+
+Symptoms: Major Depressive Disorder, Moderate, Recurrent 
+Veteran presents with depressed mood, anhedonia, low energy, a decrease in appetite, 
+feelings of worthlessness, hypersomnia, decrease in socialization, psychomotor 
+retardation, and non-suicidal self-directed violence ideation.  Convincingly denies 
+preparatory behaviors, intent, or plan.   He has had these symptoms for the past year and 
+they reoccur at least once a month, lasting for two weeks at a time.  When depressed he 
+drinks more and isolates from family and friends.  He noted this has not helped decrease 
+his depressive symptoms.  He noted playing his guitar and writing music helps decrease 
+his symptoms. 
+
+Formative Influences: Robert is a 21-year-old, Caucasian, cisgender, unmarried 
+male that grew up in a small town in the Delta of Mississippi.  He is the oldest of 
+4 (siblings aged 12, 15, 17). Mother and father are both deceased; they died in a 
+car accident involving a drunk driver. Veteran was the first in his immediate family 
+to graduate high school and he is the first to enlist in the military.  He is now 4 
+credits away from graduating from college with a B.S. in Criminology.  Veteran 
+described himself as a “popular guy” in his hometown, played many school sports, 
+and was Homecoming King his senior year.  He enlisted in the Navy at 19 years old 
+in the Submarine Electronics Computer Field (SECF) and worked with submarine 
+communications systems.  Veteran was involved in war games, but never deployed 
+or engaged in combat.  Veteran was stationed in Honolulu, HI when he received 
+a Red Cross Emergency Notification that both of his parents were deceased.   
+Veteran received a genuine dependency discharge, has moved back home, and is 
+now the primary caregiver for his siblings.   
+
+Biological, Genetic, and Medical Factors: Veteran believes his mother may have 
+experienced postpartum depression after the birth of his youngest sibling, but denied any 
+other family history.  No known contributing medical factors.  
+
+Situational Issues/Interpersonal Issues: There are limited opportunities for employment 
+in his hometown and he’s concerned that he will have to relocate his family further south 
+to find a job that will support him and his siblings.  He is the primary caregiver of his 
+siblings, no other family members within 50-mile radius.  Several of Veteran’s friends from 
+high school still live in town; however, he rarely socializes with them and has very limited 
+finances.  He has never attended therapy.  His depression makes it difficult for him to 
+search for more opportunities.  If he wasn’t depressed he noted he would be more social, 
+find a partner, and be able to feel better about providing for his family.  
+
+24
+ 
+
+
+
+Strengths/Barriers: Veteran is young, able-bodied, and reports a willingness to work.  He 
+is seeking mental health support for the first time and reports a desire for change.  He is 
+intelligent, computer savvy, and loving. 
+
+Event 1 Event 2 Event 3 
+
+Primary caregiver to siblings 4 credits away from Talked to best friend from 
+completing college degree high school over the phone 
+
+Automatic Thoughts Automatic Thoughts Automatic Thoughts 
+
+“My life is ruined.” “I will never finish now; it’s “He sounds like he’s happy 
+useless to try.” with his life.” 
+
+Emotions Emotions Emotions 
+
+Angry Depressed Resentful 
+Disappointed Let down 
+
+Behaviors Behaviors Behaviors 
+
+Angry outbursts at siblings Dropped out of school and Does not respond to friend’s 
+for “little things.” has not contacted school texts and will not call him 
+has not gone back to about options. back. 
+parents grave site. 
+
+Core Beliefs: I am a failure. I am a bad son. People are better off without me. 
+
+Hypothesis:  Since the death of his parents, Robert has experienced a number of significant 
+changes to his life.  He has yet to grieve the loss of his parents or his identity as a service 
+member and is struggling to accept the new reality of being the primary caregiver for his 
+siblings. Veteran believes that his future possibilities are now significantly limited and he will 
+be unable to live a fulfilling life.  
+
+Veteran’s Goal:  “I want to deal with my parents’ deaths and be able to better care for my 
+siblings.” 
+
+Treatment Plan/Strategies: 
+(1) Behavioral skills to establish behavioral patterns, encourage participation in pleasant 
+activities, recognize those activities that give a sense of accomplishment or fulfillment, and 
+determine new goals. 
+(2) Cognitive strategies to identify and modify problematic cognitions (negative automatic 
+thoughts, working with core beliefs, and developing problem-solving skills).  
+
+25
+ 
+
+
+
+CASE CONCEPTUALIZATION WORKSHEET
+ 
+Veteran’s Name:                                                          Date: 
+
+Symptoms: 
+
+Formative Influences: 
+
+Biological, Genetic, and Medical Factors: 
+
+Situational Issues/Interpersonal Issues: 
+
+Strengths/Barriers: 
+
+Event 1 Event 2 Event 3 
+
+Automatic Thoughts Automatic Thoughts Automatic Thoughts 
+
+Emotions Emotions Emotions 
+
+Behaviors Behaviors Behaviors 
+
+Core Beliefs: 
+
+Hypothesis: 
+
+Veteran’s Goal: 
+
+Treatment Plan/Strategies: 
+
+Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated Guide (Second ed.). 
+Arlington, VA: American Psychiatric Association Publishing. 
+
+26 
+
+
+
+GOAL SETTING
+ 
+
+27 
+
+
+
+SMART GOALS 
+Setting goals assists in developing a pathway to making changes.  Goals should be specific, 
+measurable, achievable, realistic, and time limited. 
+
+Specific Identifies a specific action or event that will take place 
+Who? What? When? Where? How? 
+
+Measurable Should be quantifiable so progress can be tracked 
+
+Achievable Should be attainable and realistic given resources 
+
+Realistic Should be personally meaningful and really matter 
+
+Timely State the time period for accomplishing the goal 
+                                                                                                                                        Adapted from Doran, 1981 
+
+List the short-term goals (16 to 20 weeks) that you would like to achieve during this 
+course of treatment: 
+1. _______________________________________________________________________________________ 
+
+_______________________________________________________________________________________ 
+________________________________________________________________________________________ 
+
+2. ____________________________________________________________________________________________ 
+_______________________________________________________________________________________ 
+______________________________________________________________________________________ 
+
+3. _______________________________________________________________________________________ 
+______________________________________________________________________________________ 
+
+List the long-term goals that you would like to achieve in the next 6 months to 1 year. 
+1. _____________________________________________________________________________________ 
+
+_____________________________________________________________________________________ 
+______________________________________________________________________________________ 
+
+2. __________________________________________________________________________________________ 
+_____________________________________________________________________________________ 
+_____________________________________________________________________________________ 
+
+3. _____________________________________________________________________________________ 
+_____________________________________________________________________________________ 
+_______________________________________________________________________________________ 
+
+28
+ 
+
+
+
+Instructions: What would you like to see different in these areas? 
+1. Family Relationships 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+2. Social Relationships 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+3. Intimate (Romantic) Relationships 
+________________________________________________________________________ 
+________________________________________________________________________ 
+________________________________________________________________________ 
+________________________________________________________________________ 
+________________________________________________________________________ 
+
+4. Education/Training 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+5. Employment/Career 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+29
+ 
+
+
+
+6. Hobbies/Recreation/Relaxation 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+7. Volunteer Work/Charity/Political Activities 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+8. Physical/Health Issues 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+9. Spirituality 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+10. Psychological/Emotional Issues 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+____________________________________________________________________________ 
+
+30
+ 
+
+
+
+COST-BENEFIT ANALYSIS OF CHANGE
+  
+
+Goal: __________________________________________________________________________ 
+
+Cost-Benefit Analysis Advantages Disadvantages 
+of Change 
+
+No Change 
+
+Change 
+
+31
+ 
+
+
+
+BEHAVIORAL
+  
+STRATEGIES
+ 
+
+32 
+
+
+
+ACTIVITY MONITORING
+ 
+
+What is the purpose of monitoring activities?
+ 
+
+Helps to establish behavioral patterns
+ 
+
+Helps to identify times in which activities support or go against emotions
+ 
+
+Helps to encourage participation in pleasant activities
+ 
+
+Helps to recognize those activities that give a sense of accomplishment or fulfillment
+ 
+
+Helps identify things to change or include in regular routine
+ 
+
+Helps to determine new goals
+ 
+
+Helps put a spotlight on those activities that keep us stuck in a rut
+ 
+
+Helps identify ways to better organize time
+ 
+
+33
+ 
+
+
+
+VALUES IDENTIFICATION
+ 
+
+What do you value?  What can you DO in service of these values? 
+
+Circle the things that you value: 
+
+Love Kindness 
+Forgiveness Hobbies 
+Family Education 
+Intimate relationship Spirituality 
+Career Cultural beliefs 
+Social Relationship Mental health 
+Financial success Parenting 
+Self-esteem Community 
+Personal growth Volunteer 
+Physical health 
+
+Goal/Value: Family 
+
+Activity: Take sister to the park on Wednesday for one hour.
+  
+
+Activity: Spend one hour teaching little brother how to play the guitar.
+  
+
+Activity:  Go out to eat as a family and spend at least 30 minutes talking.
+  
+
+Goal/Value: ________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity:  ________________________________________________________________ 
+
+34
+ 
+
+
+
+ Goal/Value: ________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity:  ________________________________________________________________ 
+
+Goal/Value: ________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity:  ________________________________________________________________ 
+
+Goal/Value: ________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity:  ________________________________________________________________
+
+ Goal/Value: ________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity:  ________________________________________________________________ 
+
+Goal/Value: ________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity: _________________________________________________________________ 
+
+Activity:  ________________________________________________________________ 
+
+35
+
+
+
+
+ACTIVITY MONITORING LOG
+  
+
+36
+ 
+
+Time Sunday Monday Tuesday Wednesday Thursday Friday Saturday 
+
+5am-8am 
+
+9:00 
+
+10:00 
+
+11:00 
+
+12:00 
+
+1:00 
+
+2:00 
+
+3:00 
+
+4:00 
+
+5:00 
+
+6:00 
+
+7:00 
+
+8:00 
+
+9:00 
+
+10:00 
+
+11:00 to  
+5am 
+
+
+
+ACTIVITY AND MOOD LOG
+ 
+Date: 
+Activity: Duration: 
+
+Mood Rating: 
+
+1 2 3 4 5 6 7 8 9 10 
+                        
+Worst Average                                      Best 
+
+Date: 
+Activity: Duration: 
+
+Mood Rating: 
+
+1 2 3 4 5 6 7 8 9 10
+
+                      
+ Worst Average                                          Best 
+
+Date: 
+
+Activity: Duration: 
+
+Mood Rating: 
+
+1 2 3 4 5 6 7 8 9 10 
+                       
+                                         
+Worst Average                                           Best 
+
+37
+ 
+
+
+
+Date: 
+
+Activity: Duration: 
+
+Mood Rating: 
+
+1 2 3 4 5 6 7 8 9 10
+                       
+ Worst Average                                         Best 
+
+Date: 
+
+Activity: Duration: 
+
+Mood Rating: 
+1 2 3 4 5 6 7 8 9 10
+
+  Worst Average                                        Best 
+
+Date: 
+Activity: Duration: 
+
+Mood Rating: 
+
+1 2 3 4 5 6 7 8 9 10 
+                       
+Worst Average                                        Best 
+
+Date: 
+Activity: Duration: 
+
+Mood Rating: 
+ 
+1 2 3 4 5 6 7 8 9 10 
+
+                       
+Worst Average                                        Best 
+
+38
+ 
+
+
+
+EXAMPLES OF PLEASANT ACTIVITIES 
+Excursions/Community 
+
+£ Taking a trip or vacation 
+£ Going to a fair, carnival, circus, zoo, or amusement park 
+£ Going to the beach 
+£ Going on a picnic 
+£ Going out to dinner 
+£ Taking a road trip 
+£ Riding on an airplane, hot air balloon, or helicopter 
+£ Staying at a hotel or bed and breakfast 
+£ Going to a museum or exhibit 
+£ Shopping, garage sales, flea markets 
+£ Going to the library or a book store 
+£ Going out to the country 
+£ Going for a hike 
+£ Planning a trip or vacation 
+£ Driving around 
+£ Go to park 
+£ Camping 
+
+Interactions with others 
+£ Going to or giving a party 
+£ Giving and receiving physical affection 
+£ Reminiscing, talking about old times 
+£ Group activities 
+£ Having a frank and open conversation 
+£ Getting together with friends 
+£ Discussing a topic of interest (sports, fashion, politics, news) 
+£ Having family visit or visiting a family 
+£ Meeting someone new 
+£ Eating out with friends or associates 
+£ Visiting friends or having friends visit 
+£ Talking about sports 
+£ Texting, emailing, or calling friends 
+£ Communicating via Skype or Facetime 
+£ Asking for help or advice 
+£ Being around children or grandchildren 
+£ Being with spouse or partner 
+£ Going to a family reunion 
+
+39
+ 
+
+
+
+Entertainment 
+£ Watching TV or listening to the radio 
+£ Playing bingo, gambling, playing the lottery 
+£ Going to the movies 
+£ Playing party games 
+£ Going to concerts 
+£ Going to the races (horse, car, boat) 
+£ Going to a play, musical, comedy show 
+£ Going to a sporting event 
+
+Sports and Games 
+£ Swimming, snorkeling, or scuba diving 
+£ Biking, skating, or roller-blading 
+£ Hunting or shooting 
+£ Playing lawn sports (croquet, horseshoes, badminton) 
+£ Jogging, hiking, or walking 
+£ Playing tennis, racquetball, table tennis, handball, or squash 
+£ Playing golf or miniature golf 
+£ Fishing 
+£ Birdwatching 
+£ Playing board games 
+£ Playing card games 
+£ Working puzzles, crosswords, brain teasers 
+£ Rock-climbing or mountaineering 
+£ Playing baseball or softball 
+£ Boating (canoeing, kayaking, sailing) 
+£ Playing pool, billiards or shuffleboard 
+£ Playing computer games 
+£ Motorboating 
+£ Taking a walk 
+
+Education 
+£ Learning something new (language, instrument) 
+£ Completing a difficult task 
+£ Surfing the internet 
+£ Looking into classes you would like to take 
+£ Learning something artistic (painting, pottery, crocheting) 
+£ Reading 
+£ Taking a course on something of interest 
+£ Writing stories, novels, plays, poetry, essays, reports 
+£ Reading a “How to Do It” book or article 
+£ Going to a lecture or to listen to a speaker of interest 
+£ Going back to school 
+£ Taking a course in computers 
+
+40
+ 
+
+
+
+Domestic Activities 
+£ Cleaning the house 
+£ Baking 
+£ Cooking 
+£ Working in the yard, gardening, landscaping 
+£ Washing the car 
+£ Sewing 
+£ Being exempt from a domestic activity 
+£ Buying flowers and plants 
+£ Rearranging or redecorating a room or the house 
+£ Freshening up the house with potpourri 
+£ Fixing things around the house 
+£ Working on machines, cars, bikes, motorcycles, tractors 
+£ Walking dog 
+£ Doing “odd jobs” around the house 
+£ Organizing a room 
+
+Hobbies, Arts & Crafts and the Arts 
+£ Playing a musical instrument 
+£ Singing 
+£ Dancing 
+£ Doing craft and art work (drawing, painting, sculpting, pottery, movie making, 
+photography) 
+£ Doing needlework (knitting, crocheting, embroidery) 
+£ Restoring antiques or refinishing furniture 
+£ Doing woodworking or carpentry 
+£ Writing letters, cards, or notes, 
+£ Writing a diary 
+£ Writing or arranging a song/music 
+£ Starting or finishing a project 
+£ Collecting things 
+
+Health/Appearance 
+£ Having picture taken 
+£ Getting new clothes, shoes, or jewelry 
+£ Putting on makeup or purchasing it 
+£ Getting haircut, going to the hairdresser 
+£ Getting a manicure or pedicure 
+£ Getting a massage or body rub 
+£ Putting on perfume or cologne 
+£ Preparing self to go out 
+£ Improving one’s health (having teeth fixed, new glasses or contacts, eating healthier, 
+starting an exercise program) 
+£ Getting a makeover or facial 
+£ Getting a workout 
+£ Wearing expensive or formal clothes 
+
+41
+ 
+
+
+
+Pampering self and other leisure activities 
+£ Having free time 
+£ Playing with or having a pet 
+£ Meditating or doing yoga 
+£ Taking a bubble bath or soothing bath 
+£ Being alone 
+£ Writing in a journal or diary or keeping a scrapbook or photo album 
+£ Sleeping late 
+£ Subscribing to a special magazine 
+£ Breathing fresh air 
+£ Listening to music 
+£ Sunbathing 
+£ Listening to the sounds of nature 
+£ Telling and listening to jokes 
+£ Going to a spa 
+£ Daydreaming 
+£ Buying things for myself 
+£ Reading the newspaper or magazine 
+£ Walking barefoot in the sand 
+£ Sitting around a fire 
+£ Staying up late 
+
+Treats 
+£ Chocolates 
+£ Favorite candy 
+£ Ice cream 
+£ Desert 
+£ Beverage 
+£ Favorite dish 
+
+Altruistic Acts 
+£ Volunteering for a special cause 
+£ Doing charity work 
+£ Doing favors for others 
+£ Making contributions to religious, charitable, or other groups 
+£ Giving gifts 
+£ Helping someone 
+£ Defending or protecting someone 
+
+Religious/Charitable Activities 
+£ Going to a place of worship 
+£ Attending a wedding, baptism, bar mitzvah, religious ceremony, or function 
+£ Joining a prayer or spiritual group 
+£ Hearing a good sermon 
+£ Praying 
+£ Reading sacred works 
+£ Participating in a church fellowship function 
+
+42
+ 
+
+
+
+ACTIVITY 
+SCHEDULING 
+
+List five activities you enjoy: 
+1. 
+
+2. 
+
+3. 
+
+4. 
+
+5. 
+
+List five responsibilities you need to take care of: 
+
+1. 
+
+2. 
+
+3. 
+
+4. 
+
+5. 
+
+43
+ 
+
+
+
+INCREASE PLEASURE AND ACHIEVEMENT 
+Complete at least one activity or responsibility each day.  Use the following scale to rate your 
+depression, pleasant feelings, and sense of achievement BEFORE and AFTER the activity. 
+
+0 1 2 3 4 5 6 7 8 
+None Minimal Slight Mild Moderate A Lot Higher Very Extreme 
+
+High 
+
+Activity (location/ Depression Pleasure Achievement 
+date/time) 
+
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+Before 
+
+After 
+
+44
+ 
+
+
+
+BEHAVIORAL ACTIVATION 
+• 	 The goal of behavioral activation is to gradually assist you in decreasing your 
+
+movement toward isolation and avoidance and to help you become more active and 
+engage in activities that are known to improve mood.  
+
+•	  Often, these are activities that you enjoyed before you became depressed.  
+
+• 	 The activities vary from person to person and may include very simple activities, 
+such as engaging in personal hygiene, showering, doing household chores, engaging 
+in forms of exercise, taking classes, going out to dinner, or anything that you find 
+personally rewarding. 
+
+• 	 As you know, however, getting yourself to feel better is not an easy thing to do. Talking 
+yourself into feeling better or trying to convince yourself to feel better unfortunately 
+doesn’t work. 
+
+• 	 Your thoughts and feelings are affected by your interactions with others and your 
+overall quality of life. So, for you to have more positive thoughts and to feel better, you 
+must first become more active and put yourself into more positive situations.  
+
+• 	 This will probably be somewhat challenging when you first start.  It will become 
+easier as more and more positive experiences occur. This strategy requires hard 
+work, and I understand that you may be questioning your ability to make changes 
+at this time in your life, but I will help you through this process and we will work at a 
+gradual pace together. 
+
+45
+ 
+
+
+
+GRADED TASK ASSIGNMENTS
+ 
+This is a technique for turning overwhelming tasks into manageable achievements, in other 
+words, breaking down a task step by step. This involves breaking a big goal into smaller goals 
+that are then put in the most logical, achievable order. 
+
+1.	  Choose an activity or goal to break down. 
+a.	  Look at all the activities you have scheduled for next week. Is there one that seems a 
+
+bit too big? If not, think of a goal you would like to accomplish over the next month 
+and practice on that. 
+
+2. Break it down into smaller steps. 
+a.	  For example, if you scheduled in ‘go to the gym’ you could break that down to pack 
+
+my gym bag, buy a bottle of water, find my membership card, etc. 
+
+3. Put the steps you’ve come up with into the most logical order. 
+a.	  There may not be a point in packing your gym bag if you’ve lost your 
+ 
+
+membership card.
+ 
+
+3. Schedule your first step. 
+a.	  If you chose an activity from your schedule, perhaps reschedule the various steps 
+
+now so that you are definitely going to get the activity done. If you are working with 
+a general goal, pick one task to get started on and either do it now if you have time 
+or schedule it into your week. 
+
+b. Match the task you choose to your present energy levels. Do not assume you can 
+accomplish what you might have previously during a time when life was not as 
+challenging. It’s better to choose a task that is too easy but you will accomplish than 
+something you won’t. 
+
+46
+ 
+
+
+
+GRADED TASK ASSIGNMENT
+ 
+Primary Goal:________________________________________________________________ 
+
+Step 1: _____________________________________________________________________ 
+
+ Date/Time:__________________Materials:___________________________________ 
+
+Step 2:_____________________________________________________________________ 
+
+ Date/Time:__________________Materials:___________________________________ 
+
+Step 3:_____________________________________________________________________ 
+
+ Date/Time:__________________Materials:___________________________________ 
+
+Primary Goal:_______________________________________________________________ 
+
+Step 1:_____________________________________________________________________ 
+
+ Date/Time:__________________Materials:___________________________________ 
+
+Step 2:_____________________________________________________________________ 
+
+ Date/Time:__________________Materials:___________________________________ 
+
+Step 3:_____________________________________________________________________ 
+
+ Date/Time:__________________Materials:___________________________________ 
+
+47
+ 
+
+
+
+RELAXATION: BENEFITS & TIPS
+ 
+The goal of relaxation is to reduce the effects of stress on your health. Since chronic pain 
+produces chronic stress on the body, it is important to regularly practice relaxation techniques 
+that can help your mind and body recover. Relaxation is more than resting or enjoying a hobby – 
+it involves using specific strategies to reduce tension. 
+ 
+Benefits of Relaxation 
+Relaxation is important for good health. When you are relaxed, your muscles are loose, your 
+heart rate is normal, and your breathing is slow and deep. Learning how to relax can help 
+especially when you feel pain. Relaxation prompts your body to release chemicals that reduce 
+pain and produce a sense of well-being. 
+
+Relaxation won’t cure pain or other chronic symptoms, but skills that relax the body and the 
+mind may help decrease muscle tension, prevent muscle spasms, and relieve the stress that can 
+aggravate pain and other symptoms. 
+
+Taking time to relax and refuel your energy provides benefits such as: 
+
+• Improved mood 
+
+• Increased energy and productivity 
+
+• Improved concentration and focus 
+
+• Improved sense of control over stress and daily demands 
+
+• Improved nighttime sleep 
+
+• Increased self-confidence 
+
+• Greater ability to handle problems 
+
+• Decreased anxiety and other negative emotions such as anger and frustration 
+
+• Increased blood flow to muscles and reduced muscle tension 
+
+• Lower blood pressure, breathing rate, and heart rate 
+
+• Decreased pain, such as headaches and back pain 
+
+Relaxation Practice Tips 
+Relaxation is a skill that requires practice. You may not feel the benefits immediately, so don’t 
+give up! Remain patient and motivated and you’ll reduce the negative impacts of stress. And 
+remember: If relaxation feels foreign or unnatural, that likely means you are a person who needs 
+it most! 
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+48
+ 
+
+
+
+Establish a routine 
+• Set aside time to practice relaxation at least once or twice a day. 
+
+• Pairing relaxation with a regular activity may help you remember to practice (for example, 
+take 10 relaxed breaths before bed or whenever you sit down to eat). 
+
+• Practice at various times throughout the day until relaxation becomes natural and you can 
+use it readily when you feel stressed. You may want to leave “reminders” for yourself to 
+relax (for example, sticky notes on the bathroom mirror, kitchen cabinets, or car dashboard 
+with the words “relax” or “breathe”). 
+
+Be comfortable 
+• Practice on a comfortable chair, sofa, mat, or bed. 
+
+• Dim the lights. 
+
+• Loosen tight clothing and remove shoes, belt, glasses or contact lenses, if you like. 
+
+Concentrate 
+• Eliminate disruptions. Turn off the TV, radio, or telephone. Practice in a quiet, calm,
+  
+
+environment.
+ 
+
+• Close your eyes to reduce distractions and improve concentration. If you prefer, keep your 
+eyes open and focus on one spot. 
+
+• Move your body as little as possible, changing positions only for comfort. 
+
+• Don’t worry if you have some distracting thoughts—it happens to everyone. Just notice 
+that your thoughts have wandered and then gently, without judgment, return your 
+attention to your breath. 
+
+Used with permission. Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+49
+ 
+
+
+
+Relax 
+• Begin and end relaxation practices with relaxed breathing techniques. 
+
+• Use a relaxation CD if it helps. Gradually, learn to relax without a CD so that you can use 
+relaxation techniques anywhere. 
+
+• Let relaxation proceed naturally and spread throughout your body. Do not try to resist it. 
+
+Be patient 
+• Give yourself time to learn relaxation skills. Practice is required for these techniques to 
+
+become automatic. 
+
+• Try not to become upset if you have trouble concentrating. A wandering mind is normal 
+and expected. Keep bringing your attention back to your breath. 
+
+• Don’t worry about how well you are practicing. 
+
+• After a few weeks, select a word, such as “calm,” “relax,” “peace,” or “patience” that you 
+can say during relaxation practices. Eventually, simply saying that word may help you relax. 
+
+Incorporate relaxation into daily life 
+• Over time, move relaxation practices from planned, quiet settings to “real life.” The goal is 
+
+to be able to calm yourself when necessary, no matter where you are. 
+
+• Use relaxation whenever you notice yourself feeling stressed or anxious, such as waiting in 
+line, at a doctor’s appointment, or during a difficult meeting. 
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+50
+ 
+
+
+
+DEEP BREATHING
+  
+First, start by becoming aware of your breathing...  Place one hand on your abdomen at the 
+waistline and the other hand on the center of your chest. Without trying to change anything, 
+simply notice how you are breathing. Notice where you are breathing from…  whether your 
+shoulders are rising and falling, whether your chest is rising and falling, or perhaps your belly is 
+rising and falling. Notice how your hands move as you breathe…  (PAUSE) 
+
+Now notice the rate of your breathing. Are you breathing rapidly or slowly? Are you breathing 
+deeply or more shallowly (PAUSE) 
+
+Now as you slowly inhale, imagine the air flowing deeper into your belly. Feel your belly fill with 
+air as your lower hand rises. Pause at the top of your breath, and then follow your breath out as 
+you completely exhale…  Slowly take a breath in...  2, 3, 4... and slowly exhale…2, 3, 4. Let any 
+tension melt away as you relax more deeply with each breath...  (PAUSE) 
+
+Notice how the air feels, as cool fresh air enters your nose, passes through the little hairs in your 
+nasal passage, reaches the back of your throat, and descends deep into your lungs. Notice what 
+happens as that breath of fresh air enters your lungs. Notice what happens when you exhale. 
+Feel the temperature of each breath, cool as you inhale, and warm as you exhale. Count your 
+breaths as you breathe in and out. 
+
+Notice your breath becoming smooth and slow. Feel your belly and ribcage expand outward 
+with each breath...  and feel yourself become more relaxed with each exhale. Allow your 
+shoulders to become heavier with each exhale…  (PAUSE 15 sec) 
+
+Continue breathing slowly and gently...  (PAUSE 15 sec) 
+
+As you breathe, notice the cool temperature of the air, as it enters your nose or mouth. Notice 
+how the air becomes warmer as you follow it deep into your belly and out through your mouth. 
+
+Continue breathing slowly and gently...  (PAUSE 15 sec) 
+
+Again, slowly take a breath in...  2, 3, 4... and slowly exhale…  2, 3, 4. Feel yourself become more 
+and more relaxed with each exhale…  (PAUSE 15 sec) 
+
+(Skip if going on to other relaxation exercises) 
+
+Now, as I count from 5 to 1, feel yourself become more alert…   5 bringing your attention to this 
+room…  4 feeling calm and relaxed…  3 start to wiggle your fingers and toes…  2 slowly start to 
+move and stretch your muscles…  1 open your eyes, feeling refreshed and rejuvenated. 
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+51
+ 
+
+
+
+52
+ 
+
+
+
+PROGRESSIVE MUSCLE RELAXATION
+ 
+First, build up the tension in the lower arms, by making fists with your hands and pulling your 
+fists up by bending the wrists. Feel the tension through the lower arms, wrists, fingers, knuckles, 
+and hands. Focus on the tension…  (PAUSE 5 sec) 
+
+Now release the tension. Let your hands and lower arms relax onto the chair or bed beside you. 
+Focus your attention on the relaxing sensations in your hands and arms. Feel the release from 
+tension as you relax the muscles fully, feel it get warm…  (PAUSE 10 sec) 
+
+Now build up the tension in the upper arms by pulling the arms back and in toward your sides. 
+Feel the tension in the back of the arms and radiating towards the shoulders and into the back. 
+Focus on the tension. Hold this tension…  (PAUSE 5 sec) 
+
+Now, release the arms and let them relax – almost feeling heavy at your sides. Notice the 
+difference between the prior feelings of tension and the new feelings of relaxation. Your arms 
+might feel heavy, warm, and relaxed…  (PAUSE 10 sec) 
+
+Now bring your attention to your lower legs. Build up the tension by flexing your feet and pulling 
+your toes toward your upper body. Feel the tension as it spreads through your feet, ankles, shins, 
+and calves. Hold this tension…  (PAUSE 5 sec) 
+
+And release all of the tension in your lower legs. Let your legs relax onto the chair or bed. Feel 
+the difference in these muscles as they relax. Feel the release from tension, the sense of comfort, 
+the heaviness of relaxation...  (PAUSE 10 sec) 
+
+Build up the tension in your upper legs and buttocks by pressing your knees together and lifting 
+the legs slightly off of the bed or chair. Focus on the tightness through the front of your thighs 
+and buttocks. Hold this tension…  (PAUSE 5 sec) 
+
+Now release all of the tension in your upper legs. Let your legs sink heavily into the chair or bed. 
+Let all of the tension disappear as your legs sink heavier into the chair or bed. Focus on the 
+feeling of relaxation and comfort… (PAUSE 10 sec) 
+
+Build up the tension in your abdomen by pulling your abdomen in toward your spine, very 
+tightly. Feel the tightness and focus on this tension…  (PAUSE 5 sec) 
+
+Now let the tension in the abdomen relax…  Notice how smooth and calm your breathing has 
+become. Feel the comfort of relaxation…  (PAUSE 10 sec) 
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+53
+ 
+
+
+
+Build up the tension in your chest by taking in a deep breath and holding it. Your chest is 
+expanded and the muscles are stretched around your chest. Feel the tension in your front and 
+your back...  (PAUSE 3-5 sec) 
+
+Now, slowly let the air escape and resume normal breathing, letting the air flow in and out 
+smoothly and easily. Feel the difference in sensations as the muscles relax, compared to those of 
+tension…  (PAUSE 10 sec) 
+
+Build up the tension in your neck and shoulders by pulling your shoulder blades back and up 
+towards your ears. Feel the tension around your shoulders, radiating into your neck and back. 
+Hold this tension…  (PAUSE 5 sec) 
+
+Now release the tension. Let your shoulders drop down, sinking further and further until they 
+are completely relaxed. Notice the difference in the previous feelings of tension and the new 
+feelings of relaxation. Enjoy these feelings…  (PAUSE 10 sec) 
+
+Build up the tension in your mouth, jaw and throat by clenching your teeth and turning the 
+corners of your mouth back into a forced smiled. Hold. Feel the tightness…   (PAUSE 5 sec) 
+
+Now, release the tension. Let your jaw drop down and the muscles around your throat and 
+jaw relax. Notice the difference between the feelings of tension and the feelings of relaxation… 
+(PAUSE 10 sec) 
+
+Now, build up the tension around your eyes and lower forehead, by squeezing your eyes tightly 
+shut and pulling your eyebrows down… hold this tension (PAUSE 5 sec) 
+
+Now release all the tension in your eyes and lower forehead. Let the tension disappear from 
+around your eyes. Feel your forehead and eyes smooth. Feel the difference as the muscles 
+relax…   (PAUSE 10 sec) 
+
+Build up the tension in your upper forehead and scalp by raising your eyebrows as high as 
+possible. Feel the wrinkling and pulling across the forehead and top of the head. Hold this 
+tension…  (PAUSE 5 sec) 
+
+Now release all the tension in your forehead, letting the eyebrows gently rest down. Focus on 
+the sensations of relaxation…  (PAUSE 10 sec) 
+
+Your whole body is feeling relaxed and calm. Scan your body for any last bits of tension and if 
+you notice any, let that tension go. Enjoy the feelings of relaxation… 
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+54
+ 
+
+
+
+As I count from 1 to 5, feel yourself become more and more relaxed…  1 … let all tension leave
+  
+your body…  2 … sinking further and further into relaxation…  3 … feel more and more relaxed…  4
+  
+… feel very relaxed…  5 …deeply relaxed…  (PAUSE 30 sec)
+ 
+
+As you spend a few minutes in this relaxed state, think about your breathing. Feel the cool air as
+  
+you breathe in and the warm air as you breathe out. Your breathing is smooth and regular. Every
+  
+time you breathe out, think to yourself “relax…  relax …  relax”…  you are feeling comfortable and
+  
+relaxed…  (PAUSE 1-3 min)
+ 
+
+(Skip if going on to other relaxation exercises)
+ 
+Now, as I count from 5 to 1, feel yourself become more alert…   5 bringing your attention to this
+  
+room…  4 feeling calm and relaxed…  3 start to wiggle your fingers and toes…  2 slowly start to
+  
+move and stretch your muscles…  1 open your eyes, feeling refreshed and rejuvenated.
+  
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+55
+ 
+
+
+
+GUIDED IMAGERY
+ 
+Imagine yourself walking slowly down a path toward your special place. This path can be inside 
+or outside. The path is comforting and peaceful. As you walk down this path, imagine all of your 
+stresses, worries, and tension are leaving you. Enjoy this journey to your special place. 
+As you walk down this path, notice the ground beneath you…how it feels as you walk. Notice the 
+sounds…the comfortable temperature of the air. Take a breath in, feeling all your tension leave 
+you as you exhale. Notice any fragrance that may be here. Notice the view around you. Reach 
+out and touch something around you. Feel its textures… 
+
+You feel calm and safe. All your worries and anxieties being left behind as you move toward your 
+special place…  (PAUSE 30 sec) 
+
+Walk down this path until you arrive at your own special place…and when you have reached this 
+special place, go ahead and enter… (PAUSE 10 sec) 
+
+You have arrived at this relaxing and peaceful place. Notice the ground underneath you… 
+whether it is hard or soft. Notice how the ground feels below your feet. Listen to the sounds in 
+this place, both close and distant. Smell the air, the fragrances. Notice the temperature of the air 
+around you. 
+
+Look above you…  Notice the colors and sights above you. Look out into the distance…  as far as 
+you can see…  Take in all of the sights, fragrances, and sounds around you. 
+Reach out and touch something in this place…  Notice its texture and how it feels against your 
+skin. Notice the different objects around you…  their shapes, textures, and colors. Notice the light 
+and shade of this place and how it reflects off of these objects. 
+
+Used with permission.  Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+56
+ 
+
+
+
+There is a comfortable place for you to sit or lie here as you take in all the smells, sounds, sights, 
+and textures…  As you sit or lie in this place, away from it all, you feel calm and secure, refreshed 
+and renewed, strong and at peace. As you enjoy this place for a few minutes, you know that you 
+can come here whenever you please, and that this place will always be waiting for you…  (PAUSE 
+3-5 min) 
+
+Now it’s time to come back…  leave by the same way you came, enjoying the path…  and as you 
+return on this path, you start to also notice the room in which you are sitting…  start to wiggle 
+your fingers and toes…  and when you are ready, slowly open your eyes and stretch. 
+
+Used with permission.  Murphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic pain 
+among veterans: Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs. 
+
+57
+ 
+
+
+
+RELAXATION PRACTICE RECORD
+ 
+Use this record to chart your relaxation practice over time. Before and after your practice, rate 
+your level of tension (1 = lowest level of tension, 10 = highest level of tension).  Remember, it may 
+take a number of sessions before you notice improvement. 
+
+Relaxation How long did 
+Date Technique you practice? Level of Tension 
+
+(minutes) 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+Before:   1  2  3  4  5  6  7  8  9  10 
+After:  1  2  3  4  5  6  7  8  9  10 
+
+58
+ 
+
+
+
+RELAXATION TRAINING APPS
+  
+Virtual Hope Box 
+
+Simple tools to help with coping and positive thinking 
+
+Mindfulness Coach 
+Audio exercises, a self-guided training program, and resources to support practice 
+
+ 
+Breathe2Relax 
+
+Learn breathing and relaxation skills. 
+
+Tactical Breather 
+Learn breathing skills to gain control over heart rate, emotions, and concentration during 
+
+stressful events. 
+
+PTSD Coach 
+Learn skills to help cope with trauma symptoms. 
+
+Anger and Irritability Management 
+Anger management tools, education and support 
+
+PTSD Family Coach 
+For family of people with PTSD 
+
+59
+ 
+
+
+
+SCHEDULE WORRY TIME
+ 
+
+• There is a drastic difference between “thinking” versus “worrying.” 
+
+° Thinking involves reflection and analysis that leads to clarity and purposeful action.  
+
+° Worrying is problem-solving gone awry.  
+
+° Many chronic worriers tend to believe they can’t control their thoughts. 
+
+With practice, you can learn to control how often and when you worry.  When you give in to 
+unproductive worry throughout the day, the pull to worry repetitively will only grow stronger.  
+
+Alternatively, if you limit the amount of time and energy you spend on worrying, the intensity 
+and frequency of this unhealthy habit will start to diminish over time.  
+
+Step 1.  Schedule worry time each day for one week.  Set aside 15-30 minutes during the 
+morning or afternoon (avoid scheduling worry time in the evening or before bed). 
+
+Step 2.  During the 15-30 minutes write down all your worries.  Do not start to problem solve 
+yet!  Do not fight or struggle with your thoughts.  Just write them down as they come to 
+mind. 
+
+Step 3.  In between scheduled worry time, if you notice that your mind is being pulled to worry, 
+remind yourself that you will have time to worry again and give yourself permission to let 
+go of those thoughts for now. 
+
+Step 4.  At the end of the week, look over the list of worries you wrote down. Do you notice any 
+patterns? Changes in the content of your worries?  Reflect on what you have learned 
+from this list. 
+
+Ideally, you may start to notice that it is difficult to worry for the entire time you have set aside 
+every day.  This strategy may seem a bit strange at first.  Give it your best and keep an open 
+mind.  
+
+60
+ 
+
+
+
+WORRY JOURNAL
+ 
+Sunday:  Worry Time: ______________________ 
+1. __________________________________________________________________________________________ 
+2. _________________________________________________________________________________________ 
+3. __________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. _________________________________________________________________________________ 
+
+Monday:  Worry Time: ______________________ 
+1. ___________________________________________________________________________________ 
+2. __________________________________________________________________________________________ 
+3. _________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. __________________________________________________________________________________________ 
+
+Tuesday:  Worry Time: ______________________ 
+1. __________________________________________________________________________________________ 
+2. _________________________________________________________________________________________ 
+3. __________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. _________________________________________________________________________________ 
+
+Wednesday:  Worry Time: ______________________ 
+1. ___________________________________________________________________________________________ 
+2. __________________________________________________________________________________________ 
+3. _________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. __________________________________________________________________________________________ 
+
+Thursday:  Worry Time: ______________________ 
+1. __________________________________________________________________________________________ 
+2. _________________________________________________________________________________________ 
+3. __________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. _________________________________________________________________________________ 
+
+Friday:  Worry Time: ______________________ 
+1. __________________________________________________________________________________________ 
+2. _________________________________________________________________________________________ 
+3. __________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. _________________________________________________________________________________ 
+
+Saturday:  Worry Time: ______________________ 
+1. __________________________________________________________________________________________ 
+2. _________________________________________________________________________________________ 
+3. __________________________________________________________________________________________ 
+4. __________________________________________________________________________________________ 
+5. _________________________________________________________________________________ 
+
+61
+ 
+
+
+
+PROBLEM SOLVING (ITCH) EXAMPLE
+  
+Identify the Problem: Not enough time to take care of the responsibilities at 
+
+home and have dinner with a friend. 
+
+Goal: Be able to do things I enjoy, but also meet my 
+obligations at home. 
+
+Think About Potential 1)  Don’t go visit with a friend. 
+Solutions 
+
+2)  Don’t take sister to soccer game. 
+
+3)  Get someone else to take sister to soccer game. 
+
+4)  Bring friend to soccer game, then everyone go out 
+to eat. 
+
+5)  Stay at home. 
+
+62
+ 
+
+
+
+Pros: Cons: 
+
+Solution 1 Sister gets to go to I don’t get to catch 
+soccer game. up with an old friend. 
+
+Pros and 
+Cons 
+
+Solution 2 I get to catch up with Sister misses an 
+an old friend. important game. 
+
+Solution 3 I get to catch up with I miss sister’s 
+an old friend. important game. 
+
+Solution 4 I get to see game Friend may not like 
+and hang out with a soccer. 
+friend. 
+
+Solution 5 I don’t have to make No one gets to do 
+a decision. anything they would 
+
+enjoy. 
+
+Choose The Best Solution: Bring friend to soccer game; then everyone  
+goes out to eat. 
+
+ACTION PLAN
+ 
+
+Steps to Achieve Solution Tools Needed To Complete Steps 
+
+1)  Ask friend to go to soccer None 
+
+2) Find somewhere good to eat after Money 
+
+3) Have fun! Friends and family 
+
+How Well Did it Work? Everyone had fun. I got to spend 
+time with my friend and see my 
+sister’s game. 
+
+63
+ 
+
+
+
+PROBLEM SOLVING (ITCH)
+ 
+
+Identify the 
+Problem: 
+
+Goal: 
+
+Think About 1) 
+Potential 
+Solutions 
+
+2) 
+
+3) 
+
+4) 
+
+5) 
+
+64
+ 
+
+
+
+Pros: Cons: 
+Solution 1: 
+
+Solution 2 
+Pros and 
+Cons 
+
+Solution 3 
+
+Solution 4 
+
+Solution 5 
+
+Chose Best Solution: 
+ACTION PLAN
+ 
+
+Steps to Achieve Solution Tools Needed To Complete Steps 
+
+1) 
+
+2) 
+
+3) 
+
+4) 
+
+How Well Did it Work? 
+
+65
+ 
+
+
+
+COGNITIVE STRATEGIES
+ 
+
+BENEFITS OF COGNITIVE STRATEGIES 
+• Help identify unhlepful thoughts, beliefs, and images 
+• Learn to distance self from unhelpful thoughts BEFORE acting on them 
+• Determne the accuracy of these thoughts 
+• Develop alternative, more realistic thoughts 
+• Practice challengig thoughts the moment they arise 
+
+Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated Guide(Second ed.). 
+Arlington, VA: American Psychiatric Association Publishing. Anatomy6 o6f a n Emotion 
+
+
+
+ANATOMY OF AN EMOTION EXAMPLE
+ 
+
+Trigger (situation):  Since the death of my parents, I have to put the things I want to do on 
+hold (school and military) in order to take care of my siblings. 
+
+Feeling: frustrated, angry, sad 
+
+      
+
+Bodily Sensations: 
+Tense, heart racing                                                    
+
+Urges (Potential actions):                                                                          Most Helpful 
+Don’t help siblings. 
+
+
+Don’t finish school to help take care of siblings needs.
+ 
+Take online classes to 
+
+Take online classes to make more time to meet 
+ make more time to 
+meet more obligations. 
+
+obligations.
+ 
+I need to get more 
+organized to see 
+what all HAS to be 
+
+Thoughts: accomplished. 
+
+I love my siblings, but I can’t do everything for them. 
+
+I didn’t ask to be a parent.
+ 
+
+I can’t get everything done today. 
+
+
+I need to get more organized to see what all HAS to be accomplished.
+ 
+
+Action plan to help choose most helpful thought and behavior the during next situation: 
+
+1. Buy a calendar, and write down all events/tasks that need to be completed. 
+2. Call to get more information about online classes. 
+3. Create a chore list so everyone in the home is helping.  
+
+67
+ 
+
+
+
+ANATOMY OF AN EMOTION
+ 
+
+Trigger (situation): _________________________________________________________ 
+
+Feeling: ____________________________________________________________________ 
+
+      
+
+Bodily Sensations: 
+_________________________________________                                                   
+
+_________________________________________ 
+
+_________________________________________ 
+
+_________________________________________ 
+
+Urges (Potential actions):                                                                          Most Helpful 
+__________________________________________                                       
+
+__________________________________________ 
+
+__________________________________________ 
+
+__________________________________________ 
+
+Thoughts: 
+__________________________________________ 
+
+__________________________________________ 
+
+__________________________________________ 
+
+__________________________________________ 
+       
+
+Action plan to help choose most helpful thought and behavior the during next situation: 
+ 
+
+68
+ 
+
+
+
+AUTOMATIC THOUGHTS 
+Automatic thoughts can be words, an image, a memory, a physical sensation, an imagined 
+
+sound, or based on intuition. It is a surface-level, nonvolitional, stream-of-consciousness, 
+
+meaning they just happen, popping into your head; often you won’t even notice them.  
+
+We tend to automatically believe our thoughts whether they are positive or negative.  
+
+Automatic thoughts seem to repeat over and over, and the more they repeat, the more 
+
+believable they seem.
+ 
+
+As the name indicates, these automatic thoughts cannot be directly controlled by people,
+  
+since they are reflexive reactions based on the beliefs people hold about themselves.  However,
+  
+people can indirectly control these thoughts by challenging the beliefs that lead to them.
+ 
+
+Examples:
+ 
+“Nothing feels good anymore.”
+  
+“I can’t stand this anymore.”
+  
+“I can’t get started.”
+  
+“What’s wrong with me?”
+  
+“I wish I were somewhere else.”
+ 
+
+INTERMEDIATE BELIEFS 
+Intermediate beliefs are just below the surface
+  
+of automatic thoughts. These thoughts are
+  
+responsible for maintaining anxiety and
+  
+depression.  They are often expectations
+  
+or assumptions about ourselves or others.
+  
+Intermediate beliefs are rules or guidelines that
+  
+we follow.
+  
+
+Examples:
+ 
+“I should avoid meeting new people at all costs.”
+  
+“Danger is always present.”
+ 
+“People will always take advantage of me.”
+ 
+
+CORE BELIEFS 
+Core beliefs are considered to be at the root, or deepest level, of our thinking.  These beliefs
+  
+represent our views of ourselves, others, and the world around us.  They have an absolute
+  
+quality to them.
+ 
+
+Examples:
+  
+“I am unlovable.”
+ 
+“All men are dangerous.”
+ 
+“The world is completely dangerous.”
+ 
+
+69
+ 
+
+
+
+EXAMPLES: 
+“I am unlovable.” 
+“All men are dangerous.” 
+“The world is completely dangerous.” 
+
+  
+
+  
+  
+
+  
+
+70
+ 
+
+
+
+EMOTIONS
+ 
+Emotions are one word that describes a feeling.  (See emotion worksheet, pg. 69) 
+
+WHAT IS THE DIFFERENCE BETWEEN MY
+  
+THOUGHTS AND FEELINGS?
+ 
+
+If it’s a full sentence, it’s a thought.  Feelings are one word and are expressions of emotions.  
+
+ 
+
+Thought Emotion 
+
+Nobody likes me Depressed 
+
+I will never get better Hopeless 
+
+I am comfortable with life Content 
+
+I had a good day Happy 
+
+71
+ 
+
+
+
+COMBINING THOUGHTS AND BEHAVIORS
+ 
+
+Negative Thought Possible changes in behavior to solve/help the problem 
+
+Steps needed to make changes: Tools to make changes: 
+
+Negative Thought Possible changes in behavior to solve/help the problem 
+
+Steps needed to make changes: Tools to make changes: 
+
+72
+ 
+
+
+
+Negative Thought Possible changes in behavior to solve/help the problem 
+
+Steps needed to make changes: Tools to make changes: 
+
+Negative Thought Possible changes in behavior to solve/help the problem 
+
+Steps needed to make changes: Tools to make changes: 
+
+73
+ 
+
+
+
+THOUGHT-STOPPING TECHNIQUES
+ 
+Many people have experienced unwanted, intrusive, or obsessive thoughts that run through 
+their mind. Sometimes individuals dwell on these thoughts for hours.  Unfortunately, these 
+thoughts can cause strong and unpleasant emotional reactions, self-defeating or unhealthy 
+behaviors, and uncomfortable physical reactions in the body. Thought-stopping is a strategy 
+that may distract you, reducing, or stopping the unwanted thoughts from running rampant. 
+
+I.	  First recognize negative thought process (excessive worrying, exaggerated fears,
+  
+rumination)
+ 
+
+II.	  Interrupt the thought process by: 
+
+a. Closing your eyes and shouting “STOP”                                              
+
+b. Visualizing a stop sign 
+
+c. Thinking of a pleasant memory 
+
+d. Singing your favorite song 
+
+e. Stopping and taking ten deep breaths 
+
+f. Scheduling worry time (see page 60 for more information about this strategy) 
+
+74
+ 
+
+
+
+	
+
+Downward Arrow Technique 
+	 DOWNWARD ARROW TECHNIQUE
+ 
+
+This is a very practical, simple, and effective skill that can help get to the root of your negative 
+thoughts andT huisn ihs ea avletrhyy p rbaectliiceafl,s s iambpoleu, ta nydo euffrescetlivf.e   sTkioll  tbhaetg ciann,  hyeolpu g feitr tsot  tnhee erodo tto o fi dyoeunrt nifeyg aati vsei
+ t thoughts and unhealthy beliefs about yourself.  To begin, you first need to identify a situation
+  uation 
+which provowkheicsh a pnro uvonkheesa alnt huynh emaltohyti eomno ltiiokne  lidke pdreepsressisoionn  or guuilitl. tT.o T uonc uovnecr oyvouerr  nyeogautriv ne
+ e gative 
+automatic thaouutogmhattsi,c  athsoku gwhhtsa, ta stkh wish asti ttuhaist siiotuna tsioany ssa aysb aobuotu yt yoouu,,  ootthheersr,s a, nadn tdhe t hweo rwld oarroldun adr yoouun.
+  Keep asking yourself these questions until you reach an absolute statement.
+  d you. 
+Keep askingE yxaomuprlsee: lIff ethelegsueil tqyubesctaiuosne sm uy nhtoiul syeoisua lrweaycshm aenss ya.
+bsolute statement.  
+
+Example:  I feel  because . 
+   
+
+
+
+
+    
+
+
+ 	
+
+   
+
+
+ 
+	  
+
+  
+ 
+
+Now that you hNavowe  fthoaut nyodu y hoauver  fcoounred  yboeulri ecof,r ea bsekli eyf,o auskrs yeolufr:self:
+ 
+“How much do I believe this is a true statement?”  0 -100%  100%
+ 
+
+“How much do WI hbaetl ise yvoeu rt heviisd eisn cae  tforur eth isst baeteliemf?e
+  nt?”  0-100%   100% 
+What is your evTihdies nbecleie ff ois rt rtuhei sb ebceauliseef I? l e ave dishes in the sink, the laundry is piled up everywhere. I never
+  
+
+remember to take out the trash.
+  
+This belief is truWeh bateics ayuousree Iv ildeeanvce  adgiasinhset st hiins  btehliee fs?i
+ nk, the laundry is piled up everywhere. I never 
+
+remember toT htaisk bee lioeuf its  tNhOeT t trrauseh b.e  cause my house isn’t always a mess, and I enjoy cleaning when I make
+  
+
+What is your evtiimdeen toc ed oa git.a  iIfn Is ats tkheids m bye flaiemfi?ly  for help, they would be happy to help. I don’t have to do
+  
+everything myself.
+  
+
+This belief is NNOoTw  trreuraete b heocwa umsuec hm yoyu h boeuliesvee  itshne ’stt aatelwmaenyts i sa t rmuee. 0ss-1,0 a0n%d    2I 5e%n
+ joy cleaning when I make 
+time to do it.  If I asked my family for help, they would be happy to help. I don’t have to do 
+everything myself.   
+
+Now rerate how much you believe the statement is true. 0-100%   25%  
+
+75
+ 
+
+80 
+
+
+
+DOWNWARD ARROW TECHNIQUE
+ 
+ 
+During ______________________________event, I feel                                                   
+because ____________________________________________________________________. 
+
+1. And if that were true about yourself, what 
+would that mean to you? 
+
+2. And if that were the case, what would that 
+mean to you? 
+
+3. And if that were so, that would that mean to 
+you? 
+
+4. And if that were true, what would that mean to 
+you? 
+
+“How much to I believe this is a true statement?”  0-100%:  
+       
+
+What is your evidence for this belief? 
+
+
+This belief is true because 
+            
+
+               
+
+What is your evidence against this belief? 
+
+This belief is NOT true because           
+
+________________________________________________ _________________________ 
+
+Now re-rate how much you believe the statement is true. 0-100%  :____________  
+
+76
+ 
+
+
+
+77
+ 
+
+THOUGHT RECORD EXAMPLE
+ 
+Date/Time SITUATION AUTOMATIC THOUGHT EMOTION 
+
+Describe what happened.  What thought(s) and/or image(s) went  What emotions(s) did you  
+(Who, What, When, Where?)   through your mind? feel at the time and how  
+
+intense  
+(0-100%) were they?  
+
+8/24/2018 I asked my sister to take out  “Are you kidding me! I asked her to do  Angry at her 40% 
+1300 the garbage and do the dishes  two things and she refused. She obviously  
+
+before I left for work this  doesn’t respect me. I have to do everything  Disrespected 70% 
+morning, and when I came  around here!”  
+home, they were not done. 
+
+Adapted from Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated Guide (Second ed.). Arlington, VA: American  
+Psychiatric Association Publishing 
+
+
+
+78
+ 
+
+THOUGHT RECORD
+ 
+Date/Time SITUATION AUTOMATIC THOUGHT EMOTION 
+
+Describe what happened.  What thought(s) and/or image(s) went through  What emotions(s) did you  
+(Who, What, When,  your mind? feel at the time and how  
+Where?)   intense (0-100%) were they?  
+
+Adapted from Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated Guide(Second ed.). Arlington, VA: American Psychiatric  
+Association Publishing 
+
+
+
+THINKING TRAPS
+ 
+When something happens, our mind comes up with a first interpretation.  Sometimes we don’t 
+have all of the important information and our first interpretation is not completely accurate.  
+Below are common thinking traps that can lead to inaccurate interpretations. 
+
+1. Jumping to Conclusions or Fortune Telling 
+° Overestimating the probability of negative outcomes, or predicting the future 
+
+2. Thinking the Worst 
+° Overestimating how bad the outcome will be 
+° Assuming what is currently happening or is going to happen is the worst thing that could 
+
+ever happen  
+
+3. Using Feelings as Facts or Emotional Reasoning 
+° Using your emotions as proof (e.g., I feel anxious so something bad is going to happen; I 
+
+feel guilty so I must have done something wrong) 
+
+4. Dichotomous Thinking or Black-and-white Thinking 
+° Looking at situations in terms of extremes, everything is all good or all bad 
+
+5. Mind Reading 
+° When we believe we know what others are thinking and assume that they are thinking the 
+
+worst of us with no evidence to support thought 
+
+6. Over-generalization 
+° Using words like always or never to describe situations or events 
+° One negative event means everything is negative 
+
+7. Catastrophizing 
+° When we imagine the worst possible thing is about to happen and predict we won’t be 
+
+able to cope with the outcome
+ 
+° Expecting a disaster
+   
+
+8. Labeling 
+° Seeing yourself as having only negative traits 
+
+9. Discounting the positives  
+° Underestimating the positive things you accomplish 
+
+10. Personalizing  
+° Taking blame for events that may have other contributing factors 
+
+11. Blaming  
+° Difficulty accepting responsibility for your own action, often blaming your problems on 
+
+others 
+
+79
+ 
+
+
+
+Thought Thinking Trap 
+
+“She refused to do what I asked Jumping to conclusions – maybe something came 
+her to do.” up at school and she had to stay late. 
+
+“She obviously doesn’t respect me.” Mind reading – I do not know for certain that she 
+doesn’t respect me.  I am assuming she doesn’t. 
+
+80
+ 
+
+
+
+Thought Thinking Trap 
+
+81
+ 
+
+
+
+82
+ 
+
+SOCRATIC QUESTIONING EXAMPLE
+ 
+Questions to  Questions about  Questioning the  Questions about  Questions about  Questions about  
+
+Clarify   assumptions      Evidence and  Viewpoints and  Consequences  
+Facts Perspectives  and Implications Questions 
+
+What do I mean  How did I come to  What is the  How else can I  What are the  Do the previous  
+when I tell myself  this conclusion? evidence for this  look at this? consequences of  questions refocus  
+“MY SIBLINGS DO   thought? this thought? my thinking? 
+NOT LIKE ME?” What am I  What does it do  
+
+assuming when I  How might this be  for me to continue  What would it  What other  
+Why do I say this? say this? refuted in court? thinking this way? mean if I gave up  questions should I  
+
+this belief? ask? 
+
+Response #1: Response #2: Response #3: Response #4: Response #5: Response #6: 
+
+They don’t like  We don’t talk as  Evidence for this is  Losing our parents  It keeps us farther  Yes. 
+me because I am  much as we used  that we don’t talk  was hard on all of  away from each  
+always yelling at  to, we don’t sit  as much with each  us, not just me.  other.  What can I do to  
+them. I disappoint  around and tell  other.  reconnect with  
+them and myself  stories.  Sometimes people  If I give it up,  them? 
+every day. Evidence against  grieve in different  maybe it might  
+
+I am assuming  is maybe they are  ways. give us something  
+they are unhappy  having a hard time  to talk about. 
+with me and don’t  too and that’s why  
+want to talk to me. they aren’t talking  
+
+to me.  
+
+Conclusion #1: Conclusion #2: Conclusion #3: Conclusion #4: Conclusion #5: Conclusion #6: 
+
+I yell when I am  Spending time  My siblings may be  I want to be more  I want to build a  I will schedule time  
+frustrated.  with my siblings is  frustrated as well.  responsive to how  better relationship  to spend with each  
+
+important to me. my siblings are  with my siblings.  sibling individually  
+feeling.  doing an activity  
+
+they would enjoy.  
+
+
+
+83
+ 
+
+SOCRATIC QUESTIONING
+ 
+Questions to  Questions about  Questioning the  Questions about  Questions about  
+
+Evidence and Viewpoints and Consequences Questions about  
+Clarify   assumptions         
+
+Facts Perspectives  and Implications Questions 
+
+What do I mean  How did I come to  What is the  How else can I  What are the  Do the previous  
+when I tell myself  this conclusion? evidence for this  look at this? consequences of  questions refocus  
+___________? thought? this thought? my thinking? 
+
+What am I  What does it do  
+Why do I say this? assuming when I  How might this be  for me to continue  What would it  What other  
+
+say this? refuted in court? thinking this way? mean if I gave up  questions should I  
+this belief? ask? 
+
+Response #1: Response #2: Response #3: Response #4: Response #5: Response #6: 
+
+Conclusion #1: Conclusion #2: Conclusion #3: Conclusion #4: Conclusion #5: Conclusion #6: 
+
+
+
+CHALLENGING QUESTIONS WORKSHEET EXAMPLE
+ 
+
+Situation Challenging Questions 
+
+What happened? (Who?  What? Evidence for my thought: 
+When? Where?) She knows we just lost our parents and 
+
+mentioned she was sorry for our loss. 
+I ran into an old female friend at 
+the grocery store and she asked 
+me to come over for dinner. I Evidence against my thought: 
+made up an excuse not to go. We were friends before I went to the military, 
+
+so she may want to have dinner to reconnect. 
+
+Am I jumping to conclusions? 
+Automatic Thought Yes 
+
+What thought(s) and/or image(s) Am I thinking the worst? 
+went through your mind? 
+
+Yes 
+“She must feel bad for us. I don’t 
+want her pity!” Other Thinking Trap? 
+
+Using feelings as facts-  I feel bad for us at 
+times, so others must. 
+
+Does this thought help achieve my goals? 
+No 
+
+Emotion 
+How could I modify the thought to make it fit 
+
+What emotions(s) did you feel at better with reality? 
+the time and how intense (0-100%) We used to be friends and it would be fun to 
+were they? reconnect. 
+
+Resentment 70 % 
+Angry at myself 50% What are the effects of the new thought? 
+
+Makes me feel better, less angry and resentful 
+and more hopeful 
+
+84
+ 
+
+
+
+CHALLENGING QUESTIONS WORKSHEET
+  
+
+Situation Challenging Questions 
+
+What happened? (Who?  What? Evidence for my thought: 
+When? Where?) 
+
+Evidence against my thought: 
+
+Am I jumping to conclusions? 
+
+Automatic Thought 
+
+What thought(s) and/or image(s) Am I thinking the worst? 
+went through your mind? 
+
+Other Thinking Trap? 
+
+Does this thought help achieve my goals? 
+
+Emotion 
+
+What emotions(s) did you feel at How could I modify the thought to make it fit 
+the time and how intense (0-100%) better with reality? 
+were they? 
+
+What are the effects of the new thought? 
+
+85
+ 
+
+
+
+86
+ 
+
+THOUGHT RECORD
+ 
+
+Date/ SITUATION AUTOMATIC  EMOTION(S) ALTERNATIVE  OUTCOME 
+Time THOUGHT(S) RESPONSE 
+
+Describe what  What thought(s)  What  1. What thinking trap did  1. How much  
+happened.  and/or image(s)  emotions(s) did  you use?  do you NOW  
+(Who, What,  went through your  you feel at the  2. Use challenging  believe the  
+When,  mind? time and how  questions worksheet  automatic  
+Where?)   intense (0-100%)  to help develop an  thought? 
+
+were they?  alternative response.  2. What  
+3. How much do you  emotion(s)  
+
+believe each response? do you feel  
+now and how  
+intense (0­
+100%) is the  
+emotion? 
+
+3. What will  
+you DO now? 
+
+Adapted from Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated Guide(Second ed.). Arlington, VA: American  
+Psychiatric Association Publishing Adapted from (Wenzel, et. Al, 2011).  
+
+
+
+WHAT IS THE DIFFERENCE 
+BETWEEN THOUGHTS AND 
+CORE BELIEFS? 
+Like a tree with many leaves, we have many 
+thoughts. Our thoughts come and go and change 
+with the seasons. The quality of our thoughts will 
+depend on the quality of our core beliefs.  Core 
+beliefs are like the roots of a tree.  Strong, healthy 
+roots feed healthy leaves.  Unhealthy roots will 
+feed unhealthy leaves.  
+
+Identify Core Beliefs
+ 
+
+Complete these sentence stems.
+ 
+
+I am: 
+
+
+_______________________________________________________________________ 
+________________________________________________________________________ 
+_______________________________________________________________________ 
+_______________________________________________________________________ 
+
+Others are: 
+
+__________________________________________________________________________ 
+__________________________________________________________________________ 
+___________________________________________________________________________ 
+
+The world is: 
+
+__________________________________________________________________________ 
+__________________________________________________________________________ 
+___________________________________________________________________________ 
+
+87
+ 
+
+THOUGHT RECORD
+
+Date/ SITUATION AUTOMATIC EMOTION(S) ALTERNATIVE OUTCOME
+Time THOUGHT(S) RESPONSE
+
+Describe what What thought(s) What 1. What thinking trap did 1. How much 
+happened. and/or image(s) emotions(s) did you use? do you NOW 
+(Who, What, went through your you feel at the 2. Use challenging believe the 
+When, mind? time and how questions worksheet automatic 
+Where?)  intense (0-100%) to help develop an thought?
+
+were they? alternative response. 2. What 
+3. How much do you emotion(s) 
+
+believe each response? do you feel 
+now and how 
+intense (0-
+100%) is the 
+emotion?
+
+3. What will 
+you DO now?
+
+Adapted from Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated Guide(Second ed.). Arlington, VA: American 
+Psychiatric Association Publishing Adapted from (Wenzel, et. Al, 2011). 
+
+
+
+LIFE HISTORY REVIEW 
+Our beliefs are strongly shaped and influenced by people and experiences in our lives.  It is 
+important to consider both the positive and negative influences. 
+
+Influential people: 
+
+Which people have made the biggest impact in your life? 
+
+                
+                
+               
+               
+
+What have your learned from them? 
+
+                
+                
+               
+               
+
+Core beliefs: 
+
+What negative messages did you get about yourself from others in your life? 
+
+                
+                
+               
+               
+
+What did you learn about yourself going through hard times? 
+
+                
+                
+               
+               
+
+88
+ 
+
+
+
+Meaningful interests and activities: 
+
+In what ways have your interests and hobbies shaped how you see yourself? 
+
+                
+                
+               
+               
+
+Social and cultural influences: 
+
+What impact has your cultural background had on the way you see your world? 
+
+                
+                
+               
+               
+
+How has growing up as a minority affected your self-concept? 
+
+                
+                
+               
+               
+
+Life-shaping events: 
+
+Have you experienced any life-shaping events that have opened your eyes to a whole new way 
+of seeing the world? How so? 
+                
+                
+               
+               
+
+89
+ 
+
+
+
+HEALTHY CORE BELIEFS
+ 
+Instructions: Core beliefs are those beliefs that you have had since childhood.  They are your 
+roots.  Rate each belief on a scale of 0-5 (0- do not believe to 5- strongly believe). 
+
+___ No matter what happens, ___ I can be myself. 
+       I can manage somehow. 
+
+___ I can learn from my mistakes 
+___I am worthwhile.        and be a better person. 
+
+___ If I work hard at something, ___ I’m a good spouse (and/or parent, child,    
+        I can master it.        friend, lover). 
+
+___ I deserve love. ___ Everything will work out all right. 
+
+___ I’m a survivor. ___ I am strong. 
+
+___ Others trust me. ___ I can figure things out. 
+
+___ I am healthy. ___ I’m friendly. 
+
+___ I’m a good person. ___ I can handle stress. 
+
+___ I like to be challenged. ___ The tougher the problem, 
+        the tougher I am. 
+
+___ There’s not much that can scare me. 
+___ I am lovable. 
+
+___ I’m intelligent. 
+___ I can succeed. 
+
+___ People respect me. 
+___ I can take care of myself. 
+
+___ They can knock me down, 
+       but they can’t knock me out. 
+
+___ I am in control. 
+
+___ I care about other people. 
+
+___ If I prepare in advance, I usually do better. 
+
+___ I deserve to be respected. 
+
+Adapted from Wright JH, Wright AS, Beck AT (2004). Good days ahead: The multimedia program for Cognitive Therapy. 
+Louisville, KY, Mindstreet. 
+
+90
+ 
+
+
+
+UNHEALTHY CORE BELIEFS
+ 
+Instructions: Core beliefs are those beliefs that you have had since childhood.  They are your 
+roots.  Rate each belief on a scale of 0-5 (0- do not believe to 5- strongly believe). 
+
+___ I must be perfect to be accepted.
+ ___ No matter what I do, I won’t succeed.
+ 
+
+___ I am unwanted.
+  ___ I am rejected.
+  
+
+___ If I choose to do something,
+ ___ The world is too frightening for me.
+ 
+       I must succeed. 
+
+___ Others can’t be trusted.
+ 
+___ I am inadequate. 
+
+___ I must always be in control.
+ 
+___ I am undesirable. 
+
+___ I’m unattractive.
+ 
+___ I’m stupid. 
+
+___ I am trapped.
+  
+___ Without a woman (man), I’m nothing. 
+
+___ Never show your emotions.
+ 
+___ I’m a fake. 
+
+___ Other people will take advantage of me.
+ 
+___ Never show weakness. 
+
+___ I’m lazy.
+ 
+___ I’m unlovable. 
+
+___ I am uncared for.
+  
+___ If I make one mistake, 
+       I’ll lose everything. ___ If people really knew me,
+ 
+
+       they wouldn’t like me. 
+___ I’ll never be comfortable around others. 
+
+___ To be accepted, I must always 
+___ I can never finish anything.  please others. 
+
+___ I am powerless. ___ I am helpless. 
+
+Adapted from Wright JH, Wright AS, Beck AT (2004). Good days ahead: The multimedia program for Cognitive Therapy. 
+Louisville, KY, Mindstreet. 
+
+91
+ 
+
+
+
+MODIFYING CORE BELIEFS
+ 
+Instructions:
+ 
+Identify an unhealthy core belief from the previous activity that you would like to change.
+ 
+Write down any evidence that either supports or disproves this core belief.
+  
+Look for thinking traps in the evidence for the unhealthy core belief.
+  
+Note your ideas for changing the core belief, specifying things you will DO to change and more
+  
+positive things to TELL yourself.
+ 
+
+        Core belief I want to change:  
+
+______________________________________________________________________________ 
+
+Evidence for this core belief:  Evidence against this core belief: 
+
+1.      1. 
+
+2.      2. 
+
+3.      3. 
+
+______________________________________________________________________________ 
+
+Thinking Trap: 
+
+What can I DO to change this core belief: 
+
+What else can I TELL myself about this core belief: 
+
+92
+ 
+
+
+
+GUILT AND BLAME
+ 
+
+Describe a situation in which you blamed yourself: _____________________________________ 
+
+_______________________________________________________________________________________ 
+
+_______________________________________________________________________________________ 
+
+_______________________________________________________________________________________ 
+
+_______________________________________________________________________________________ 
+Consider potential factors that may have contributed to the situation: 
+
+Contributing Factors 
+
+1. 
+
+2. 
+
+3. 
+
+93
+ 
+
+
+
+RELAPSE
+  
+PREVENTION
+ 
+
+94 
+
+
+
+LIFE EVENTS THAT MAY INFLUENCE MOOD
+ 
+
+Social Separations 
+Death of spouse, close family member, or close friend 
+Divorce 
+Marital separation 
+Family moving away 
+Change in residence 
+
+Health-Related Events 
+Major change in health of self or close family member 
+Personal injury or illness 
+
+New Responsibilities and Adjustments 
+Deployment/Return from Deployment 
+Marriage 
+Addition of new family member 
+
+Work-Related Events 
+Change to different job 
+Promotion and/or major change in work responsibilities 
+Being fired 
+Trouble with boss 
+Retirement from work 
+Spouse starts or stops work 
+Change to new school 
+End of formal schooling 
+
+Financial and Material Events 
+Burdensome debts 
+Financial setbacks 
+Loss of personal property through fire, theft, etc. 
+Legal Problems 
+
+95
+ 
+
+
+
+MONITORING PROGRESS
+ 
+
+Goal: ______________________________________________________________________ 
+___________________________________________________________________________ 
+
+How much progress has been made on this goal?
+ 
+
+0     1      2      3      4      5      6      7      8      9      10
+ 
+
+What steps do you need to take to reach this goal? ________________________________
+ 
+_____________________________________________________________________________________ 
+___________________________________________________________________________ 
+How do you maintain this goal? ________________________________________________ 
+_________________________________________________________________________________ 
+___________________________________________________________________________ 
+
+Goal: _____________________________________________________________________________ 
+___________________________________________________________________________ 
+
+How much progress has been made on this goal?
+ 
+
+0     1      2      3      4      5      6      7      8      9      10
+ 
+
+What steps do you need to take to reach this goal? _________________________________
+ 
+__________________________________________________________________________ 
+__________________________________________________________________________ 
+How do you maintain this goal? ________________________________________________ 
+________________________________________________________________________________ 
+___________________________________________________________________________ 
+
+96
+ 
+
+
+
+RELAPSE PREVENTION PLAN
+ 
+
+Situation (past/future) that contributed to episode of depression:  
+
+___________________________________________________________________________ 
+
+___________________________________________________________________________ 
+
+Three things that alleviated the situation or impact: 
+
+1. ________________________________________________________________________ 
+
+2. ________________________________________________________________________ 
+
+3. ________________________________________________________________________ 
+
+Situation (past/future) that contributed to episode of depression:  
+
+___________________________________________________________________________ 
+
+___________________________________________________________________________ 
+
+Three things that alleviated the situation or impact: 
+
+1. ________________________________________________________________________ 
+
+2. ________________________________________________________________________ 
+
+3. ________________________________________________________________________ 
+
+97
+ 
+
+
+
+Step 1: Warning signs 
+
+1. Increase in sadness 
+2.  Increase in crying spells 
+3.  Increase in isolation 
+4.  _______________________________________________________________________ 
+
+Step 2: Behavioral coping strategies 
+Activities I can do without contacting another person 
+
+1. _________________________________________________________________________ 
+2. _________________________________________________________________________ 
+3._________________________________________________________________________ 
+
+Step 3: Activities I can do with other people 
+
+1. Name     Phone     Activity___________________________ 
+2. Name     Phone     Activity___________________________ 
+3. Name     Phone     Activity___________________________ 
+          
+
+Step 4: Family and Friends whom I can ask for help 
+
+1. Name         Phone     
+
+2. Name         Phone     
+
+3. Name         Phone     
+
+Step 5: Professionals or agencies I can contact: 
+
+Primary Care Provider: ________________________________________________________ 
+Mental Health Treatment Coordinator: ___________________________________________ 
+Therapist: ___________________________________________________________________ 
+Crisis Line: 1-800-273-8255 
+Other: _____________________________________________________________________ 
+
+Adapted from Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning Cognitive-Behavior Therapy: An Illustrated 
+Guide(Second ed.). Arlington, VA: American Psychiatric Association Publishing. 
+
+98 
+
+
+
+What was working before I   
+lapsed Why did I lapse What I can do differently
+
+in the future 
+
+   
+
+What was working before I  
+lapsed Why did I lapse What I can do differently in the
+
+future 
+
+   
+
+99
+ 
+
+
+
+COPING CARDS
+ 
+Coping cards are a great way to practice the interventions you have learned in treatment.  
+Identify common situations that are difficult for you. Include any relevant information including 
+internal experiences. Review and revise these cards, use them as cues, until they become your 
+dominant responses. 
+
+Situation: A cashier is rude to me. Situation: 
+
+Coping skills Coping skills 
+Think: Their behavior isn’t my problem. Think: 
+Maybe they are having a bad day. Everyone 
+can have a bad day. 
+
+Do: Do: 
+1) Take 5 slow, relaxing breathes 1)
+2) Be kind anyways 2)
+3) Give myself credit for not blowing up. 3) 
+
+Situation: Situation: 
+
+Coping skills Coping skills 
+Think: Think: 
+
+Do: Do: 
+ 1)  1)
+ 2)  2)
+ 3)  3) 
+
+100
+ 
+
+
+
+NOTES
+ 
+__________________________________________________________________________ 
+__________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+
+101
+ 
+
+
+
+__________________________________________________________________________ 
+__________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+___________________________________________________________________________ 
+
+102
+ 
+
+
+
+RESOURCES
+ 
+Beck, J. S. (2011). Cognitive Behavior Therapy: Basic and beyond (Second ed.). New York, NY: The Guilford Press. 
+
+Burdick, D. E. (2013). Mindfulness skills workbook for clinicians & clients. Eau Claire, WI: PESI Publishing and Media. 
+
+Davis, M., Eshelman, E. R., & McKay, M. (2008). The relaxation & stress reduction workbook (Sixth ed.). Oakland, CA: 
+New Harbinger Publications. 
+
+Doran, G. T. (1981). There’s a S.M.A.R.T. way to write management’s goals and objectives. Management Review,  70, 
+
+(11), 35-36.
+ 
+
+Gilson, M., Freeman, A., Yates, M. J., & Freeman, S. M. (2009). Overcoming depression: A cognitive therapy approach
+  
+(Second ed., Therapist Guide). New York, NY: Oxford University Press.
+ 
+
+Gregory, B. M. (2010). CBT skills workbook. Eau Claire, WI: PESI Publishing and Media.
+ 
+
+Knaus, W. J. (2012). The cognitive behavioral workbook for depression (Second ed.). Oakland, CA: New Harbinger
+  
+Publications.
+ 
+
+Leahy, R. L. (2003). Cognitive therapy techniques: A practitioner’s guide. New York, NY: The Guilford Press.
+ 
+
+Leahy, R. L. (2017). Cognitive therapy techniques: A practitioner’s guide (Second ed.). New York, NY: The Guilford Press.
+ 
+
+Manning, J., & Ridgeway, N. (2016). CBT Work Sheets. Suffolk, UK: West Suffolk CBT Service.
+ 
+
+Muphy, J.L., McKellar, J.D., Raffa, S.D., Clark, M.E., Kerns, R.D. & Karlin, B.E. Cognitive behavioral therapy for chronic
+  
+pain among veterans:  Therapist manual.  Washington, DC: U.S. Department of Veterans Affairs.
+  
+
+Sheperd, T. (2017). Stepping out of depression and anxiety with CBT: A workbook with simple techniques to retrain
+  
+your brain. Middletown, DE: Mackenzie Mayer.
+ 
+
+Watkins, E. R. (2016). Rumination-focused cognitive-behavioral therapy for depression. New York, NY: The Guilford Press.
+ 
+
+Wenzel, A., Brown, G. K., & Karlin, B. E. (2011). Cognitive behavioral therapy for depression in veterans and military
+  
+servicemembers: Therapy manual. Washington, DC: U.S. Department of Veteran Affairs.
+ 
+
+Wright, J. H., Brown, G. K., Thase, M. E., & Ramirez Basco, M. (2017). Learning cognitive-behavior therapy: An
+  
+illustrated guide (Second ed.). Arlington, VA: American Psychiatric Association Publishing.
+ 
+
+Wright J. H., Wright A. S., and Beck A. T. (2004). Good days ahead: The multimedia program for cognitive therapy.
+  
+Louisville, KY, Mindstreet.
+ 
+
+103

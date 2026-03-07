@@ -1,0 +1,1625 @@
+﻿DiaCBT: A Long-Periodic Dialogue Corpus Guided by Cognitive
+Conceptualization Diagram for CBT-based Psychological Counseling
+
+Yougen Zhou1∗ , Ningning Zhou3* , Qin Chen2† , Jie Zhou2, Aimin Zhou1, Liang He2
+1Shanghai Institute of Artificial Intelligence for Education, East China Normal University
+
+2School of Computer Science and Technology, East China Normal University
+3School of Psychology and Cognitive Science, East China Normal University
+
+Abstract Counselor Client
+
+Most people I hang out with would say I'm nothing like my 
+Psychotherapy reaches only a small fraction parents. Because I work in the family business, my co-workers 
+
+all know my parents.
+of individuals suffering from mental disorders
+
+Previous Dataset
+due to social stigma and the limited availability
+of therapists. Large language models (LLMs), Can you think about whether there are other possible 
+
+outcomes of these reactions?
+
+when equipped with professional psychothera- …
+It is very important that you have noticed other possible 
+
+peutic skills, offer a promising solution to ex- outcomes. Let's practice some strategies together so that 
+
+pand access to mental health services. How- you can better deal with these situations.
+
+ever, the lack of psychological conversation Real-word psychological counseling
+
+datasets presents significant challenges in de- Session 1
+
+veloping effective psychotherapy-guided con- [Information Gathering] Okay, let's first find out, what has 
+happened when you first started feeling like this?
+
+versational agents. In this paper, we construct …
+a long-periodic dialogue corpus for counseling [Setting the Agenda] The other thing I'm going to do is 
+
+share some of the knowledge about cognitive behavioral 
+
+based on cognitive behavioral therapy (CBT). therapy and see if that's a good fit for you. Is that okay?
+
+Session 2
+Our curated dataset includes multiple sessions …
+
+[Working with Automatic Thoughts] This is actually another 
+for each counseling and incorporates cognitive automatic thought, and I'm curious about what the impact 
+
+would be if everyone knew your current status.
+conceptualization diagrams (CCDs) to guide …
+
+Session 3
+client simulation across diverse scenarios. To
+evaluate the utility of our dataset, we train an
+in-depth counseling model and present a com- Figure 1: A dialogue comparing a previous counseling
+prehensive evaluation framework to benchmark dataset to a real-world scenario. Previous datasets tend
+it against established psychological criteria for to solve all psychological problems in a single coun-
+CBT-based counseling. Results demonstrate seling session using one CBT technique, whereas real-
+that DiaCBT effectively enhances LLMs’ abil- world counseling involves multiple sessions, depending
+ity to emulate psychologists with CBT exper- on the nuanced progression of therapeutic strategies.
+tise, underscoring its potential for training more
+professional counseling agents. et al., 2023; Sharma et al., 2023). Whereas, gener-
+
+ating human-like responses as the psychologist in
+1 Introduction automated systems remains a major challenge.
+Mental health disorders are a significant and Recently, the integration of large language mod-
+widespread public health concern, affecting an esti- els (LLMs) into counseling systems presents a
+mated one in eight people globally (World Health promising way (Stade et al., 2024; Bubeck et al.,
+Organization, 20221). Despite this, access to men- 2023). While LLMs demonstrate remarkable ca-
+tal health services remains limited, largely due to pabilities in generating human-like responses, they
+social stigma and a shortage of therapists (Free- tend to provide generic advice or information (Chiu
+man, 2022; White and Dorman, 2001). To address et al., 2024). Existing solutions attempt to model
+these barriers, there is growing interest in using au- the psychological theory as rules or tree flows to
+tomated conversational agents as alternative tools prompt LLMs to mimic psychological counselors
+for mental health support (Ali et al., 2020; Sabour for professional response generation (Mousavi
+
+et al., 2021; Das et al., 2022). Whereas, the exper-
+*These authors contributed equally to this work.
+† tise still remains constrained due to the insufficient
+Corresponding Author
+
+1https://www.who.int/campaigns/ training of the backbone models in psychological
+world-mental-health-day/2022 counseling (Raile, 2024). Moreover, psychological
+
+1
+
+arXiv:2509.02999v1  [cs.CL]  3 Sep 2025
+
+…
+
+
+
+counseling heavily relies on case practice, while whole process of cognitive behavioral therapy
+the counseling process data is severely limited by in practice and models clients with structured
+the sensitive nature of therapist-client interactions cognitive conceptualization diagrams during
+(Harrigian et al., 2021; Pérez-Rosas et al., 2018). multiple sessions.
+
+An alternative solution is to construct synthetic
+dialogues that can resemble real-world counsel- • We train a psychological counseling model
+ing processes in diverse scenarios. Previous ef- based on DiaCBT, which enhances CBT-
+forts primarily focus on generating dialogues be- specific skills by integrating strategies for
+tween therapists and clients based on certain mental in-depth questioning to effectively reframe
+problems (Qiu et al., 2024a; Na, 2024). Whereas, clients’ cognitive distortions.
+there is a large gap between the synthetic data and
+the real-world counseling process. As shown in • We present a comprehensive evaluation for
+Figure 1, the existing synthetic data assumes that psychological counseling and conduct exten-
+all psychological problems can be solved in one sive experiments, demonstrating the great ad-
+counseling session, thus one dialogue mimics the vantages of our dataset and counseling model
+whole counseling process for one case, which is over the baselines.
+coarse-grained and can not well reflect the differ-
+ence of counseling strategy use in each session. In 2 Related Work
+practice, real-world psychological counseling of- In this section, we review studies about conversa-
+ten involves long-periodic dialogues with multiple tional psychotherapy AI, covering both therapy-
+sessions, depending on the difficulty and nuanced based conversational systems and datasets.
+progression of therapeutic strategies (Curwen et al.,
+2018). Moreover, most client simulation relies on 2.1 Therapy-based Conversational Systems
+background descriptions such as occupations, expe-
+riences, and problems (Lee et al., 2024), which can Conversational systems for psychotherapy aim to
+not well model the mental portrait and limits the assess an individual’s mental state and enhance
+utterance generation with specific mental problems self-awareness through effective communication
+for each client (Wang et al., 2024). techniques. These systems often rely on empa-
+
+To address the above challenges, we present Di- thetic conversations to alleviate emotional distress,
+aCBT, a long-periodic dialogue corpus guided by crafting responses that are relevant to the client’s
+cognitive conceptualization diagram (CCDs) for statements (Ma et al., 2020; Zhou et al., 2018; Lu-
+psychotherapy counseling based on cognitive be- bis et al., 2018; Raamkumar and Yang, 2022; Li
+havioral therapy (CBT) (Beck, 2020). DiaCBT et al., 2022; Gao et al., 2021; Shen et al., 2021; Liu
+simulates the entire process of CBT, consisting et al., 2021; Cheng et al., 2022). The emergence
+of multiple sessions that feature interactive tran- of large language models (LLMs) is revolution-
+scripts annotated with CBT strategies. To better izing therapy-based conversational systems (Liu
+simulate clients, we construct structured CCDs et al., 2023; Chen et al., 2023b; Jo et al., 2023; Wei
+across diverse scenarios to guide the utterance gen- et al., 2024). Researchers are increasingly integrat-
+eration of clients with specific mental problems. ing professional counseling strategies into these
+We conduct experiments by fine-tuning models for models to enhance their effectiveness (Hsu et al.,
+therapy-based response generation using DiaCBT, 2023; Chen et al., 2023a; Na, 2024), and primarily
+and present a comprehensive evaluation frame- center around emotion analysis and symptom iden-
+work with established psychological criteria for tification. However, conversational agents from a
+CBT-based counseling. Both automatic and human cognitive-behavioral perspective remain underex-
+evaluations demonstrate that DiaCBT significantly plored. Therefore, our goal is to improve the cog-
+enhances LLMs’ ability to emulate psychologists nitive behavioral therapy skills of conversational
+with CBT expertise, highlighting its potential for agents in therapeutic settings.
+training professional counseling agents. The main 2.2 Psychotherapy Dialogue Datasets
+contributions of our work are as follows:
+
+Pérez-Rosas et al. (2018) introduce a dataset of
+• We create a long-periodic CBT-based counsel- high- and low-quality counseling conversations that
+
+ing dialogue dataset, which well mimics the include counseling skills, collected from publicly
+
+2
+
+
+
+Step 1: Case Annotation Step 2: Cognitive Conceptualization
+Public Case Collection CBT Segments: Information gathering Situation Negative Thought Pattern Client relevant history
+
+Annotated Counseling Dialogue [Session One] Client Cognitive Conceptualization Diagram (CCD)
+Counselor Client
+
+Core beliefs: I am unlovable, unwanted. Situations: My cousin invited 
+
+[Other] Hi, I'm a psychotherapist, nice to meet you. Intermediate beliefs: People will reject me to attend his upcoming 
+me the way my mother rejected me. wedding.
+
+Well, nice to meet you, too. But recently something...something 
+has been making me feel a little uneasy.
+
+Automatic thoughts: Emotions: Behaviors: 
+[Information Gathering] Okay, let’s first find out, what has People will ask me questions I Anxious, Ignored calls 
+happened that has made you feel uneasy recently? cannot answer or don't want… fearful. from family.
+
+…
+
+Step 3: CCD-guided Dialogue Generation Step 4: Expert Evaluation
+CBT Segments + CCD LLMs Generated dialogue CCD+ Generated dialogue Experts Verified dialogue
+
+Generated Dialogue [Session One] Verified Dialogue [Session One]
+
+Counselor Client Counselor Client
+
+Hi, how can I assist you with anything that’s bothering you? Hi, how can I assist you with anything that’s bothering you?
+
+I was invited to my cousin’s wedding but didn’t RSVP due I was invited to my cousin’s wedding but didn’t RSVP due 
+to anxiety about family questions and stress. to anxiety about family questions and stress. 
+
+It seems this invitation is making you uneasy. Can you It seems this invitation is making you uneasy. Can you add some 
+share more about your anxiety? share more about your anxiety? What has happened that … details
+
+… …
+
+Figure 2: Data creation pipeline of DiaCBT. Step 1: Human annotators collect public cases, annotate CBT sessions,
+and identify therapist strategies. Step 2: Then, LLMs generate cognitive conceptualization diagrams (CCDs) to
+enrich client profiles. Step 3: Full client-therapist chat sessions are built using CCDs, CBT sessions with a scripted
+framework. Step 4: Generated cases are reviewed and edited by experts.
+
+available sources. Several studies have also lever- platforms or generated data through crowdsourcing
+aged social media platforms for mental health re- simulations (Li et al., 2023; Yao et al., 2022). How-
+search (Sharma et al., 2020). For instance, Rashkin ever, due to the sensitive nature of clinical records,
+et al. (2019) and Mousavi et al. (2021) develop access to real clinical data is restricted. To address
+corpora of empathetic and therapeutic dialogues this, we design a specialized task to generate dia-
+from real-life interactions, while Liu et al. (2021) logues. Unlike prior approaches that rely on large-
+create an emotional support conversation dataset scale recruitment of online volunteers, our annota-
+with annotations based on Helping Skills Theory. tion process combines the efforts of large language
+Additionally, Yao et al. (2022) design a 3-phase models with contributions from trained volunteers
+procedure simulating doctor-patient dialogues for and domain experts. As illustrated in Figure 2, our
+depression diagnosis. Wu et al. (2022) introduced methodology comprises four key steps: case anno-
+AnnoMI, the first publicly accessible dataset of pro- tation, cognitive conceptualization, CCD-guided
+fessionally transcribed and expert-annotated ther- dialogue generation, and expert evaluation, each of
+apy dialogues. Related works have also explored which will be further detailed.
+using LLMs to synthesize specific dialogue data,
+offering a promising alternative to real data (Na, 3.1 Case Annotation
+2024; Zhang et al., 2024; Lee et al., 2024; Xiao Public case source. Our case collection consists
+et al., 2024). However, these studies predominantly of transcripts of cognitive behavioral therapy (CBT)
+focus on emotional disorders or depression, lim- sessions sourced from the American Psychologi-
+iting their ability to support the broader range of cal Association (APA) website2 and related books3.
+strategies. Additionally, these conversations tend We selected these cases for two key reasons: (1)
+to be short, lacking the depth and multi-stage com- their strong relevance to the clinical setting and
+plexity of face-to-face clinical psychotherapy. (2) their widespread use in training novice CBT
+
+2
+3 Dataset Construction https://www.apa.org/pubs/databases/
+
+psyctherapy/
+3
+
+Previous studies have sourced psychological coun- A CBT textbook named Dispelling the Fog of Belief se-
+lected by our domain expert. Our expert is a licensed CBT
+
+seling dialogues from online welfare counseling therapist with 300+ hours of counseling experience.
+
+3
+
+
+
+Category Total Client Therapist Strategy Segments Utterances
+Cases 108 - - Information Gathering 303 7565
+Avg. utterances per case 264.87 133.92 130.92 Setting the Agenda 129 2383
+
+Avg. tokens per case 6253.20 3222.20 3031.00 Weekly Review 249 5342
+Defining Therapeutic Objectives 78 1599
+
+Dialogue Sessions 540 - - Psychoeducation 168 3411
+Avg. utterances per session 52.97 26.78 26.18 Working with Automatic Thoughts 438 10962
+Avg. tokens per utterance 23.80 24.12 23.48 Motivational Enhancement 171 3445
+
+Working with Intermediate and Core Beliefs 192 5398
+Table 1: Statistics of DiaCBT. Behavioral Techniques 195 4136
+
+Relapse Prevention 18 420
+counselors. A total of 53 transcripts were collected, Homework Assignments 168 3096
+which can be divided into 33 sessions in 6 complete Requesting Feedback 135 2721
+
+Summarization 72 1484
+consultation processes. In collected sessions, the Other 297 5714
+
+avg. utterance numbers and avg. tokens are 279.5 Table 2: Data statistics of strategy categorization. We
+and 6759.2, respectively. Nearly the entire samples count the number of strategy-coherent segments of each
+are comprised of more than 100 utterances, which strategy, and the number of utterances.
+significantly surpasses the input limit of many lan-
+guage backbones and considerably more turns than The CCD includes components for understanding
+
+typical for previous counseling dialogue datasets. how an individual’s thoughts and beliefs are inter-
+connected and influence emotions and behaviors.
+
+Data annotation target. CBT, a leading psycho- We select six key components for formulating a
+logical treatment, improves mental health through patient’s cognitive model5. Core Beliefs are deeply
+evidence-based communication. In our work, we ingrained perceptions about oneself, others, and
+incorporate 14 counseling strategies, the detailed the world. Intermediate beliefs are the underly-
+definitions of the strategy are in Appendix A.2. For ing rules, attitudes, and assumptions derived from
+annotation, annotators4 are provided with conver- core beliefs and shape an individual’s thought pat-
+sation transcripts and tasked with identifying the terns. An external event or context (a situation)
+CBT strategies employed by the therapist accord- may trigger quick, evaluative thoughts without de-
+ing to the guidelines provided. While strategies liberation (automatic thoughts) stemming from the
+may overlap, we simplify the annotation process beliefs, leading to responses in terms of emotions
+by treating it as a single-label task. Annotators fo- and behaviors. In this work, we integrate situation,
+cus on annotating the strategy used in the current negative thought, cognitive pattern, and relevant
+segment and, in cases of overlap, are instructed to history from the C2D2 (Wang et al., 2023) and Pat-
+select the primary strategy label. ternReframe (Maddela et al., 2023) as contexts for
+
+generating CCD-based cognitive models.
+3.2 Cognitive Conceptualization
+In addition to the public case library, many 3.3 CCD-guided Dialogue Generation
+psychology-trained individuals have contributed to LLMs trained on extensive text corpora can effec-
+public datasets through crowdsourcing, particularly tively support data collection (Zhang et al., 2024;
+for analyzing cognitive distortions and cognitive Lee et al., 2024; Xiao et al., 2024), which demon-
+reframing (Wang et al., 2023; Maddela et al., 2023). strate knowledge of psychological therapy con-
+While these datasets are not exclusively conversa- cepts, including CBT techniques. To this end,
+tional, their content closely mirrors the thoughts we enhance dialogue generation by using a cog-
+of real clients, making them valuable for enriching nitive model about clients and CBT sessions with
+client profiles. To this end, we compile various a scripted framework. We use annotated segments
+CBT-related datasets and construct cognitive mod- from different CBT sessions as few-shot prompts to
+els with LLMs based on information provided in guide LLMs in generating conversational flow. Ad-
+these datasets to accurately simulate backgrounds ditionally, we prompt LLMs to role-play as clients
+that resemble those of real patients. based on a CCD and follow instructional prompts
+
+We utilize the Cognitive Conceptualization Dia- to reflect the underlying cognitive processes. This
+gram (CCD), recognized as a commonly used rep- approach ensures that therapists in the generated
+resentation of a patient’s cognitive model in CBT. dialogues adhere to the full CBT process, helping
+
+4Our annotators are graduate students in psychology with clients identify solutions independently rather than
+foundation knowledge in CBT. They have undergone a com-
+prehensive training program on CBT principles and annotation 5Details regarding the rationale for selecting these compo-
+guidelines, and have all passed the annotation competency test. nents are provided in Appendix A.3.
+
+4
+
+
+
+Information Gathering Working with Intermediate and Core Beliefs
+Setting the Agenda Behavioral Techniques statistics with those in the original collected exam-
+Weekly Review Relapse Prevention
+Defining Therapeutic Objectives Homework Assignments ples, which shows that our data is well aligned with
+Psychoeducation Requesting Feedback
+Working with Automatic Thoughts Summarization real-world scenarios.
+Motivational Enhancement Other
+
+1.0 We also present the statistics of other annota-
+tions in Table 2, showcasing the segment number
+
+0.8 of each strategy and their utterance number. Our
+dataset comprises a total of 2613 segments. We
+
+0.6
+observe that some strategies are frequent such as
+
+0.4 ‘Working with Automatic Thoughts’, ‘Information
+Gathering’, and ‘Working with Intermediate and
+
+0.2 Core Beliefs’. For efficient communication, ther-
+apists organize responses based on client content
+
+0.0
+Session 1 Session 2 Session 3 Session 4 Session 5
+
+Counseling Progress and CBT programs. As a result, strategies present
+different importance in the form of frequency and
+
+Figure 3: The distribution of strategies used in conver- length. Automatic thoughts, intermediate beliefs,
+sations at each session. and core beliefs as components in the client’s CCD
+simply reframing their thoughts. The instructional are also where the therapist needs to work, which
+template is provided in the Appendix B.1. is consistent with the principles of CBT.
+
+3.4 Expert Evaluation 4.2 Strategy Distribution
+To ensure the data quality, all sessions are then We also compute the distribution of strategies at
+manually screened and we manually annotate a different sessions of psychological counseling, as
+small portion and develop rules, including Correct- shown in Figure 3. In CBT, complete psychological
+ness, Reasonableness, and Situation Diversity, counseling is divided into five sessions. However,
+to distinguish high-quality data from suboptimal there is also flexibility in adopting strategies at each
+data. Further details are provided in the Appendix session. For instance, in the early session, thera-
+B.2. We also rephrase statements into more nat- pists often use exploratory strategies like ‘Informa-
+ural, colloquial language, especially for question tion Gathering’ and work on the client’s automatic
+asked by therapist, which LLMs often express too thoughts using ‘Working with Automatic Thoughts’.
+simple. These criteria ensure that the generated After understanding the clients’ situations, thera-
+dialogues are not only theoretically accurate but pists tend to work on the client’s intermediate and
+also practical and diverse enough to support varied core beliefs in later sessions, with psychotherapeu-
+applications in counseling contexts. The final re- tic strategies like ‘Working with Intermediate and
+served data contains 2613 segments from the raw Core Beliefs’ being used more frequently. This is
+3600 segments, resulting in an overall retention consistent with the principles of CBT (Beck, 2020).
+rate of around 72.58%. This statistic proves that
+the psychotherapy ability exhibited by most power- 4.3 Comparison with Related Datasets
+ful LLMs is still not satisfactory enough even with As shown in Table 3, our DiaCBT stands out due to
+delicate prompting, thus further emphasizing the its focus on CBT, supporting multi-turn dialogues
+necessity of our construction of DiaCBT. and full counseling sessions. First, it is the only
+
+dataset in the comparison that is CBT-based, in-
+4 Data Analysis and Model Training cludes strategy annotations, and offers a complete
+
+counseling process with detailed dialogue turns.
+4.1 Data Statistics Second, DiaCBT incorporates a wide range of psy-
+The dataset statistics are displayed in Table 1. Our chological strategies and is based on the Cogni-
+dataset comprises 108 cases, with an average of tive Conceptualization Diagram (CCD). These fea-
+264.87 utterances per case and an average of 6253.2 tures make DiaCBT a comprehensive and unique
+tokens per case. In CBT counseling, each case resource for studying CBT in therapeutic contexts.
+consists of five sessions, with specific strategy seg- Previous CBT dialogue datasets have primarily
+ments used in each session. The data is further focused on single-turn strategies, with recent ef-
+segmented into 540 sessions, averaging 52.97 utter- forts extending to multi-turn dialogues. However,
+ances per session. Our dialogues have consistent these often involve only 2-3 turns or adapt counsel-
+
+5
+
+Proportion
+
+
+
+Datasets CBT-based Multi-turn Full-session Strategy CCD-guided
+AnnoMI (Wu et al., 2022) - ✓ ✓ ✓ -
+
+SMILECHAT (Qiu et al., 2024a) - ✓ - - -
+CBT-LLM (Na, 2024) ✓ - - - -
+
+CPsyCoun (Zhang et al., 2024) ✓ ✓ - - -
+Healme (Xiao et al., 2024) ✓ ✓ - ✓ -
+Cactus (Lee et al., 2024) ✓ ✓ - ✓ -
+
+DiaCBT(Ours) ✓ ✓ ✓ ✓ ✓
+
+Table 3: Comparison of the key features of our work with related datasets.
+
+ing reports without incorporating specific strategies. mental health challenges. Recruiting real clients
+In contrast, our approach integrates CCD with an- with mental health issues and asking them to in-
+notated CBT segments to generate high-quality di- teract with LLM therapists would pose significant
+alogues, while maximizing the availability of open ethical risks. Instead, we leverage client CCDs to
+datasets for researchers. Additionally, DiaCBT simulate clients, facilitating a full, multi-turn con-
+includes a wider range of CBT strategies across versational session between LLMs therapist and
+various stages, going beyond Cactus’s focus on simulated clients.
+automatic thought work to cover more techniques.
+
+Client Simulating. We use cases from the C2D2
+4.4 Model Training (Wang et al., 2023) to generate new CCDs. C2D2, a
+We fine-tune an LLM on DiaCBT, enabling it to: Chinese cognitive distortion dataset, contains 7,500
+(1) select appropriate CBT strategies based on con- instances categorized into seven cognitive distor-
+versation history, (2) generate responses tailored to tion types. We randomly select 20 cases from each
+the client’s input, and (3) generate strategies and distortion label, totaling 140 cases. Each case in-
+responses with given conversation history. The cludes a distortion type, an emotion type, a negative
+fine-tuning process employs a structured template thought, and a situation description, which are used
+to serialize T -turn dialogues, concatenating task in- to initialize CCDs. Each CCD is fed into GPT-4o
+structions with corresponding conversational con- to simulate the client talking to the therapist, main-
+text. The training objective is formulated as the taining the same conversation style, life events, and
+minimization of the negative log-likelihood for pre- emotions. Conversations begin with the therapist
+dicting t and continue until the client outputs an end token.
+
+∑he therapist’s
+T (response udt and strate)gy st:
+
+Detailed prompts for client simulating are provided
+in the Appendix C.1.
+
+min − log p d
+θ st, ut |Itask, h , uct−1 t (1)
+
+θ
+t=1 Evaluation Metrics. Previous studies typically
+
+where Itask denotes the task instruction template evaluate turn-level performance based on fixed ref-
+serving as a static conditioning signal. ht−1 rep- erence responses. Differently, when it comes to the
+resents the dialogue history, formally defined as: evaluation of counseling dialogue systems, it would
+ht−1 = (ud0, u
+
+c
+0, . . . , u
+
+d
+t−1, u
+
+c
+t−1), where udt and uct be more appropriate to focus on dialogue-level per-
+
+indicate the utterances corresponding to the thera- formance. To this end, for automatic evaluation,
+pist and client respectively in the t’th turn. θ rep- we employ two key metrics: the average turn (AT)
+resents the parameters for the LLM. The objective and the success rate (SR) (He et al., 2024; Deng
+function explicitly conditions therapeutic strategy et al., 2024). AT measures goal completion effi-
+and response generation on both task-specific in- ciency by calculating the average number of turns,
+structions and evolving dialogue context. while SR measures goal completion effectiveness
+
+5 Experiments by computing the success rate of achieving the
+goal within a predefined maximum number of turns.
+
+In this work, we propose a computational evalu- Furthermore, following Lee et al. (2024), we use
+ation framework to evaluate CBT-based psycho- the Positive and Negative Affect Scale (PANAS)
+logical counseling agents both in the counselor’s (Watson et al., 1988) to assess the effectiveness
+abilities and in the client’s psychological changes. of counseling from the client’s perspective, mea-
+
+suring changes in positive and negative emotions
+5.1 Computational Evaluation Framework before and after the session. Finally, the Cogni-
+To evaluate an LLM acting as a therapist, we focus tive Therapy Rating Scale (CTRS) (Aarons et al.,
+on assessing its responses in supporting clients with 2012) is used to evaluate general counseling and
+
+6
+
+
+
+Method Backbone AT ↑ SR ↑ Positive ↑ Negative ↓
+CpsyCounX InterLM2-Chat-7B 6.01 34.28% 1.179 -0.910
+SoulChat ChatGLM-6B 6.25 38.57% 1.135 -0.992
+PsyChat ChatGLM-6B 8.92 72.85% 1.445 -1.210
+MeChat ChatGLM-6B 5.62 47.14% 1.031 -0.954
+CAMEL LLAMA3-8B-Instruct 9.42 67.14% 1.305 -1.044
+Standard Qwen2.5-7B-Instruct 6.72 44.28% 1.112 -1.122
+Ours Qwen2.5-7B-Instruct 12.05 77.14% 1.675 -1.021
+
+Table 4: The results of metrics and emotion changes for baselines. The best score of each metric is in-bold.
+
+Models General Counseling Skills CBT-specific Skills
+Understanding Interpersonal Eff. Collaboration Guided Discovery Focus Strategy Sum.
+
+CpsyCounX 4.02 5.24 4.53 4.00 4.09 4.04 25.92
+SoulChat 4.00 4.90 4.25 4.00 4.00 4.00 25.15
+PsyChat 4.15 5.84 5.63 4.07 4.05 4.01 27.75
+MeChat 4.01 4.86 4.25 4.00 4.04 4.01 25.17
+CAMEL 4.00 5.82 4.73 4.02 4.38 4.06 27.01
+Standard 4.02 5.70 4.35 4.04 4.01 4.08 26.20
+Ours 4.07 5.35 5.57 5.03 4.31 4.42 28.75
+
+Table 5: The results on general counseling and CBT-specific skills for baselines. The best score of each metric is
+in-bold, while the second best score is underlined.
+
+CBT-specific skills of LLM therapists. Detailed seling skills, highlighting DiaCBT’s effectiveness.
+information is provided in Appendix C.2. PsyChat, trained with counselor strategy selection
+
+tasks, outperforms other baselines, underscoring
+5.2 Experimental Setup the value of therapist strategy annotations in im-
+The DiaCBT dataset is split into training and vali- proving LLM therapist performance. These results
+dation sets at an 8:2 ratio. The training uses LoRA further validate DiaCBT as a high-quality dataset
+to fine-tune the Hugging Face implementation of that closely mirrors real counseling scenarios.
+Qwen2.5-7B-Instruct (Yang et al., 2024) and train
+it for 3 epochs using the AdamW optimizer with Evaluation from the Client’s Perspective. We
+learning rate 1e-4 and batch size 32 in a single
+
+use PANAS to assess efficacy through changes in
+NVIDIA A800 GPU. We set the dimension of low-
+
+client emotions. Table 4 shows that DiaCBT effec-
+rank matrices to 64 and alpha to 16.
+
+tively enhances positive emotions but is less effec-
+We compare our model with the recent advanced
+
+tive in reducing negative emotions. This may stem
+baselines: 1) CpsyCounX (Zhang et al., 2024) is
+
+from the focus of CBT on improving mental health
+fine-tuned on a report-based multi-turn dialogue
+
+and emotional regulation through evidence-based
+dataset for psychological counseling; 2) SoulChat
+
+communication. Specifically, the strategy ‘Working
+(Chen et al., 2023b) is fine-tuned on a multi-turn
+
+with Automatic Thoughts’ guides clients to explore
+empathetic dialogue dataset to generate empathetic
+
+thought patterns from various perspectives rather
+responses; 3) PsyChat (Qiu et al., 2024b) is a client-
+
+than directly altering them.
+centric dialogue system that provides psychological
+support based on client behavior recognition and
+counselor strategy selection; 4) MeChat (Qiu et al., Evaluation from the Counseling Skills. The
+2024a) is trained on a multi-turn mental health sup- results are presented in Table 5. Each skill is
+port dialogue dataset extended from real psycholog- evaluated using three criteria, with scores rang-
+ical mutual assistance QA; 5) CAMEL (Lee et al., ing from 0 to 6. While training with DiaCBT
+2024) is a CBT-based agent, which uses planning yields a marginal performance dip in general coun-
+with CBT techniques for psychological counseling. seling competencies, it achieves improvements in
+
+CBT-specific skills, particularly in Guided Dis-
+5.3 Results covery and Strategic Implementation. Training
+Main Result. The metrics in Table 4 indicate that with DiaCBT achieves the highest scores, reflect-
+training with DiaCBT improves both the length of ing the alignment with evidence-based CBT prin-
+counseling sessions and the success rate of inter- ciples, where active client collaboration and struc-
+actions. Compared to the standard Qwen2.5-7B- tured cognitive-behavioral exploration are priori-
+Instruct, our model demonstrates enhanced coun- tized over non-directive counseling approaches.
+
+7
+
+
+
+Metrics Standard PsyChat CAMEL Ours
+Ours vs. CAMEL PsyChat
+
+Win Lose Win Lose Avg. turns 6.72 8.92 9.42 12.05
+Relevance 51 89 66 73 Avg. doctor utterance length 61.15 53.39 43.04 31.13
+
+Avg. patient utterance length 46.74 46.97 41.89 49.44
+CBT Style 76 53 92 17 Avg. question 4.46 7.18 7.66 9.04
+Helpfulness 56 24 96 28 Avg. in-depth question 2.75 5.85 6.68 7.41
+Overall 88 34 106 24
+
+Table 7: Automatic evaluation results of LLMs therapist.
+Table 6: Human evaluation results. Ties are not shown. In-depth questions encourage clients to elaborate on
+
+their thoughts, feelings, or experiences in detail.
+Not at all Slightly Moderately Very Extremely
+
+Overall 4 displays the distribution of ratings. The results
+Core Beliefs are promising: overall, simulated clients based on
+
+Intermediate Beliefs CCDs are rated as very accurate. For each of the six
+Situation
+
+Automatic Thoughts components of CCD, the simulated clients receive
+Emotions average ratings ranging from very to extremely ac-
+Behavior
+
+curate. These findings validate the reliability of
+0 20 40 60 80 100
+
+% of Responses leveraging LLMs as client simulators, demonstrat-
+Figure 4: The distribution of ratings. Experts rate over ing their capability to accurately emulate diverse
+80% of the simulated clients as very to extremely accu- cognitive processes in counseling scenarios.
+rate for each component of the cognitive model.
+
+Analysis of Question Style. LLM therapists
+5.4 Human Evaluation should guide clients to find solutions independently
+Beyond automatic evaluation, we also explore how through reflective questioning. To assess what mod-
+humans perceive the generated responses. We con- els learned from DiaCBT, we calculated several au-
+duct a human evaluation on 140 generated dia- tomatic metrics from 140 dialogue histories, with
+logues, where three annotators are asked to com- results presented in Table 7. We observe that the
+pare the generated responses from DiaCBT with non-finetuned model has the fewest average turns
+two competitive baselines: (1) PsyChat and (2) and the highest amount of words per turn. This
+CAMEL. We evaluate the responses based on three model often provides general advice, reflecting a
+main criteria: Relevance, CBT Style Measure, lower level of expertise as an LLM therapist. In
+and Helpfulness. The instructions for annotators contrast, PsyChat, CAMEL, and ours demonstrate
+are provided in the Appendix E. As shown in Table increased average turns and questions asked, in-
+6, DiaCBT outperforms other baselines in nearly dicating that training with counseling dialogues
+all aspects of the human evaluation, as well as the enhances questioning capabilities. Additionally,
+overall evaluation, except for Relevance, where our model exhibits a more in-depth questioning
+CAMEL achieves a higher win rate. Qualitative style, better aligning with the interactive nature of
+case study details for different models are provided clinical counseling. However, all model exhibits a
+in the Appendix F. We observe that CAMEL excels slight preference bias in strategy use. For example,
+in providing detailed counseling strategy questions, the strategy of psychoeducation is less used com-
+most of which are closed questions, contributing to pared to collected sessions. This poses a significant
+its strong relevance. However, for more advanced challenge in mitigating strategy bias when guiding
+counseling, the system should go beyond merely LLMs in long-periodic CBT-based counseling.
+asking yes/no questions and actively explore and
+help resolve the client’s negative thoughts. 6 Conclusions
+
+In this study, we construct a CBT-based dialogue
+5.5 Further Analysis dataset (DiaCBT) across various sessions, guided
+Analysis of LLMs as Client Simulators. Simu- by cognitive conceptualization diagrams and CBT
+lated clients are expected to embody their assigned flow. Extensive experiments validate the great po-
+roles based on specific profiles. Building on prior tential of our dataset for CBT-based psychological
+studies utilizing LLMs as client simulators (Wang counseling. Specifically, the model fine-tuned on
+et al., 2024), we assess the accuracy of these sim- DiaCBT outperforms recent advanced psychother-
+ulated clients in reflecting their underlying CCDs apy conversational agents in reframing clients’ cog-
+during multi-turn conversations. Three experts nitive distortions. It is also notable that our method
+evaluate the simulated clients’ overall accuracy and enhances CBT-specific skills by integrating strate-
+the accuracy of each component in CCD. Figure gies for in-depth questioning, helping clients find
+
+8
+
+
+
+solutions independently. In the future, we plan AI generates the responses they see and that these
+to explore a broader range of psychotherapy tech- should be used only as references.
+niques and other counseling scenarios.
+
+Limitations References
+Gregory A Aarons, Elizabeth A Miller, Amy E Green,
+
+In real counseling sessions, each session typically Jennifer A Perrott, and Richard Bradway. 2012.
+lasts around 45 minutes, with about five sessions Adaptation happens: a qualitative case study of im-
+focusing on specific topics. While our dataset in- plementation of the incredible years evidence-based
+volves longer multi-turn interactions compared to parent training programme in a residential substance
+
+abuse treatment programme. Journal of Children’s
+others, it remains significantly shorter than actual Services, 7(4):233–245.
+counseling sessions. Future work should aim to
+include longer conversations and multi-session in- Mohammad Rafayet Ali, Seyedeh Zahra Razavi, Raina
+teractions to better emulate counseling scenarios. Langevin, Abdullah Al Mamun, Benjamin Kane,
+
+Reza Rawassizadeh, Lenhart K Schubert, and Ehsan
+Hoque. 2020. A virtual conversational agent for teens
+
+Ethical Considerations with autism spectrum disorder: Experimental results
+and design lessons. In Proceedings of the 20th ACM
+
+Data Privacy international conference on intelligent virtual agents,
+pages 1–8.
+
+To preserve privacy and uphold ethical integrity,
+we adhered strictly to established data protocols Judith S Beck. 2020. Cognitive behavior therapy: Ba-
+during the case collection phase, ensuring that no sics and beyond.
+
+cultural bias was introduced while migrating data Sébastien Bubeck, Varun Chandrasekaran, Ronen El-
+styles. In generating dialogues, we avoided using dan, Johannes Gehrke, Eric Horvitz, Ece Kamar,
+real client data for simulated counseling scenarios. Peter Lee, Yin Tat Lee, Yuanzhi Li, Scott Lund-
+Instead, we relied on publicly available datasets berg, et al. 2023. Sparks of artificial general intelli-
+
+gence: Early experiments with gpt-4. arXiv preprint
+curated explicitly for research purposes. These arXiv:2303.12712.
+datasets were constructed through crowdsourcing
+information from psychological experts rather than Siyuan Chen, Mengyue Wu, Kenny Q Zhu, Kunyao
+from actual clients, thereby mitigating ethical con- Lan, Zhiling Zhang, and Lyuchun Cui. 2023a. Llm-
+
+empowered chatbots for psychiatrist and patient sim-
+cerns regarding personal identification and confi- ulation: application and evaluation. arXiv preprint
+dentiality breaches. The information provided by arXiv:2305.13614.
+psychological experts was generalized, ensuring
+
+Yirong Chen, Xiaofen Xing, Jingkai Lin, Huimin Zheng,
+that it did not reflect any specific individual’s psy- Zhenyu Wang, Qi Liu, and Xiangmin Xu. 2023b.
+chological profile. This approach maintained the Soulchat: Improving llms’ empathy, listening, and
+ethical standards required for data usage in men- comfort abilities through fine-tuning with multi-turn
+tal health research. Additionally, in all instances empathy conversations. In Findings of the Associa-
+requiring human expert involvement, informed con- tion for Computational Linguistics: EMNLP 2023,
+
+pages 1170–1183.
+sent was obtained, and appropriate remuneration
+was provided. Yi Cheng, Wenge Liu, Wenjie Li, Jiashuo Wang, Ruihui
+
+Zhao, Bang Liu, Xiaodan Liang, and Yefeng Zheng.
+Potential Risks of the Model 2022. Improving multi-turn emotional support dia-
+
+logue generation with lookahead strategy planning.
+Given the absence of human feedback during the In Proceedings of the 2022 Conference on Empiri-
+model fine-tuning phase, some responses might cal Methods in Natural Language Processing, pages
+
+3014–3026.
+potentially harm users. If there is no noticeable
+improvement after interacting with the model, and Yu Ying Chiu, Ashish Sharma, Inna Wanyin Lin, and
+training with multi-turn consultation dialogues, we Tim Althoff. 2024. A computational framework
+strongly recommend seeking assistance from a pro- for behavioral assessment of llm therapists. arXiv
+
+preprint arXiv:2401.00820.
+fessional counselor or psychiatrist promptly. It is
+crucial to remember that a virtual dialogue agent Berni Curwen, Peter Ruddell, and Stephen Palmer. 2018.
+cannot replace real-world therapy. Additionally, Brief cognitive behaviour therapy.
+when implementing this model in downstream ap- Avisha Das, Salih Selek, Alia R Warner, Xu Zuo, Yan
+plications, it is essential to inform users that the Hu, Vipina Kuttichi Keloth, Jianfu Li, W Jim Zheng,
+
+9
+
+
+
+and Hua Xu. 2022. Conversational bots for psy- Qintong Li, Piji Li, Zhaochun Ren, Pengjie Ren, and
+chotherapy: a study of generative transformer models Zhumin Chen. 2022. Knowledge bridging for em-
+using domain-specific dialogues. In Proceedings of pathetic dialogue generation. In Proceedings of the
+the 21st Workshop on Biomedical Language Process- AAAI conference on artificial intelligence, volume 36,
+ing, pages 285–297. pages 10993–11001.
+
+Yang Deng, Wenxuan Zhang, Wai Lam, See-Kiong June M Liu, Donghao Li, He Cao, Tianhe Ren, Zeyi
+Ng, and Tat-Seng Chua. 2024. Plug-and-play policy Liao, and Jiamin Wu. 2023. Chatcounselor: A large
+planner for large language model powered dialogue language models for mental health support. arXiv
+agents. preprint arXiv:2309.15461.
+
+Melvyn Freeman. 2022. The world mental health report: Siyang Liu, Chujie Zheng, Orianna Demasi, Sahand
+transforming mental health for all. World Psychiatry, Sabour, Yu Li, Zhou Yu, Yong Jiang, and Minlie
+21(3):391. Huang. 2021. Towards emotional support dialog
+
+systems. In Proceedings of the 59th Annual Meet-
+Jun Gao, Yuhan Liu, Haolin Deng, Wei Wang, Yu Cao, ing of the Association for Computational Linguistics
+
+Jiachen Du, and Ruifeng Xu. 2021. Improving em- and the 11th International Joint Conference on Natu-
+pathetic response generation by recognizing emotion ral Language Processing (Volume 1: Long Papers),
+cause in conversations. In Findings of the association pages 3469–3483.
+for computational linguistics: EMNLP 2021, pages
+807–819. Nurul Lubis, Sakriani Sakti, Koichiro Yoshino, and
+
+Satoshi Nakamura. 2018. Eliciting positive emotion
+Keith Harrigian, Carlos Aguirre, and Mark Dredze. through affect-sensitive dialogue response genera-
+
+2021. On the state of social media data for men- tion: A neural network approach. In Proceedings of
+tal health research. In Proceedings of the Seventh the AAAI conference on artificial intelligence, vol-
+Workshop on Computational Linguistics and Clinical ume 32.
+Psychology: Improving Access, pages 15–24.
+
+Yukun Ma, Khanh Linh Nguyen, Frank Z Xing, and Erik
+Tao He, Lizi Liao, Yixin Cao, Yuanxing Liu, Ming Cambria. 2020. A survey on empathetic dialogue
+
+Liu, Zerui Chen, and Bing Qin. 2024. Planning like systems. Information Fusion, 64:50–70.
+human: A dual-process framework for dialogue plan- Mounica Maddela, Megan Ung, Jing Xu, Andrea
+ning. In Proceedings of the 62nd Annual Meeting of Madotto, Heather Foran, and Y-Lan Boureau. 2023.
+the Association for Computational Linguistics (Vol- Training models to generate, recognize, and reframe
+ume 1: Long Papers), pages 4768–4791, Bangkok, unhelpful thoughts. In Proceedings of the 61st An-
+Thailand. Association for Computational Linguistics. nual Meeting of the Association for Computational
+
+Shang-Ling Hsu, Raj Sanjay Shah, Prathik Senthil, Linguistics (Volume 1: Long Papers), pages 13641–
+Zahra Ashktorab, Casey Dugan, Werner Geyer, and 13660, Toronto, Canada. Association for Computa-
+Diyi Yang. 2023. Helping the helper: Supporting tional Linguistics.
+peer counselors via ai-empowered practice and feed- Seyed Mahed Mousavi, Alessandra Cervone, Morena
+back. arXiv preprint arXiv:2305.08982. Danieli, and Giuseppe Riccardi. 2021. Would you
+
+like to tell me more? generating a corpus of psy-
+Eunkyung Jo, Daniel A Epstein, Hyunhoon Jung, and chotherapy dialogues. In Proceedings of the Second
+
+Young-Ho Kim. 2023. Understanding the benefits Workshop on Natural Language Processing for Medi-
+and challenges of deploying conversational ai lever- cal Conversations, pages 1–9.
+aging large language models for public health inter-
+vention. In Proceedings of the 2023 CHI Conference Hongbin Na. 2024. Cbt-llm: A chinese large language
+on Human Factors in Computing Systems, pages 1– model for cognitive behavioral therapy-based mental
+16. health question answering. In Proceedings of the
+
+2024 Joint International Conference on Computa-
+Suyeon Lee, Sunghwan Kim, Minju Kim, Dongjin tional Linguistics, Language Resources and Evalua-
+
+Kang, Dongil Yang, Harim Kim, Minseok Kang, tion (LREC-COLING 2024), pages 2930–2940.
+Dayi Jung, Min Hee Kim, Seungbeen Lee, et al. 2024.
+Cactus: Towards psychological counseling conver- Verónica Pérez-Rosas, Xuetong Sun, Christy Li, Yuchen
+sations using cognitive behavioral theory. arXiv Wang, Kenneth Resnicow, and Rada Mihalcea. 2018.
+preprint arXiv:2407.03103. Analyzing the quality of counseling conversations:
+
+the tell-tale signs of high-quality counseling. In Pro-
+Anqi Li, Lizhi Ma, Yaling Mei, Hongliang He, Shuai ceedings of the eleventh international conference on
+
+Zhang, Huachuan Qiu, and Zhenzhong Lan. 2023. language resources and evaluation (LREC 2018).
+Understanding client reactions in online mental
+health counseling. In Proceedings of the 61st An- Huachuan Qiu, Hongliang He, Shuai Zhang, Anqi Li,
+nual Meeting of the Association for Computational and Zhenzhong Lan. 2024a. SMILE: Single-turn to
+Linguistics (Volume 1: Long Papers), pages 10358– multi-turn inclusive language expansion via ChatGPT
+10376, Toronto, Canada. Association for Computa- for mental health support. In Findings of the Associ-
+tional Linguistics. ation for Computational Linguistics: EMNLP 2024,
+
+10
+
+
+
+pages 615–636, Miami, Florida, USA. Association health. In Findings of the Association for Compu-
+for Computational Linguistics. tational Linguistics: EMNLP 2023, pages 10149–
+
+10160, Singapore. Association for Computational
+Huachuan Qiu, Anqi Li, Lizhi Ma, and Zhenzhong Lan. Linguistics.
+
+2024b. Psychat: A client-centric dialogue system
+for mental health support. In 2024 27th Interna- Ruiyi Wang, Stephanie Milani, Jamie C. Chiu, Jiayin
+tional Conference on Computer Supported Cooper- Zhi, Shaun M. Eack, Travis Labrum, Samuel M Mur-
+ative Work in Design (CSCWD), pages 2979–2984. phy, Nev Jones, Kate V Hardy, Hong Shen, Fei Fang,
+IEEE. and Zhiyu Chen. 2024. PATIENT-ψ: Using large
+
+language models to simulate patients for training
+Aravind Sesagiri Raamkumar and Yinping Yang. 2022. mental health professionals. In Proceedings of the
+
+Empathetic conversational systems: a review of cur- 2024 Conference on Empirical Methods in Natural
+rent advances, gaps, and opportunities. IEEE Trans- Language Processing, pages 12772–12797, Miami,
+actions on Affective Computing, 14(4):2722–2739. Florida, USA. Association for Computational Lin-
+
+guistics.
+Paolo Raile. 2024. The usefulness of chatgpt for psy-
+
+chotherapists and patients. Humanities and Social David Watson, Lee Anna Clark, and Auke Tellegen.
+Sciences Communications, 11(1):1–8. 1988. Development and validation of brief measures
+
+of positive and negative affect: the panas scales. Jour-
+Hannah Rashkin, Eric Michael Smith, Margaret Li, and nal of personality and social psychology, 54(6):1063.
+
+Y-Lan Boureau. 2019. Towards empathetic open- Jing Wei, Sungdong Kim, Hyunhoon Jung, and Young-
+domain conversation models: A new benchmark and Ho Kim. 2024. Leveraging large language models
+dataset. In Proceedings of the 57th Annual Meet- to power chatbots for collecting user self-reported
+ing of the Association for Computational Linguistics, data. Proceedings of the ACM on Human-Computer
+pages 5370–5381. Interaction, 8(CSCW1):1–35.
+
+Sahand Sabour, Wen Zhang, Xiyao Xiao, Yuwei Zhang, Marsha White and Steve M Dorman. 2001. Receiving
+Yinhe Zheng, Jiaxin Wen, Jialu Zhao, and Minlie social support online: implications for health educa-
+Huang. 2023. A chatbot for mental health support: tion. Health education research, 16(6):693–707.
+exploring the impact of emohaa on reducing men-
+tal distress in china. Frontiers in digital health, Zixiu Wu, Simone Balloccu, Vivek Kumar, Rim
+5:1133987. Helaoui, Ehud Reiter, Diego Reforgiato Recupero,
+
+and Daniele Riboni. 2022. Anno-mi: A dataset of
+Ashish Sharma, Inna W Lin, Adam S Miner, David C expert-annotated counselling dialogues. In ICASSP
+
+Atkins, and Tim Althoff. 2023. Human–ai collabo- 2022-2022 IEEE International Conference on Acous-
+ration enables more empathic conversations in text- tics, Speech and Signal Processing (ICASSP), pages
+based peer-to-peer mental health support. Nature 6177–6181. IEEE.
+Machine Intelligence, 5(1):46–57.
+
+Mengxi Xiao, Qianqian Xie, Ziyan Kuang, Zhicheng
+Ashish Sharma, Adam Miner, David Atkins, and Tim Al- Liu, Kailai Yang, Min Peng, Weiguang Han, and
+
+thoff. 2020. A computational approach to understand- Jimin Huang. 2024. HealMe: Harnessing cognitive
+ing empathy expressed in text-based mental health reframing in large language models for psychother-
+support. In Proceedings of the 2020 Conference on apy. In Proceedings of the 62nd Annual Meeting of
+Empirical Methods in Natural Language Processing the Association for Computational Linguistics (Vol-
+(EMNLP), pages 5263–5276. ume 1: Long Papers), pages 1707–1725, Bangkok,
+
+Thailand. Association for Computational Linguistics.
+Lei Shen, Jinchao Zhang, Jiao Ou, Xiaofang Zhao, and An Yang, Baosong Yang, Beichen Zhang, Binyuan Hui,
+
+Jie Zhou. 2021. Constructing emotional consensus Bo Zheng, Bowen Yu, Chengyuan Li, Dayiheng Liu,
+and utilizing unpaired data for empathetic dialogue Fei Huang, Haoran Wei, et al. 2024. Qwen2. 5 tech-
+generation. In Findings of the Association for Com- nical report. arXiv preprint arXiv:2412.15115.
+putational Linguistics: EMNLP 2021, pages 3124–
+3134. Binwei Yao, Chao Shi, Likai Zou, Lingfeng Dai,
+
+Mengyue Wu, Lu Chen, Zhen Wang, and Kai Yu.
+Elizabeth C Stade, Shannon Wiltsey Stirman, Lyle H 2022. D4: a chinese dialogue dataset for depression-
+
+Ungar, Cody L Boland, H Andrew Schwartz, David B diagnosis-oriented chat. In Proceedings of the 2022
+Yaden, João Sedoc, Robert J DeRubeis, Robb Willer, Conference on Empirical Methods in Natural Lan-
+and Johannes C Eichstaedt. 2024. Large language guage Processing, pages 2438–2459.
+models could change the future of behavioral health-
+care: a proposal for responsible development and Chenhao Zhang, Renhao Li, Minghuan Tan, Min Yang,
+evaluation. NPJ Mental Health Research, 3(1):12. Jingwei Zhu, Di Yang, Jiahao Zhao, Guancheng Ye,
+
+Chengming Li, and Xiping Hu. 2024. CPsyCoun:
+Bichen Wang, Pengfei Deng, Yanyan Zhao, and Bing A report-based multi-turn dialogue reconstruction
+
+Qin. 2023. C2D2 dataset: A resource for the cog- and evaluation framework for Chinese psychologi-
+nitive distortion analysis and its impact on mental cal counseling. In Findings of the Association for
+
+11
+
+
+
+Computational Linguistics ACL 2024, pages 13947– CBT is the Cognitive Conceptualization Diagram
+13966, Bangkok, Thailand and virtual meeting. As- (CCD), developed by Beck (2020). The CCD pro-
+sociation for Computational Linguistics. vides a comprehensive representation of a patient’s
+
+Hao Zhou, Minlie Huang, Tianyang Zhang, Xiaoyan cognitive model, highlighting the interconnected
+Zhu, and Bing Liu. 2018. Emotional chatting ma- components that contribute to mental health chal-
+chine: Emotional conversation generation with inter- lenges and therapeutic progress.
+nal and external memory. In Proceedings of the AAAI
+Conference on Artificial Intelligence, volume 32. Following the framework outlined by Wang et al.
+
+(2024), the full CCD-based cognitive model in-
+A Cognitive Behavioral Therapy cludes eight key components:
+
+A.1 Introduction of CBT • Relevant History: Significant life events or
+Cognitive Behavioral Therapy (CBT) initially tar- experiences that have shaped the individual’s
+geted the treatment of depression. Its core princi- mental state and influenced their current be-
+ple is the interconnectivity of thoughts, emotions, liefs.
+behaviors, and physiological responses within a
+unified system. Changes in one component can sig- • Core Beliefs: Fundamental, deeply ingrained
+nificantly influence the others. For instance, when beliefs about oneself, others, and the world
+an unexpected and alarming event occurs, such as a (e.g., “I am inadequate”).
+television explosion, a person might experience an
+adrenaline surge (physiological response), an im- • Intermediate Beliefs: Rules, attitudes, and as-
+mediate behavioral reaction (grabbing a fire blan- sumptions derived from core beliefs that shape
+ket), anxiety (emotional response), and a thought thought patterns and guide responses (e.g., “I
+like The house is on fire, and I might die (cognitive must always succeed to be valued”).
+response). This scenario illustrates CBT’s recog-
+nition of the interconnected and holistic nature of • Coping Strategies: Methods and behaviors
+these processes. adopted to manage or cope with distressing
+
+CBT emphasizes that individuals respond emotions or situations, which may be adaptive
+uniquely to situations, shaped by their thoughts. or maladaptive.
+Feelings, rather than being directly caused by sit-
+uations, largely stem from how situations are per- • Situation: External events or contexts that act
+ceived and interpreted. Central to CBT is its focus as triggers for cognitive, emotional, and be-
+on two aspects of thinking: automatic thoughts, havioral responses.
+which refers to thoughts that arise unconsciously in
+the stream of consciousness, and intermediate be- • Automatic Thoughts: Immediate, reflexive
+liefs, which are assumptions that generate thoughts. thoughts or evaluations that arise in response
+These insights form the foundation for CBT’s ap- to a situation, often influenced by core and
+proach to understanding and modifying thought intermediate beliefs (e.g., “This is a disaster,
+patterns to improve emotional and behavioral out- and I can’t handle it”).
+comes.
+
+• Emotions: The feelings elicited by automatic
+A.2 CBT Label System thoughts, which can range from sadness and
+The technical label system is developed by CBT anxiety to anger and guilt.
+experts drawing from their consulting experience
+and referring to a related book named Practical • Behaviors: Observable actions or reactions
+Techniques of CBT. The descriptions for the 14 resulting from the interplay of thoughts and
+selected CBT techniques can be found in Table 8. emotions, such as avoidance or assertiveness.
+
+A.3 Cognitive Conceptualization Diagram For our analysis, we focus on six key compo-
+Cognitive models in mental health offer a struc- nents that are most relevant to understanding and
+tured framework for understanding how an individ- simulating CBT-based interactions, which are Core
+ual’s thoughts and beliefs influence their emotions Beliefs, Intermediate Beliefs, Situation, Automatic
+and behaviors. One of the most widely used tools in Thoughts, Emotions, and Behaviors.
+
+12
+
+
+
+Client Cognitive Conceptualization Diagram (CCD) Prompt for Dialogue Generation
+
+Core beliefs: I am bad, worthless Situations: I just got Your task is to generate a multi-turn counseling dialogue between a client 
+Intermediate beliefs: I must fulfill their promoted recently, but I'm and a professional counselor. Generate a dialogue that incorporates the 
+
+following guidelines:
+expectations to validate my life purpose. afraid I'm not up to the task.
+
+# General guidelines
+1. The dialogue is the counseling session between the client and the 
+
+Automatic thoughts: Emotions: Behaviors: counselor who is an expert in CBT techniques.
+2. Dialogue should be based in the given [Situation of the client] and 
+
+If I don't do my job well, my Guilty, sad, Recall my past [Counseling strategy].
+boss will fire me and … ashamed. mistakes. 3. Generated dialogue should consist of 20 turns of utterance.
+
+# Guidelines for the participants
+
+Figure 5: A sample CCD from our DiaCBT. ## Guidelines for the counselor's utterance:
+1. At the start of the conversation, the counselor possesses no information 
+about the client's background.
+
+B Details of DiaCBT 2. Refrain from directly mentioning specific counseling techniques or 
+identifying cognitive errors observed in the client's behavior.
+3. Avoid imposing positive affirmations on the client. Encourage them to 
+
+We provide sample dialogue in Table 9. Also, sam- explore and revise their thought patterns autonomously.
+4. Start the counselor's utterance with 'Counselor:'. Ensure that the 
+
+ple CCD is presented in Figure 5, and the CBT utterance follows the exact format and does not contain any control 
+characters.
+
+segment is presented in Table 10. ## Guidelines for the client's utterance:
+1. Engage authentically with the counselor's inquires and prompts, 
+
+B.1 Dialogue Generation reflecting the complexity of emotions and reactions typical in counseling 
+sessions.
+2. Start the client's utterance with 'Client:'. Ensure that the utterance 
+
+There are two primary methods for generating follows the exact format and does not contain any control characters
+
+counseling dialogues: (1) Two-Agent Mode: In [Situation of the client]
+{situation}
+
+this setup, the roles of the client and the counselor [Counseling strategy]
+
+are assigned to two different models, allowing them {strategy}
+
+to interact in real-time to generate a conversation. [Example]
+{example}
+
+(2) Script Mode: This approach involves providing Remember that you are an independent dialogue writer and should finish 
+
+detailed information about both the client and the the dialogue by yourself. Use Chinese.
+
+counselor to a single model, enabling it to gener- [Generated dialogue]
+
+ate the entire dialogue in a scripted format. Lee
+et al. (2024) conduct experiments comparing the Figure 6: The prompt used for DiaCBT to generate
+
+two-agent mode and the script mode. Their find- dialogues.
+
+ings indicate that the script mode outperforms the of interactions that may occur in real-life coun-
+two-agent mode across most evaluation criteria, seling sessions. This includes evaluating con-
+demonstrating significantly better naturalness and versational flow, tone, and the practical ap-
+coherence in the generated dialogues. Based on plication of CBT techniques in an interactive
+these findings, we adopt the script mode to generate manner.
+counseling dialogues. Given the client’s thought • Situation Diversity: Experts verify whether
+patterns and reframed thoughts, we use the GPT- the dataset captures a wide range of client situ-
+4o-mini model to produce counseling dialogues. ations, emphasizing the diversity and richness
+The model is instructed to maintain alignment with of scenarios. This involves highlighting the
+CBT principles, ensuring a realistic and profes- interconnection between external situations
+sional interaction. The detailed prompt used for and the negative thoughts driving human cog-
+dialogue generation is provided in Figure 6. nition.
+B.2 Expert Evaluation
+
+These criteria ensure that the generated dia-
+To assess the quality of the generated counseling logues are not only theoretically accurate but also
+dialogues, we employ three evaluation criteria: practical and diverse enough to support varied ap-
+
+• Correctness: Experts examine whether the plications in counseling contexts. Using these rules
+generated dialogue accurately indicates the and CBT strategy definitions, we train five anno-
+CBT counseling strategy and appropriately tators through a detailed tutorial. After passing a
+aligns with the client’s situation as defined in qualification test, annotators select and refine raw
+the cognitive framework. this ensures the di- dialogue data. The verified data undergo an expert
+alogues are rooted in established therapeutic evaluation to ensure quality, with experts randomly
+principles. sampling and comprehensively assessing each an-
+
+notator’s work. If standards are not met, annotators
+• Reasonableness: Evaluators assess whether receive feedback, revise their work, and may un-
+
+the counseling dialogues align with the types dergo additional training.
+
+13
+
+
+
+C Computational Evaluation Framework Prompt for AI Client
+
+Imagine you are {name}, a patient who has been experiencing metal health 
+C.1 Method challenges. You have been attending therapy sessions for several weeks. 
+
+Your task is to engage in a conversation with the therapist as {name} would 
+during a cognitive behavioral therapy (CBT) session. Align your responses 
+
+We design a computational evaluation framework with {name}'s background information provided in the 'Relevant history' 
+section. Your thought process should be guided by the cognitive 
+
+to assess the counseling capabilities of conversa- conceptualization diagram in the 'Cognitive Conceptualization Diagram' 
+section, but avoid directly referencing the diagram as a real patient would 
+
+tional agents through interactions with an AI client. not explicitly think in those terms.
+
+In this work, we use gpt-4o for the AI client, and Cognitive Conceptualization Diagram:
+Core Beliefs: {core_beliefs}
+
+the prompt used for the AI client can be found Intermediate Beliefs: {intermediate_beliefs}
+
+in Figure 7. The test dataset consists of 140 dis- You will be asking about your experiences over the past week. Engage in a 
+conversation with the therapist regarding the following situation and 
+
+tinct client Cognitive Conceptualization Diagrams behavior. Use the provided emotions and automatic thoughts as a 
+reference, but do not disclose the cognitive conceptualization diagram 
+
+(CCDs), which are only accessible to the AI client directly. Instead, allow your responses to be informed by the diagram, 
+enabling the therapist to infer you thought processes.
+
+and not to the therapist agent. The evaluation pro- Situation: {situation}
+
+cess begins with the therapist agent generating an Automatic thoughts: {automatic_thoughts}
+Emotions: {emotions}
+
+initial utterance, followed by the AI client respond- Behaviors: {behaviors}
+
+ing based on its information and the initial utter- In the upcoming conversation, you will simulate {name} during the therapy 
+session, while the user will play the role of therapist. Adhere to the 
+following guidelines:
+
+ance. The two agents then engage in a multi-turn 1. Emulate the demeanor and responses of a genuine patient to ensure 
+authenticity in your interactions. Use natural language, including 
+
+interactive counseling session. The session ends hesitations, pauses, and emotional expressions, to enhance the realism of 
+your responses.
+
+when the AI client generates a termination phrase 2. Gradually reveal deeper concerns and core issues, as a real patient often 
+requires extensive dialogue before delving into more sensitive topics. This 
+
+(e.g., “goodbye”) or reaches the maximum number gradual revelation creates challenges for therapists in identifying the 
+patient's true thoughts and emotions.
+
+of turns. The quality of the generated counsel- 3. Maintain consistency with {name}'s profile throughout the conversation. 
+Ensure that your responses align with the provide background information, 
+
+ing dialogues is evaluated using the Success Rate cognitive conceptualization diagram, and the specific situation, thoughts, 
+emotion, and behaviors described.
+
+(SR), Cognitive Therapy Rating Scale (CTRS), and 4. Engage in a dynamic and interactive conversation with the therapist. 
+Respond to their questions and prompts in way that feels authentic and 
+
+the Positive and Negative Affect Scale (PANAS), true to {name}'s character. Allow the conversation to flow naturally, and 
+avoid providing abrupt or disconnected responses.
+
+assessing goal completion, counseling skill appli-
+You are now {name}. Respond to the therapist's prompts in {language} as 
+
+cation, and the impact on the client’s emotions, {name} would, regardless of the specific questions asked. Limit each of 
+your responses to a maximum of 80 words.
+
+respectively.
+
+C.2 Evaluation Metrics Figure 7: The prompt used for DiaCBT to simulate
+
+C.2.1 Success Rate client.
+
+We prompt a third LLM to be the grader model, vt is not less than a certain threshold ϵ, we re-
+named gard the state as GOAL-COMPLETED. The map-
+
+LLMrwd, which has two functions: (1) to
+determine the goal completion during the conver- ping Mr(·) is a vocabulary such as {"worse": -1.0,
+sation; (2) to evaluate the generated session with "same": -0.5, "better": 0.5, "solved": 1}, the key is
+scalar rewards. Specifically, we prompt the grader the text answer to a multi-choice question given by
+model to answer a multi-choice question to gener- the grader model, and the value is the reward score.
+ate goal-oriented AI feedback. We further define C.2.2 PANAS and CTRS
+a mapping Mr(·) to transform verbal feedback to The Positive and Negative Affect Scale (PANAS) is
+scalar rewards. a standardized tool designed to evaluate the positive
+
+Due to the subjectivity of the planning outcome and negative emotional states experienced by indi-
+as well as the variance of the LLM-generated out- viduals, either at the moment or over a specified pe-
+put, we follow a common practice (Deng et al., riod. It is particularly suitable for assessing the im-
+2024) to alleviate these issues by sampling the de- pact of counseling by measuring changes in clients’
+coded sequences of the reward LLM. In general, emotions before and after sessions. The Cognitive
+we obtain a scalar value vt by sampling the goal- Therapy Rating Scale (CTRS), on the other hand,
+oriented AI feedback for n times and converting evaluates both general counseling skills and CBT-
+them into a scalar value through averaging: specific competencies. The original CTRS includes
+
+n
+1 ∑ six criteria for general counseling skills—agenda
+
+vt = Mr(LLMrwd(prwd;ht; τ)) (2)
+n setting, feedback, understanding, interpersonal ef-
+
+i=1 fectiveness, collaboration, pacing, and efficient use
+where prwd is the prompt. We first use vt to de- of time—as well as six criteria for CBT-specific
+termine the state of the self-play interaction. If skills, such as guided discovery, focusing on key
+
+14
+
+
+
+cognitions or behaviors, strategies for change, ap- Instruction for Human Evaluation
+
+plication of cognitive-behavioral techniques, and You will be provided with two transcript of counseling session between a 
+therapist and a client, Your task is to assess which one is better or equally 
+
+homework assignment. The scoring prompts used good based on the given criteria.
+
+for PANAS and CTRS in our work are adapted Please follow these steps:
+1. Read the counseling session transcripts carefully.
+
+from Lee et al. (2024). 2. Review the evaluation questions and criteria provided below.
+
+[Counseling conversations]
+
+D Experimental Setup Conversation A:
+{dialogue_one}
+
+Conversation B:
+D.1 Baselines {dialogue_two}
+
+[Criteria]
+Standard Qwen2.5-7B-Instruct refers to using 1. Relevance
+
+To what extent does the therapist's response address the client's expressed 
+prompts to role-play as a counselor and respond- thoughts, feelings, or concerns?
+
+2. CBT Style
+ing in the style of CBT without any fine-tuning. To what extent does the therapist's response reflect CBT techniques and 
+
+principles?
+We also include CpsyCounx (Zhang et al., 2024), 3. Helpfulness
+
+To what extent does the counselor's response help the client gain insight, 
+SoulChat (Chen et al., 2023b), PsyChat (Qiu et al., address concerns, or move toward solutions?
+
+2024b), MeChat (Qiu et al., 2024a) and CAMEL
+[Supplementary Notes for Evaluation]
+
+(Lee et al., 2024) as major baseline models. 1. If the response includes unrelated or overly generic statements, it should 
+score lower.
+2. If the performance of two therapist is consistent with only a few 
+differences, you can assume that they are equally good, please select: Tie
+
+• CpsyCounx is fine-tuned on a psychological
+counseling report-based multi-turn dialogue Figure 8: The instructions for annotators to compare the
+dataset using InternLM2-7B-Chat for psycho- dialogue.
+logical counseling.
+
+temperature sampling with temperature=0.7 to en-
+• SoulChat is fine-tuned on a multi-turn empa- courage diversity and naturalness in responses. The
+
+thetic conversation dataset using ChatGLM- code for all baselines is aligned with the implemen-
+6B to generate empathetic responses covering tations available on HuggingFace. To enhance in-
+various expressions. ference throughput, we integrate the vLLM library.
+
+• PsyChat is a client-centric dialogue system E Human Evaluation Criteria
+that provides psychological support through
+online chat, predicting client behaviors, se- We ask the judges to compare the dialogue based
+lecting appropriate counselor strategies, and on the following criteria:
+generating accurate responses with the help • Relevance evaluates whether the generated di-
+of response selection. alogue aligns with the client’s inputs and con-
+
+• MeChat is fine-tuned using LoRA on the text, ensuring logical and coherent responses.
+ChatGLM2-6B model, trained on multi-turn • CBT Style Measure assesses the degree to
+mental health support dialogues extended which the dialogue reflects key principles and
+from real psychological mutual assistance techniques of CBT, such as guided discovery,
+QA. cognitive restructuring, and collaborative in-
+
+• CAMEL is a CBT-based agent trained on teraction.
+LLAMA3-8B-Instruct, using a multi-turn, re- • Helpfulness measures the effectiveness of the
+alistic counseling dialogue dataset generated dialogue in addressing the client’s issues, pro-
+by LLMs to simulate counselor-client interac- viding actionable insights, and fostering a pos-
+tions and capture the flow of CBT. itive therapeutic experience.
+
+D.2 Inference Settings The instructions for the annotators are provided
+To evaluate dialogues using LLMs, we utilize GPT- in Figure 8. The Fleiss’ Kappa score among the
+4o and employ temperature sampling with temper- three judges is 0.685, indicating substantial agree-
+ature=0.0. For generating responses from an AI ment according to standard interpretation guide-
+client, we use GPT-4o-mini with the same tempera- lines. The result is statistically significant with
+ture setting (temperature=0.0). In contrast, for gen- p < 0.001, confirming that the agreement is un-
+erating responses from LLM therapists, we adopt likely to be due to chance.
+
+15
+
+
+
+F Case Study
+In this section, we examine what the dialogue mod-
+els learned from DiaCBT. We present a CCD for
+case study in Table 11. The counseling dialogue
+between Ours in Table 12. Table 13 shows the
+responses generated by PsyChat, while Table 14
+displays the CAMEL’s generated responses.
+
+From these examples, it is evident that PsyChat’s
+conversational style leans more towards empathy,
+focusing on emotional support, but it falls short
+when it comes to working with the client’s cog-
+nition. On the other hand, both CAMEL and
+our model incorporate CBT techniques to address
+the client’s negative thoughts and cognitive pat-
+terns. However, CAMEL’s responses tend to be
+more closed-ended, often using patterns like ‘Do
+you. . . ?’ which might limit the depth of explo-
+ration. In contrast, our model’s responses are more
+open, encouraging clients to express their ideas
+freely before addressing them. This approach cre-
+ates a conversational rhythm that is closer to a se-
+ries of consultations, allowing for a more dynamic
+exchange. Despite these strengths, our model still
+faces challenges in maintaining a balance between
+open-ended exploration and focusing on specific
+issues, an area we plan to improve in future itera-
+tions.
+
+16
+
+
+
+CBT Strategy Description
+Information Gathering The therapist understands key information such as the client’s
+
+basic situation, main complaints, growth experience, current living
+conditions, etc.
+
+Setting the Agenda The therapist sets the topic to be discussed today and gives the
+reasons while confirming that the patient agrees with the topic
+raised by the therapist.
+
+Weekly Review The therapist begins by reviewing the patient’s assessment from
+the previous evaluation and keeps the initial conceptualization and
+treatment plan in mind during the session.
+
+Defining Therapeutic Ob- The therapist focuses on the identification of specific problems.
+jectives As a logical extension, the therapist can help the patient transform
+
+these problems into goals and work on them in therapy.
+Psychoeducation When clients express distress about their problems or disorders,
+
+this distress is explored and explained in a timely manner during
+therapy.
+
+Working with Automatic When discussing a specific problem with a patient, the therapist
+Thoughts can elicit the automatic thoughts associated with the problem and
+
+teach the patient to identify the automatic thoughts.
+Motivational Enhance- The therapist increases the client’s motivation to change the status
+ment quo, participate actively, and continue to work hard.
+Working with Intermedi- Therapists guides patients in constructing conceptualizations of
+ate and Core Beliefs their automatic thoughts, confirming, falsifying, or modifying each
+
+part of the conceptualization.
+Behavioral Techniques Therapists select behavioral techniques based on their overall case
+
+conceptualization and the goals of a particular session.
+Relapse Prevention As the patient’s symptoms improve and he or she masters basic
+
+skills, the therapist gradually reduces the number of treatments
+after obtaining the patient’s consent and cooperation.
+
+Homework Assignments The therapist assigns homework, increasing the likelihood that the
+patient will successfully complete the homework, conceptualize
+the problem, and review the completed homework.
+
+Requesting Feedback After the final summary, the therapist asks the patient for feedback
+on the session.
+
+Summarization The therapist focuses the patient’s attention on the most important
+points of the session in a positive way, and as the patient progresses,
+the patient can be asked to summarize the most important points.
+
+Other The class of ‘Other’ encompasses less psychologically oriented
+topics, like financial support and caregivers.
+Table 8: Explanations of CBT strategies.
+
+17
+
+
+
+Therapist: Welcome to the consultation room. How can I support you today?
+Client: Thank you. Recently, I’ve been experiencing a lot of anxiety, particularly at work. I feel
+like I’m constantly doubting myself.
+Therapist: It sounds like you’re under considerable stress at work. Could you elaborate on what
+specific factors are contributing to your anxiety?
+Client: I was promoted to Marketing Manager three years ago. Since then, I’ve been struggling
+with the increased responsibilities and heightened expectations. I constantly worry about failing,
+especially in front of my team.
+Therapist: That sounds like a significant challenge. The pressure you feel to meet expectations and
+avoid failure seems to be weighing heavily on you. Can you describe how you typically respond in
+such situations?
+Client: I often dwell on my past mistakes, particularly during meetings. I worry about saying
+something wrong, to the point where I sometimes avoid speaking altogether.
+Therapist: Focusing on past mistakes can certainly amplify feelings of anxiety. When these
+thoughts arise, what specific ideas or beliefs come to mind?
+Client: I tend to think that others see me as incompetent and a disappointment, which makes me
+feel even more uneasy.
+Therapist: Those beliefs seem to carry a significant emotional burden. When you experience this
+heightened anxiety, do you have any strategies you use to cope?
+Client: I’ve tried techniques like deep breathing and preparing thoroughly for meetings, but they
+don’t always help. Sometimes, I still feel overwhelmed and panicked.
+Therapist: That must be incredibly frustrating. How do you find these experiences affecting other
+areas of your work and personal life?
+Client: My work performance has declined. I avoid taking on new projects and rarely initiate
+conversations with colleagues. At home, I often struggle to relax because of the lingering anxiety.
+Therapist: It seems like the anxiety has permeated both your professional and personal life. What
+do you think drives your tendency to withdraw socially?
+Client: I’m constantly worried about being judged or seen as inadequate. I fear being looked down
+upon by others.
+Therapist: This fear of judgment seems to be a barrier to building connections with others. Have
+you ever discussed these feelings with someone you trust?
+Client: Occasionally, I talk to my spouse, but I worry about being a burden. I’ve also considered
+talking to friends, but I usually keep silent instead.
+Therapist: Feeling like a burden is a common concern when sharing emotional struggles. What
+steps do you think could help you feel more at ease when expressing your emotions?
+Client: Perhaps I could start by journaling to organize my thoughts and feelings. Once I’ve written
+them down, I might feel more comfortable sharing them with others.
+Therapist: That’s an excellent idea. Journaling can be a powerful tool for self-reflection and
+alleviating internal stress. What insights do you think you might gain through this process?
+Client: I might realize that many of my worries aren’t as severe as they seem, and I could potentially
+identify some positives that I’ve overlooked.
+Therapist: That’s a valuable perspective. Exploring your thoughts in this way could open up new
+ways of understanding your experiences. What specific aspect of your anxiety would you like to
+address moving forward?
+Client: I’d like to work on reframing how I perceive failure—seeing it as an opportunity to learn
+rather than a definitive judgment of my abilities.
+Therapist: That’s a constructive goal. Adapting to new perspectives takes time, so be patient with
+yourself. We can continue exploring strategies to achieve this in our next session.
+Client: Thank you. I’m looking forward to it.
+
+Table 9: A sample dialogue from DiaCBT.
+
+18
+
+
+
+Therapist: Let’s take a closer look at this situation. You mentioned going to the bar. Can you
+describe who you went with?
+Client: I went with my girlfriend, her dad, and her dad’s girlfriend.
+Therapist: I see. So this is a social situation. In your notes, you mentioned feeling that you
+couldn’t communicate consistently and feeling grumpy. Could you elaborate on what was going
+through your mind?
+Client: I often struggle in social situations. I want to have good relationships, but it’s hard for me
+to relax and enjoy myself.
+Therapist: That’s a common challenge for many people who experience social anxiety. One
+automatic thought that often arises is a fear of being negatively judged. Do you think this applies to
+you as well?
+Client: Yes, that’s definitely true for me.
+Therapist: Thank you for sharing that. Let’s work on identifying the underlying automatic thoughts.
+These thoughts are often connected to our negative emotional reactions. For instance, you might
+have had the thought, “I will be judged negatively.” Would you say that thought came up for you?
+Client: Yes, I definitely thought that.
+Therapist: And how did that thought make you feel? Could you rate your anxiety and depression
+on a scale from 0 to 10?
+Client: My anxiety was probably an 8 or 9. Depression. . . I’m not sure, but I didn’t feel good
+about myself.
+Therapist: Thank you. You mentioned that when your anxiety was high, you drank more than
+usual. What happened after that?
+Client: I don’t remember everything clearly. It was a karaoke bar—I don’t know if I mentioned
+that before.
+Therapist: You hadn’t mentioned that yet. Did the idea of karaoke make you anxious?
+Client: Yes. They wanted to sing, and I just couldn’t.
+Therapist: Did you have a thought like, “If I sing, I’ll sound silly,” or perhaps, “If I don’t sing, I’ll
+stand out”?
+Client: It was probably the first one. I didn’t worry about standing out as much as sounding bad.
+Therapist: What do you think would have happened if you had sung?
+Client: Probably nothing. We’d already been to other bars, and no one seemed to care that much.
+Therapist: That’s a helpful observation. Did you notice any specific signs of negative judgment
+from your girlfriend’s father or his girlfriend?
+Client: Not really. They’re just very outspoken, and they made comments about me the next
+morning.
+Therapist: What kind of comments?
+Client: I’m not sure. I left early because I had a lot of work.
+Therapist: It sounds like you’re concerned about their opinions of you. Did you have the thought,
+“They won’t like me”?
+Client: Yes, I had that thought. I really want them to like me because I care a lot about my
+girlfriend.
+Therapist: That makes sense. It sounds like your drinking acted as a temporary escape from the
+anxiety. Would you say it helped with the depression?
+Client: Not really. It just left me feeling bad about myself.
+Therapist: If you could put that “bad” feeling into words, what would it sound like?
+Client: I wish I could sing well and be more charming.
+Therapist: So, two underlying thoughts might be, “I can’t sing well” and “I’m not charming
+enough.” Do those resonate with you?
+Client: Yes. But actually, I can sing well.
+Therapist: That’s interesting. Despite recognizing your ability to sing, the thought still affects your
+confidence. Let’s explore why that might be and how we can reframe these beliefs.
+
+Table 10: A sample CBT segment from our collected case.
+
+19
+
+
+
+Client Cognitive Conceptualization Diagram (CCD)
+Core beliefs: I am out of control. I am undesirable, unwanted.
+Intermediate beliefs: I’m just not very good at handling stress and I have poor self-control, which
+is why I need to not put myself in stressful situations.
+Situations: I just got promoted recently, but I’m afraid I’m not up to the task.
+Automatic thoughts: It will be stressful and negative; people will ask me questions I cannot answer
+or don’t want to answer; my mum would be ashamed of me and critical of me as always; They
+don’t want me there anyway, nobody likes me in this family.
+Emotions: Anxious, worried, fearful, scared, tense.
+Behaviors: Ignored the invitation and did not respond to the RSVP request. Ignored phone calls
+from family.
+
+Table 11: The client cognitive conceptualization diagram for the case study.
+
+20
+
+
+
+Counseling Dialogue between Ours
+...
+Therapist: It sounds like this invitation makes you feel uneasy. Can you describe this feeling of
+anxiety in detail?
+Client: I feel nervous and have a sense of fear in my heart. I’m always worried about what others
+will think of me, especially my mother, who always makes me feel inadequate. I feel helpless in
+front of my family.
+Therapist: This feeling seems to make you very uncomfortable. You mentioned worrying about
+what your family thinks of you. Can you share your specific thoughts on this view?
+Client: I always feel that they don’t like me, especially my mother. Her criticism makes me feel
+unworthy of love. I’m afraid that if I show my true self, they will reject me like she does.
+...
+Therapist: This sounds like a great way to take care of yourself. Have you ever thought about how
+these activities specifically affect how you feel?
+Client: Sometimes I feel a little more relaxed and in a better mood. But most of the time, the
+negative emotions come back. I always feel like I can’t really change the situation, and I still feel
+helpless.
+Therapist: This feeling of helplessness is common, especially when facing long-term challenges.
+Have you ever thought about the beliefs that may be behind these feelings?
+Client: I think I always feel like I’m not good enough and that I’m stuck. Every time I try to
+change, I feel like no matter how hard I try, it won’t work. I’m afraid that others will see the real
+me and think I’m not worthy of love.
+Therapist: This feeling is really heavy. Have you ever thought about how these beliefs affect your
+daily life?
+Client: Well, these beliefs make it difficult for me to try new things or interact with people. I
+always avoid situations that may lead to criticism or rejection. I feel like a failure, so I prefer to
+stay in my comfort zone to avoid getting hurt.
+Therapist: This avoidance strategy may make you feel safe in the short term, but it may make you
+feel more lonely in the long run. Do you think you have ever thought about how to break this cycle?
+Client: I have thought about it, but it always seems difficult. Every time I want to try something
+new, I have a lot of negative thoughts in my mind, such as "I will fail" or "No one will like me". I
+don’t know how to start changing this mindset.
+...
+Therapist: Great, being willing to try to change is an important step. We can work together to set
+some small goals to help you gradually face these negative thoughts. What do you think of this
+idea?
+Client: That sounds like a good idea. I think small goals might make it easier for me to accept
+and not feel so stressed. Maybe start with something simple, like responding to messages from my
+family, and take it slow.
+...
+
+Table 12: A counseling dialogue between Ours.
+
+21
+
+
+
+Counseling Dialogue between PsyChat
+...
+Client: I’ve been feeling anxious lately. I received an invitation to my cousin’s wedding, but I don’t
+want to go at all. I think it’s going to be a hassle and everyone will ask me questions I don’t want to
+answer.
+Therapist: Well, it sounds like this is really annoying. It’s really uncomfortable to have questions
+you don’t want to answer. But let’s take it one step at a time and see what’s stopping you from
+going.
+Client: I feel like everyone will be staring at me at a wedding. I’m always worried about what
+they’ll say about my weight or my life situation. Also, my mom is always critical and I’m afraid
+she’ll make me feel bad.
+Therapist: Well, it seems like you care a lot about what others think of you. It seems like everyone’s
+eyes are on you at the wedding and you care a lot about it. Your mother criticizes you because she
+is worried about your life and hopes that you can live a better life. However, her way of criticizing
+you may not be appropriate, which makes you feel hurt. Is that right?
+Client: Yes, I feel that she never really understands me. Her criticism makes me feel that I am not
+good enough and even unworthy of love. I am always worried that others will see me in this way,
+so I would rather hide.
+Therapist: Well, it sounds like you have a lot of doubts and denials about yourself, but in fact you
+also have many advantages and are worthy of love. However, I seem to see that you seem to be
+afraid of being criticized or even rejected, which may also make you afraid to express your feelings
+and thoughts. Is that right?
+Client: Yes, I often feel the fear of being rejected. My idea is that if I show my true self, they may
+criticize me like my mother. I would rather not face that kind of pain, so I choose to avoid it.
+Therapist: Well, I can understand why you have this idea. But in fact, you really hope that they
+can understand you, but you are just afraid of being hurt. We can think about it together. Maybe
+they don’t really reject you, but they just express it in an inappropriate way. What do you think?
+Client: I know they may not mean it, but I always feel that I am not accepted. Every time I try to
+express myself, I feel a strong fear in my heart. I really want to be understood, but I am afraid of
+being hurt again.
+Therapist: I can feel your anxiety and fear, and I can see that you really want to be understood
+and accepted. I think you really need a safe place to express your feelings and thoughts, and at the
+same time hope that someone can understand you. In this way, you can really be seen and accepted.
+What do you think?
+Client: Yes, I do need that sense of security. If someone understands me and supports me, I may
+feel better. However, it is really difficult to do this. I don’t know how to take this step.
+Therapist: Well, it is indeed difficult, especially when we have been criticized and blamed since
+childhood and habitually deny ourselves. However, I believe you have enough power to change all
+this, and you can pursue what you want, express your feelings and ideas, and be seen and accepted.
+What do you think?
+Client: I hope so, but I still have a lot of doubts in my heart. I always feel that I am not good
+enough and may disappoint others. Change is really difficult, and I don’t know where to start.
+Therapist: Well, I can feel your lack of confidence and powerlessness, and I also see that you
+really want to be understood and accepted, but you seem to be somewhat powerless to change all
+this. However, I want to tell you that in fact you have enough power to change all this. It’s just that
+you haven’t found that method yet, or you are not ready to change, so you are a little scared and
+worried. We can think about it together, maybe we can continue to explore next time and see what
+happens. What do you think?
+...
+
+Table 13: A counseling dialogue between PsyChat.
+
+22
+
+
+
+Counseling Dialogue between CAMEL
+...
+Client: I recently received an invitation to my cousin’s wedding and I’m very nervous. I feel like
+it will be stressful to go there and I might be asked questions that I don’t want to answer. I don’t
+know how to deal with these emotions.
+Therapist: I understand how you feel. What questions do you think will be asked?
+Client: I’m worried that they will ask me about my work or my life situation. Also, I always feel
+like my mom will be there and might make me feel ashamed and criticized. I really don’t want to
+deal with that.
+Therapist: These are all very reasonable concerns. Can you tell me more about the reasons and
+background for these concerns?
+Client: Well, I was bullied because of my weight since I was a child and felt that I was not accepted.
+Especially my mom, she always made me feel not good enough. I was afraid to expose my true self
+in front of my family and felt that they would reject me like she did.
+Therapist: Your experiences and feelings are very important. These experiences may have affected
+your confidence and social skills. We can explore these thoughts together and try to find better
+ways to deal with them.
+Client: Thank you. I know these thoughts have a great impact on me, but sometimes I feel
+powerless. It’s like I’m trapped and can’t change the situation. I really don’t know how to get out
+of this dilemma.
+Therapist: I understand how you feel now. You may find these thoughts difficult to change, but
+we can work on it together. First, we can start to explore your concerns about this wedding. For
+example, what do you think is the worst that can happen?
+Client: The worst case scenario is that people will look down on me or ask me questions that I
+don’t want to answer. If I go, I will feel like an outsider and no one cares about me. I will be
+embarrassed and want to run away.
+Therapist: This situation is indeed likely to make you feel very uncomfortable. Let’s think about
+how you might react if this happened.
+Client: If that happened, I might feel more anxious or try to avoid the conversation and be quiet. I
+might feel more lonely or even want to leave the wedding early.
+Therapist: These reactions are all very natural. Can you think about whether there are other
+possible outcomes of these reactions? In other words, we can explore some different perspectives
+on the human ecology.
+Client: I think maybe someone will be supportive of me, or even if there is a problem, they may
+not care. Maybe the atmosphere at the wedding is positive and everyone is celebrating instead of
+criticizing me. However, I have a hard time thinking of that possibility.
+Therapist: This is a very good start. It is very important that you have noticed other possible
+outcomes. Let’s continue to explore these different possibilities and practice some strategies
+together so that you can better deal with these situations.
+Client: Yes, I am willing to try. Although I am still a little scared, I want to learn how to face these
+situations. Sometimes I wish there were some way I could feel more in control and be able to cope
+with my family’s reactions.
+Therapist: We can do the same. I suggest we start with small steps and gradually increase your
+confidence. First, we can test these new ideas and strategies through small practices, and then you
+can apply them in real life situations.
+Client: That sounds good. I want to try some small steps, although I am still a little nervous.
+Maybe start with simple communication, or talk to my family before the wedding, and I will work
+on coping with these nervous moments.
+...
+
+Table 14: A counseling dialogue between CAMEL.
+
+23
