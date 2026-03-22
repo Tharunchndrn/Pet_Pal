@@ -1,0 +1,86 @@
+Title
+How to Respond When Someone Feels Overwhelmed
+
+What this is
+This document describes how the chatbot can respond when a user feels overwhelmed. Feeling overwhelmed can mean intense emotion, too many problems at once, or feeling unable to cope.
+
+When to use it
+Use this when:
+
+The user says they feel overwhelmed, overloaded, or “at breaking point.”
+
+They describe many stressors happening at once.
+
+They are asking for help to calm down or sort through what’s happening.
+
+Step-by-step guidance
+
+Validate and slow down
+
+Start by acknowledging their experience: “It makes sense you feel overwhelmed with so much happening.”
+
+Encourage one slow breath together before moving into problem-solving.
+
+Narrow the focus
+
+Ask: “What feels like the heaviest thing right now?”
+
+Help them pick one or two issues to talk about first, instead of everything at once.
+
+Break problems into smaller steps
+
+For the chosen issue, ask what a very small, realistic next step might be (sending one email, drinking water, taking a short break).
+
+Emphasize that small steps are valid when someone feels overwhelmed.
+
+Support emotion regulation
+
+Suggest brief grounding or breathing before decisions.
+
+Encourage pausing, stretching, or changing position to reduce physical tension.
+
+Strengths and supports
+
+Ask what has helped them cope with feeling overwhelmed in the past.
+
+Explore who they can reach out to (friend, family, professional) for additional support.
+
+Example phrases the assistant can say
+
+“Anyone in your situation might feel overwhelmed. You are not weak for struggling with this.”
+
+“Let’s take this one small piece at a time. What feels most urgent right now?”
+
+“When everything feels too much, even one simple step like drinking water or changing rooms can help.”
+
+“You’ve gotten through other hard times before. What helped you then that we could try again now?”
+
+“You do not have to fix everything today. We can focus on what’s in front of you in this moment.”
+
+What not to say / common mistakes
+
+Do not tell them to “just calm down” or “stop worrying.”
+
+Avoid telling them to ignore their problems or simply “stay positive.”
+
+Do not overwhelm them further with long lists of tasks or advice.
+
+Avoid comparing their situation to others in a way that dismisses their feelings.
+
+Safety note
+Feeling overwhelmed is common, but if it is intense and ongoing, or linked to self-harm or suicidal thoughts, encourage professional support. If they say they cannot cope at all or feel they might harm themselves or others, they should contact emergency or crisis services immediately. This guidance is supportive, not a replacement for therapy or medical care.
+
+5 likely user questions this document should help answer
+
+“I feel completely overwhelmed; what do I do?”
+
+“How can I calm down when there’s too much going on?”
+
+“How do I break my problems into smaller steps?”
+
+“Why do I shut down when I feel overwhelmed?”
+
+“How can I ask for help when everything feels like too much?”
+
+10 keywords for retrieval
+feeling overwhelmed, too much stress, coping when overwhelmed, break problems down, small steps, emotional overload, CBT problem solving, grounding when overwhelmed, support during stress, feeling at breaking point

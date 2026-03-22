@@ -1,0 +1,345 @@
+﻿RAG Knowledge Document: Comprehensive CBT Skills Primer
+
+Source: Think CBT Workbook - A Cognitive Behavioural Therapy Skills Primer and Self-help Manual (Adapted)
+
+What This Is
+This document provides a comprehensive set of Cognitive Behavioural Therapy (CBT) tools and exercises for understanding and changing unhelpful patterns of thinking and behaviour. CBT is a structured, time-focused, practical approach to overcoming a wide range of psychological, emotional, and behavioural problems. It works on the principle that we can change how we feel by changing what we think and what we do.
+
+When to Use This Information
+Use this guide for more in-depth CBT work. It covers everything from initial assessment and goal setting to advanced techniques like cognitive restructuring, behavioural experiments, and defusion. It is suitable for working through a specific problem with a therapist or as a structured self-help resource.
+
+Getting Started: Assessment and Goals
+
+Problem Statements
+The problem is not the distressing feeling itself, but the factors that keep it going. Express problems in terms of unhelpful thinking patterns and behaviours.
+
+Example:
+Problem: Panic attacks
+Unhelpful Behaviours: Avoiding groups, public transport, asking for reassurance, worrying about health
+What I Don't Know: Why panic attacks happen; how to stop them
+
+Problem: Low self-confidence
+Unhelpful Behaviours: Submissive behaviour, working excessive hours, constantly comparing to others
+What I Don't Know: How to be assertive; how to communicate needs
+
+SMART Goals
+Goals should be:
+Specific – Expressed in concrete terms
+Meaningful – Consistent with personal values
+Adaptive – Helpful and relevant to the problem
+Realistic – Proportionate and achievable
+Timebound – Clear timescales or frequency
+
+Example Start Goals:
+
+To learn how to manage my panic attacks and re-engage in travel within three months.
+
+To improve resilience and assertiveness when dealing with difficult situations.
+
+To re-engage in meaningful family relationships by contacting family twice weekly.
+
+Personal Values
+Identifying values provides a basis for reconnecting with identity. Values guide the why behind your goals. Common values include: acceptance, assertiveness, authenticity, compassion, courage, fairness, flexibility, honesty, patience, respect, self-discipline.
+
+Understanding How Problems Are Maintained
+
+The Cross-Sectional Assessment
+This maps out how the current problem is maintained by four interconnected areas:
+
+Trigger – Thoughts – Feelings – Behaviours – Physical Sensations
+
+Thoughts: Negative Automatic Thoughts (NATs) like I can't cope, They don't like me.
+Feelings: Emotional responses like anxiety, depression, anger, guilt.
+Behaviours: What we do or avoid—withdrawing, procrastinating, arguing, reassurance seeking.
+Physical Sensations: Tension, fatigue, shaking, nausea, palpitations.
+
+The key principle: whilst everything is interconnected, it's only by altering our thoughts and behaviours that we can change our emotional and physical reactions.
+
+Layers of Cognition
+Unhelpful thinking operates on four levels:
+
+Negative Automatic Thoughts (NATs): Fleeting, automatic thoughts (e.g., I can't cope, They don't like me).
+
+Rigid Rules: Inflexible demands expressed as musts and shoulds (e.g., I must always be strong, People can't be trusted).
+
+Conditional Assumptions: If-then statements (e.g., If I am criticised, then I am no good).
+
+Negative Core Beliefs: Fundamental beliefs about self, others, and the world (e.g., I am worthless, I am a failure, I am unlovable).
+
+Cognitive Distortions (Thinking Traps)
+Common thinking process errors include:
+
+Catastrophising: Assuming the worst possible outcome.
+Polarised Thinking: Black-and-white, all-or-nothing thinking.
+Over-generalising: Making sweeping inferences from a single event.
+Negative Filter: Focusing only on negatives, ignoring positives.
+Jumping to Conclusions: Drawing conclusions without checking facts.
+Mind-Reading: Assuming you know what others are thinking.
+Emotional Reasoning: Interpreting feelings as facts.
+Musts/Shoulds: Expressing preferences as rigid demands.
+Labelling: Using global labels based on a single characteristic.
+Blaming: Attributing blame to self or others.
+
+Core CBT Techniques
+
+CBT Thought Record
+A structured tool for challenging negative thoughts:
+
+Situation/Trigger: What happened?
+Initial Reaction: How did I feel? (Rate 0-100%)
+Negative Automatic Thoughts: What went through my mind? What is the hot thought?
+Supporting Evidence: Facts that support the hot thought.
+Opposing Evidence: Facts that oppose the hot thought.
+Balanced Alternative Thought: A realistic, plausible interpretation.
+Outcome/Learning: What did I learn? Re-rate emotion.
+
+Cognitive Disputation (Putting Thoughts on Trial)
+Test the evidence for and against a negative thought:
+
+Prosecution: What facts support the negative interpretation?
+Defence: What facts support a positive or alternative interpretation?
+Neutral Witness: What would an independent observer say?
+Judgement: What is a balanced, realistic, and fair interpretation?
+
+The CBT Continuum
+Use this to challenge polarised beliefs by placing them on a spectrum from 0% to 100%.
+
+Example:
+Initial Belief: I am not fit to be a parent (0%)
+Criteria for 0%: Ignores child's needs, neglectful, abusive.
+Criteria for 100%: Prioritises child's needs, nurturing, protective.
+Revised Belief: I am a caring parent who sometimes makes mistakes (75%)
+
+Responsibility Pie Chart
+Challenge unrealistic beliefs about blame or responsibility by identifying all contributing factors.
+
+Example:
+Initial Belief: I am to blame for the car accident (99%)
+Factors: Other driver speeding (40%), tailgating (20%), icy road (10%), poor visibility (10%), children screaming (5%), busy road (5%), difficulty concentrating (10%)
+Revised Belief: I cannot control everything that happens on the road (97%)
+
+Cognitive Defusion and Acceptance
+
+Defusion means unhooking from the literal meaning of thoughts. When we fuse with thoughts, we treat them as facts or identity.
+
+Techniques:
+
+Noticing the Thought: Simply observe thoughts without judgement. Write them down. Notice the difference between the thinker and the thought.
+
+Four Layers of Abstraction:
+
+Write the distressing thought.
+
+I am having the thought that [thought].
+
+I have noticed that I am having the thought that [thought].
+
+I am aware that I have noticed that I am having the thought that [thought].
+
+Semantic Satiation: Repeat the thought out loud for two minutes until it loses its meaning and becomes just a sound.
+
+Characterisation Game: Say the thought in different voices (e.g., Micky Mouse, operatic, a different accent) to break its emotional impact.
+
+Word Translation: Translate the thought into another language. Notice how the emotional impact changes even though the meaning is identical.
+
+Leaves on a Stream: Visualise placing your thoughts on leaves floating down a stream, watching them drift by without engaging.
+
+Taming the APE:
+Acknowledge: Notice thoughts, images, memories, impulses, and emotions.
+Physicalise: Notice where the feelings are held in the body. What colour, temperature, texture, size, shape?
+Engage: Shift focus to the external environment. What can you see, hear, feel, taste, and smell?
+
+Behavioural Change Techniques
+
+Functional Analysis (ABC Model)
+Understand what triggers and maintains unhelpful behaviours:
+
+Antecedent: What happens immediately before the behaviour?
+Behaviour: What is the unhelpful behaviour I want to change?
+Consequence: What reinforces this behaviour? (Positive reinforcement = gaining something; Negative reinforcement = escaping something)
+
+PACE Activity Exercise
+Balance your activities across four domains to improve wellbeing:
+
+Physical: Exercise, healthy eating, rest, sleep.
+Achievement: Work, study, chores, caring.
+Connection: Friends, family, community.
+Enjoyment: Play, interests, relaxation, pleasure.
+
+Principle: If you want to change how you feel, start by changing what you do.
+
+Graded Exposure Hierarchy
+
+List feared situations.
+
+Rank them from least to most distressing (0-10 scale).
+
+Identify safety/avoidance behaviours.
+
+Start with the lowest-ranked situation.
+
+Repeat until anxiety reduces by at least half.
+
+Move to the next step.
+
+Key Principles:
+
+Choose activities in the same theme cluster.
+
+Start at 3-5 on the 0-10 anxiety scale.
+
+Repetition is essential—repeat until anxiety falls below 2.
+
+The goal is not to avoid anxiety but to normalise your response to it.
+
+Behavioural Experiments
+Test negative assumptions by trying a different behaviour:
+
+Target Belief: What belief are you testing? (Rate 0-100%)
+
+Alternative Belief: What is a plausible alternative? (Rate 0-100%)
+
+Situation: What situation will you test this in?
+
+Prediction: What do you predict will happen?
+
+Coping Strategies: How will you manage without avoidance?
+
+Outcome: What actually happened?
+
+Evaluation: How did this compare to predictions?
+
+Revised Beliefs: Re-rate the original and alternative beliefs.
+
+Assertive Communication
+Three communication styles:
+
+Submissive (You lose, I lose): Prioritising others' needs at personal cost; leads to being taken for granted.
+Aggressive (You lose, I win): Prioritising own needs over others; leads to alienation.
+Assertive (I win, you win): Balancing needs of both sides; clearly presenting needs while listening to others.
+
+Assertive Practice: I understand you need help with this project, and I want to support you. I'm currently at capacity, so I can take this on if we can reprioritise my other tasks.
+
+Managing Worry
+
+The Reality of Worry
+
+Approximately 85% of things we worry about never happen.
+
+Of the remaining 15%, about 11% are less severe than predicted.
+
+Only about 4% are as predicted—and worrying didn't change the outcome.
+
+Worry Suspension Technique
+
+Set a daily worry time (e.g., 4:30pm, not before bed).
+
+When a worry arises, write it down and say, I will worry about this at my worry time.
+
+At worry time, review each worry:
+
+What is the hard evidence supporting it?
+
+What is the hard evidence against it?
+
+What is the worst that could happen?
+
+What is the most likely outcome?
+
+What would I say to a friend?
+
+For solvable worries, use problem-solving.
+
+For hypothetical worries, practice letting go.
+
+Sleep Well Assessment
+
+You are sleeping well if:
+
+You get to sleep within 30 minutes.
+
+You spend 85% of your time in bed asleep.
+
+You only wake once for more than 5 minutes.
+
+If you wake, you're back to sleep within 20 minutes.
+
+Sleep Hygiene Factors
+
+Wind-down routine: Avoid screens, caffeine, alcohol, nicotine before bed.
+
+Daylight exposure: Get morning daylight; dim lights in evening.
+
+Exercise: Regular daytime exercise promotes sleep.
+
+Bed for sleep: Use bedroom only for sleep and intimacy.
+
+Get up if awake: If not asleep in 15-20 minutes, get out of bed until sleepy.
+
+Mindfulness Micro-Exercises
+
+Abdominal Breathing
+
+Sit quietly with feet flat on floor, hands on belly.
+
+Tune into natural rhythm of breath.
+
+Let belly rise on in-breath, fall on out-breath.
+
+Let go of tension on each out-breath.
+
+Five-Minute Daily Recharge
+
+Lie down, make fake yawns to relax jaw.
+
+Do soft belly breathing.
+
+Let go of tension with each out-breath.
+
+Shift focus to noticing thoughts, feelings, sensations.
+
+Let gravity hold you as you relax deeply.
+
+Personal Resilience Plan
+
+Use this to capture learning and prevent relapse:
+
+What did I learn about the old problem?
+
+What are my triggers and high-risk situations?
+
+What are key signs I'm slipping into old habits? (Thoughts/feelings/behaviours/symptoms)
+
+What CBT strategies will I use in case of relapse?
+
+What CBT strategies will I continue to apply to improve resilience?
+
+The Chain Metaphor
+
+I was carrying a terrible load at the end of a long and heavy chain. This got in the way and dragged me down. People said, Why don't you just let go? But I worried there was something important at the end.
+
+Over time, my chain became my habit, my normality, my sense of control.
+
+When I finally found the courage to examine what was at the end, I realised it was just the weight of the chain itself. The links were my memories, beliefs, rules, misinterpretations, worries, and unhelpful thoughts.
+
+When I understood that I was bearing the weight of my own chain, I was finally willing to let go of the struggle.
+
+Likely User Questions
+
+How do I set SMART goals for therapy?
+
+What are cognitive distortions and how do I spot mine?
+
+How do I challenge a negative core belief?
+
+What is the difference between submissive, assertive, and aggressive communication?
+
+How do I use a thought record to challenge negative thinking?
+
+What is cognitive defusion and how do I practise it?
+
+How do I create a graded exposure ladder for my fear?
+
+Keywords for Retrieval
+
+CBT, cognitive behavioural therapy, negative automatic thoughts, NATs, core beliefs, cognitive distortions, thought record, cognitive restructuring, behavioural activation, graded exposure, functional analysis, ABC model, worry, worry time, problem solving, assertiveness, sleep hygiene, mindfulness, defusion, acceptance, behavioural experiment, continuum, pie chart, responsibility pie, SMART goals, personal values, resilience plan, relapse prevention, PACE, submissive communication, aggressive communication, assertive communication, semantic satiation, grounding, leaves on a stream

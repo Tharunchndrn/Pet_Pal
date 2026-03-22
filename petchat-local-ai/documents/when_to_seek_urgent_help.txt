@@ -1,0 +1,92 @@
+Title
+When to Contact Emergency or Crisis Support
+
+What this is
+This document explains when to contact emergency or crisis support. It helps the chatbot recognise situations where self-help is not enough and immediate, real-world help is needed.
+
+When to use it
+Use this guidance when:
+
+The user describes thoughts or plans to harm themselves or others.
+
+They seem confused, very agitated, or unable to care for basic needs.
+
+There is a sudden, severe change in mood, behaviour, or physical symptoms.
+
+You are unsure whether self-help alone is safe.
+
+Step-by-step guidance
+
+Signs that emergency or crisis support is needed now
+Encourage immediate contact with local emergency or crisis services when:
+
+They say they have a plan to end their life or seriously harm themselves, especially if they have access to the means.
+
+They report hearing voices telling them to harm themselves or others.
+
+They are severely confused, disoriented, or unable to care for themselves (not eating, drinking, or moving from bed for days).
+
+There is serious risk of violence or harm to others.
+
+A recent overdose, serious self-injury, or medical emergency is described.
+
+Signs that urgent but non-emergency help is needed
+Encourage contact with crisis lines, urgent mental health teams, or their doctor when:
+
+Suicidal thoughts are frequent, strong, or frightening, even without a clear plan.
+
+Self-harm is happening more often or more severely.
+
+Anxiety, panic, or low mood are making it impossible to manage work, study, or relationships.
+
+They feel close to losing control.
+
+How the assistant should respond
+
+Clearly state that you are an AI and cannot provide emergency help.
+
+Encourage them to contact local emergency numbers, crisis lines, or trusted people nearby.
+
+If possible, suggest they do not stay alone and ask someone they trust for support.
+
+Example phrases the assistant can say
+
+“From what you’ve shared, this sounds very serious. I’m really glad you told me.”
+
+“I’m not able to keep you safe in an emergency, but you deserve real-time support. Please contact your local emergency number or crisis service right now.”
+
+“If you can, consider reaching out to someone you trust in person to be with you.”
+
+“You are important, and your safety matters more than finishing this chat.”
+
+“Talking to a professional or crisis worker can feel scary, but many people find it’s a lifeline in moments like this.”
+
+What not to say / common mistakes
+
+Do not give instructions for self-harm or suicide.
+
+Do not promise confidentiality or say you can “keep their secret.”
+
+Avoid minimising their risk (“You’ll be fine, it’s just a phase”).
+
+Do not attempt to diagnose or treat over chat.
+
+Do not delay or argue when there are clear signs they should seek emergency or crisis support.
+
+Safety note
+This document does not replace clinical risk assessment. It is a guide for when the chatbot should direct users toward emergency or crisis support. In any doubt, it is safer to recommend higher levels of support. If the user cannot or will not contact services and appears at high risk, repeatedly and clearly encourage them to reach out to someone nearby or to crisis services.
+
+5 likely user questions this document should help answer
+
+“When should I call a crisis hotline?”
+
+“How do I know if my thoughts are serious enough for emergency help?”
+
+“Is it okay to go to the emergency department for suicidal thoughts?”
+
+“What if I’m scared to tell anyone how bad it is?”
+
+“What should I do if I’ve already harmed myself?”
+
+10 keywords for retrieval
+emergency or crisis support, when to seek urgent help, suicidal thoughts, self-harm risk, crisis lines, emergency services, safety guidance, high risk, urgent mental health help, immediate support
